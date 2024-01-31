@@ -27,3 +27,5 @@
 #Mitigation Strategy for above risks
 
 #Development method: scrum, kanban, waterfall: with specifics!
+
+Trello: https://trello.com/b/yO1r4fG0/class3308
