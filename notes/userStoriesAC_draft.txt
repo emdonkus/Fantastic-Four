@@ -1,0 +1,73 @@
+1: As a product manager, I want keep the project's status current each week so
+    that all team members and stakeholders can see the progress being
+    Given: that I am a product manager<br><br>
+    When : I open the Weekly Log<br><br>
+    Then : the weekly log has a template entry <br><br>
+        AND a snapshot of the current state of tasks
+        AND the date of of week
+
+2: As a developer I want to create scripts to extract data from web pages So
+    that I can populate tables in a database
+    Given: that I am developer<br><br>
+    When : I run the script<br><br>
+    Then : I have a new database entry<br><br>
+
+3: As a developer I want to create python programs to collect data from
+    multiple files So that I can summarize the data in a simple output format
+    Given: that I am a developer<br><br>
+    When : click the summarize button<br><br>
+    Then : I receive a simple formatted summary of data in my database
+
+4: As a team member I want to design the tables and relationships for the
+    database So that we can begin to extract data and populate the tables.
+    Given: 	that I am a team member    
+    When : 	I extract data from other websites
+    Then : 	the data is added to a databse of information
+        AND the data contains relationships to otehr relevant data 
+
+5: As a team member I want to design the basic web pages and transitions
+    between pages for the project So that we have a consistent understanding of
+    the features needed
+    Given: 	that I am a team member    
+    When : 	I want to create webpages
+    Then : 	there is a documented plan for the web pages
+       AND I can see the known transitions from other webpages 
+       AND I understand the reason for implementing the webpage
+
+6: As a team member in my team I want to have a communication channel to the
+    team So that I can contact my teammates with questions or news about the
+    project.
+    Given: 	that I am a team member    
+    When : 	I want to communicate with team mates
+    Then : 	there is a known method for communication
+
+7: As a team member I want to have documentation of all the processes in our
+    Project So that we can share knowledge across team members
+    Given: 	that I am a team member 
+    When : 	I want to understand the other tasks in project
+    Then : 	there is an area I can go to documentation
+        AND there is comments on how the tasks were completed
+        AND there is test processes
+ 
+
+
+    Given: 	<context of action><br><br>
+    When : 	<some action is completed><br><br>
+    Then : 	<set of observable outcomes><br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
