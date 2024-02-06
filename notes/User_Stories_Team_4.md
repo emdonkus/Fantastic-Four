@@ -23,12 +23,12 @@ Effort Estimation
 
 Acceptance Criteria
 
-* **Given:** 	\<context of action\><br><br>
+* **Given:** 	I am a product manager<br><br>
 	
-* **When :** 	\<some action is completed\><br><br>
+* **When :** 	it’s the last day of week<br><br>
 	
-* **Then :** 	\<set of observable outcomes\><br><br>
-	
+* **Then :** 	I want to update the weekly log with latest status<br><br>
+
 <hr><hr><br><br>
 
 
@@ -55,12 +55,16 @@ Effort Estimation
 
 Acceptance Criteria
 
-* **Given:** 	\<context of action\><br><br>
+* **Given:** 	I am a developer creating scripts<br><br>
 	
-* **When :** 	\<some action is completed\><br><br>
+* **When :** 	I execute the scripts<br><br>
 	
-* **Then :** 	\<set of observable outcomes\><br><br>
+* **Then :** 	 the the scraped data is stored in a datafile<br><br>
+
+* **When :** 	I have extracted data from web pages<br><br>
 	
+* **Then :** 	I can populate tables in a database<br><br>
+
 <hr><hr><br><br>
 
 
@@ -86,12 +90,14 @@ Effort Estimation
 
 Acceptance Criteria
 
-* **Given:** 	\<context of action\><br><br>
+* **Given:** 	I am a developer writing python scripts<br><br>
 	
-* **When :** 	\<some action is completed\><br><br>
+* **When :** 	 I execute python scripts<br><br>
 	
-* **Then :** 	\<set of observable outcomes\><br><br>
-	
+* **Then :** 	those scripts will collect data from multiple files<br><br>
+  	**AND** summarize it in a simple output format
+
+
 <hr><hr><br><br>
 
 
@@ -117,12 +123,15 @@ Effort Estimation
 
 Acceptance Criteria
 
-* **Given:** 	\<context of action\><br><br>
+* **Given:** 	that I am a database developer<br><br>
 	
-* **When :** 	\<some action is completed\><br><br>
+* **When :** 	I extract data from websites<br><br>
 	
-* **Then :** 	\<set of observable outcomes\><br><br>
-	
+* **Then :** 	I can design relationships and tables for the database<br><br>
+	 **AND** I extract the data to database tables<br><br>
+
+       
+
 <hr><hr><br><br>
 
 
@@ -146,12 +155,15 @@ Effort Estimation
 
 Acceptance Criteria
 
-* **Given:** 	\<context of action\><br><br>
+* **Given:** 	that I am a product owner<br><br>
 	
-* **When :** 	\<some action is completed\><br><br>
+* **When :** 	 I review web page designs<br><br>
 	
-* **Then :** 	\<set of observable outcomes\><br><br>
-	
+* **Then :** 	there is a completed hierarchy<br><br>
+	    **AND** there is defined transitions between pages <br><br>
+        **AND** the relationships between pages is defined <br><br>
+
+
 <hr><hr><br><br>
 
 
@@ -175,12 +187,12 @@ Effort Estimation
 
 Acceptance Criteria
 
-* **Given:** 	\<context of action\><br><br>
+* **Given:** 	I am team member <br><br>
 	
-* **When :** 	\<some action is completed\><br><br>
+* **When :** 	I reach out to my team<br><br>
 	
-* **Then :** 	\<set of observable outcomes\><br><br>
-	
+* **Then :** 	I can use email and text<br><br>
+        **AND:** I receive a reply within 24 hrs <br><br>
 <hr><hr><br><br>
 
 
@@ -204,12 +216,12 @@ Effort Estimation
 
 Acceptance Criteria
 
-* **Given:** 	\<context of action\><br><br>
+* **Given:** 	that I am a team member<br><br>
 	
-* **When :** 	\<some action is completed\><br><br>
+* **When :** 	I complete my sprint tasking<br><br>
 	
-* **Then :** 	\<set of observable outcomes\><br><br>
-	
+* **Then :** 	I can push up my wokring commits <br><br>
+	**AND:**    I can review my teammates' commits/sprint progress <br><br>
 <hr><hr><br><br>
 
 
@@ -233,11 +245,15 @@ Effort Estimation
 
 Acceptance Criteria
 
-* **Given:** 	\<context of action\><br><br>
+* **Given:** 	I am a team member<br><br>
 	
-* **When :** 	\<some action is completed\><br><br>
+* **When :** 	I complete a sprint task<br><br>
 	
-* **Then :** 	\<set of observable outcomes\><br><br>
+* **Then :** 	Documentation files are updated<br><br>
+* **AND:**      the documentaion has been team peer-reviewed<br><br>
+
+* **When :** 	I review documentation<br><br>
 	
+* **Then :** 	I can find usage files or change history <br><br>	
 <hr><hr><br><br>
 
