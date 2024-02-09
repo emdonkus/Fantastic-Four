@@ -39,5 +39,6 @@ Image:<br>
 Additional Comments:<br>
     --Lab 3 Acceptance Criteria Completed<br>
     --Brainstorming Session<br>
-    --<br>
+Next Steps
+    --Select 3 websites with desired breakdown of information<br>
 

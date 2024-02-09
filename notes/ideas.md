@@ -4,7 +4,6 @@ Recipe planner/cookbook- As one finds recipes online, need way to compile them e
     users have their own table
     can select up next
     provide ratings and comments
-    friend request and database of friends
 
 
 -------------
@@ -13,3 +12,6 @@ Documentation
     -make sure to commetn code so someone else can know what we are doing
     -Any coding should have a unit test associated
 
+
+
+---------------
