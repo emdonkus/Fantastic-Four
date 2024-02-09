@@ -18,7 +18,7 @@ Day/Time/TimeZone for the scheduled team weekly meeting (30 minutes via Zoom)
    1730 Monday MT
 
 Vision statement: what would you tell potential customers?
-    Every felt like you have too many pdf recipes on your computer taking up space? Tired of scrolling through someone's entire origin story just to get to your pork shoulder recipe? It's time to CutNPasta that recipe into your own personal recipe database. Plan out your recipes ahead of time and turn it into a shopping list. View just the recieps and remove those annoying backstories when you just want to eat.
+    Every felt like you have too many pdf recipes on your computer taking up space? Tired of scrolling through someone's entire origin story just to get to your pork shoulder recipe? It's time to CutNPasta that recipe into your own personal recipe database. Plan out your recipes ahead of time and turn it into a shopping list. View just the recipes and remove those annoying backstories when you just want to eat.
 
 Motivation: why are you working on this project?
     Been busy and looking at online recipes and saving off all the pdfs to my local computer area. Annoying to search through all of the saved ones for things I want.
