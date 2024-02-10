@@ -15,3 +15,15 @@ Documentation
 
 
 ---------------
+Recipe websites:
+https://www.eatingwell.com/
+https://www.skinnytaste.com/
+https://www.budgetbytes.com/
+https://www.allrecipes.com/
+https://www.thekitchn.com/beef-tips-recipe-23578525#post-recipe-561880415
+
+Print function seems to be a reliable source. EatingWell and AllRecipes have it located in the print formID area and it only contains the post.com suffix
+
+Skinnytastes and budgetbytes have the wprm_print method that takes you a pdf file.
+
+theKitchn uses an event I think to create next page. Not sure hwo to deal with that
