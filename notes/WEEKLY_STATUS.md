@@ -42,3 +42,16 @@ Additional Comments:<br>
 Next Steps
     --Select 3 websites with desired breakdown of information<br>
 
+
+-----------------------------
+Week Start: 20240212 <br>
+Week End: 20240218<br>
+Semester Week : #6<br>
+Image:<br>
+<figure width=100%>
+    <img src="weeklysnapshots/Snap20240216.png" alt="Deliverable Item"ALIGN="center" />
+</figure>
+Additional Comments:<br>
+    --Tasks decomposed into subtasks<br>
+    --Project Proposal finished<br>
+    --Initial tasking assigned
