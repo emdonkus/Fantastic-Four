@@ -1,9 +1,13 @@
 Recipe planner/cookbook- As one finds recipes online, need way to compile them effectively. Could try to take the recipe panel, original link
+    Gather the recipe from original page
     save it to a databse of recipes
     have a search function
     users have their own table
     can select up next
     provide ratings and comments
+        Tables for ingredients
+        Tables for steps
+    
 
 
 -------------
