@@ -5,3 +5,4 @@ echo $temp
 recipeurl="${temp#\"}"
 echo $recipeurl
 wget -O SkinnyRecipeFinal.html $recipeurl
+./extract1.sh https://www.skinnytaste.com/chicken-florentine/
