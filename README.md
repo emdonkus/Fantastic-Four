@@ -10,7 +10,7 @@ Product Name:
   
 Team members: list the name, git username, and email for each member.
    Evan Donkus,    emdonkus,   evdo5141@colorado.edu
-   Lex Bukowski,   lexbuko22,  albu0228@colorado.edu
+   Lex Bukowski,   lexbuko22,  albu0228@colorado.edu 
    Matt Scott,     gr8tscott,  masc6977@colorado.edu
    Hallee Ray,     halleeray,  hara7620@colorado.edu
 
