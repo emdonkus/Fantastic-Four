@@ -26,8 +26,12 @@
 #
 #------------------------------------------------------------------
 #------------------------------------------------------------------
+#rm -f test.txt
+grep -oE "<ul.*recipe-instructions.*<\/ul>" skinnytaste/Chicken_Florentine/Chicken_Florentine_recipe.html > temp.html
 
-grep -E *"instruction-text
+#echo "${test/<*>/}"
+
+#grep -Eo "recipe-instruction-text.*<\/div>" temp.txt > temp1.txt
 
 
 
