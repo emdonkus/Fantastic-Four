@@ -36,5 +36,20 @@
 #https://www.skinnytaste.com/chicken-florentine/
 
 ./extract_scripts/retrieveURL.sh https://www.budgetbytes.com/ham-and-cheese-sliders/
+status=$?
+echo $status
+if [[ $status -ne 0 ]];
+then
+    exit $status
+fi
+
 ./extract_scripts/retrieveURL.sh https://www.skinnytaste.com/healthy-baked-fish-sticks-with-lemon/
+if [[ $? -ne 0 ]];
+then
+    exit 1
+fi
 ./extract_scripts/retrieveURL.sh https://www.skinnytaste.com/chicken-florentine/
+if [[ $? -ne 0 ]];
+then
+    exit 1
+fi
