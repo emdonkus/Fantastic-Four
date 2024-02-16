@@ -7,20 +7,20 @@
 #wget -O SkinnyRecipeFinal.html $recipeurl
 #./extract1.sh https://www.skinnytaste.com/chicken-florentine/
 
-url1="https://www.skinnytaste.com/chicken-florentine/#recipe"
+#url1="https://www.skinnytaste.com/chicken-florentine/#recipe"
 
 
-tempURL="${url1#*www.}"
-echo $tempURL
-echo " The basename is ${url1##*/}"
-echo "${tempURL%.*}"
-tempURL="${tempURL%*.com*}"
-echo $tempURL
+#tempURL="${url1#*www.}"
+#echo $tempURL
+#echo " The basename is ${url1##*/}"
+#echo "${tempURL%.*}"
+#tempURL="${tempURL%*.com*}"
+#echo $tempURL
 
-if [[ $url1 == *".com"* ]];
-then 
-    echo "Truth"
-fi
+#if [[ $url1 == *".com"* ]];
+#then 
+#    echo "Truth"
+#fi
 
 #if [[ $url1 == *".com"* ]];
 #then 
@@ -30,3 +30,11 @@ fi
 #    echo "URL was not a '.com'"
 #    exit 2
 #fi
+
+#Recipes used:
+#https://www.skinnytaste.com/healthy-baked-fish-sticks-with-lemon/
+#https://www.skinnytaste.com/chicken-florentine/
+
+./extract_scripts/retrieveURL.sh https://www.budgetbytes.com/ham-and-cheese-sliders/
+./extract_scripts/retrieveURL.sh https://www.skinnytaste.com/healthy-baked-fish-sticks-with-lemon/
+./extract_scripts/retrieveURL.sh https://www.skinnytaste.com/chicken-florentine/

@@ -31,8 +31,11 @@ decho () {
     if [[ $DEBUG == 1 ]];
     then
         echo $1
+        echo ""
     fi
 }
+
+
 #-------------------
 # Take input and give name
 #-------------------
@@ -59,7 +62,7 @@ fi
 #---------------
 # Grep for the Recipe Title
 #---------------
-grepTitle=$(grep -iaE '<h1.*\/h1>*' temp.html | grep -Eo '>.*<\/h1')
+grepTitle=$(grep -Eo '<h1.*\/h1>*' temp.html | grep -Eo '>.*<\/h1')
 
 #---------------
 # if grep can't find h1 markers, then we exit with bad staus
@@ -78,22 +81,22 @@ decho $grepTitle
 
 #Finds and removes '>' from previous grep
 tempTitle="${grepTitle/>/}"
-decho $tempTitle
+decho "TEMP Title: $tempTitle"
 
 # Finds and removes '</h1' from previous grep
 tempTitle2="${tempTitle/<\/h1/}"
-decho $tempTitle2
+decho "TEMP2 title: $tempTitle2"
 
 # Replaces spaces with '_'
-finalTitle="${tempTitle2/ /\_}"
-decho $finalTitle
+finalTitle="${tempTitle2// /\_}"
+decho "Final: $finalTitle"
 
 #-----------------
 # Get just the name of website xyz in www.xyz.com
 #-----------------
-decho $inputurl
+decho "Input: $inputurl"
 tempURL="${inputurl#*www.}"
-decho $tempURL
+decho "Shortened: $tempURL"
 
 # Since we stripped all leading characters before base name
 # We should be able to get the basenaem up to .com ending piece
@@ -110,6 +113,7 @@ websiteName="${tempURL%.*}"
 # Move temp.html to finalTitle.html, and under appropiate hierarchy structure
 #-----------------
 rawHTML="$websiteName/$finalTitle/${finalTitle}_raw.html"
+decho "RAWHTML: $rawHTML"
 
 decho "Moving raw HTML to subdir $websiteName/$finalTitle/"
 
@@ -122,8 +126,12 @@ mv temp.html $rawHTML
 recipeHTML="${finalTitle}_recipe.html"
 decho "Retreiving print Directory from website"
 
-grepout=$(grep -ia "print" $rawHTML | grep -Eo 'href=\"https?:\/\/[^"]+\"'| grep -Eo '\"https?:\/\/[^"]+\"')
-
+#------------------
+# wprm_print = WordPress Recipe Maker
+# Looks to be a fairly common plugin 
+#--------------------
+grepout=$(grep -ia "wprm_print" $rawHTML | grep -Eo 'href=\"https?:\/\/[^"]+\"'| grep -Eo '\"https?:\/\/[^"]+\"')
+echo "grepout: $grepout"
 if [[ ! $grepTitle ]];
 then
     decho "Couldn't find print url"
@@ -132,11 +140,11 @@ fi
 
 #Trims leading quote
 temp="${grepout%\"}"
-decho $temp
+decho "TEMP: $temp"
 
 #Trims trailing quote
 recipeurl="${temp#\"}"
-decho $recipeurl
+decho "RecipeURL: $recipeurl"
 
 #------------------
 # Validate print url. Should be good if grep worked
@@ -148,10 +156,12 @@ validurl_flag=$(wget --spider -q $recipeurl)
 #------------------
 if [[ ! $validurl_flag ]];
 then
-    wget -q -O $recipeHTML $recipeurl
+    recipePath="$websiteName/$finalTitle/$recipeHTML"
+    wget  -O $recipePath $recipeurl
 else
     decho "Bad print URL"
     exit 1
 fi
 
-
+echo "Extraction Complete"
+exit 0
