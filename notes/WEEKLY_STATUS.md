@@ -52,6 +52,6 @@ Image:<br>
     <img src="weeklysnapshots/Snap20240216.png" alt="Deliverable Item"ALIGN="center" />
 </figure>
 Additional Comments:<br>
-    --Tasks decomposed into subtasks<br>
-    --Project Proposal finished<br>
-    --Initial tasking assigned
+    --Extraction Scripts started<br>
+    --Basic Database started<br>
+    --Webpage Design started
