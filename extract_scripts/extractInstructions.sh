@@ -26,18 +26,54 @@
 #
 #------------------------------------------------------------------
 #------------------------------------------------------------------
-#rm -f test.txt
-grep -oE "<ul.*recipe-instructions.*<\/ul>" skinnytaste/Chicken_Florentine/Chicken_Florentine_recipe.html > temp.html
+DEBUG=1
+#---------------
+# Only echoes if debug is turned on
+#---------------
+decho () {
+    if [[ $DEBUG == 1 ]];
+    then
+        echo $1
+        echo ""
+    fi
+}
 
-#echo "${test/<*>/}"
+#-------------
+# Reassign input
+#-------------
+recipeFile=$1
+# example: skinnytaste/Chicken_Florentine/Chicken_Florentine_recipe.html
+if [[ ! -e $recipeFile ]];
+then
+    decho "Cannot find $recipeFile"
+    exit 3
+fi
+#----------------
+# Trim the recipe part off and create path to instrcution html and the path for txt
+#----------------
+tempHTML="${recipeFile%_recipe.html}"
+decho $tempHTML
+instructionHTML="${tempHTML}_instructions.html"
+instructionTXT="${tempHTML}_instructions.txt"
 
-#grep -Eo "recipe-instruction-text.*<\/div>" temp.txt > temp1.txt
+#-----------------
+# Grep out the instruction html from recipe print and put into instructionhtml
+#-----------------
+grep -oE "<ul.*recipe-instructions.*<\/ul>" $recipeFile > $instructionHTML
 
 
+# Not Sure what I need this for now, but gonna keep it just in case
+if [[ 0 == 1 ]];
+then
+    filePath="${recipeFile%/*}"
+    decho $filePath
+fi
 
 
-
-
+#-----------------
+# Process instructions.html and return atext file of instructions
+#-----------------
+python3 extract_scripts/dataParser.py $instructionHTML
 
 echo "Extracion Complete"
 exit 0

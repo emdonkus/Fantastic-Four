@@ -27,7 +27,9 @@
 #------------------------------------------------------------------
 #------------------------------------------------------------------
 DEBUG=1
+#---------------
 # Only echoes if debug is turned on
+#---------------
 decho () {
     if [[ $DEBUG == 1 ]];
     then
@@ -205,17 +207,30 @@ fi
 # extracts recipe name from a header block
 #-------------------
 extractRecipeName
+status=$?
+if [[ $status -ne 0 ]];
+then
+    exit $status
+fi
 decho $finalTitle
+
 
 #-------------------
 # Get the wbesite name from input URL
 #-------------------
 extractWebsiteName $inputurl
-
+if [[ $status -ne 0 ]];
+then
+    exit $status
+fi
 #-----------------
 # Move temp.html to finalTitle.html, and under appropiate hierarchy structure
 #-----------------
 moveRawHTML
+if [[ $status -ne 0 ]];
+then
+    exit $status
+fi
 #-----------------
 # Verify that file does not exist in heirarchy
 #-----------------
@@ -225,7 +240,10 @@ moveRawHTML
 # extracts the print URL from print button HTML
 #--------------------
 extractWPRM_PrintURL
-
+if [[ $status -ne 0 ]];
+then
+    exit $status
+fi
 #------------------
 # Validate print url. Should be good if grep worked
 #------------------
@@ -241,5 +259,7 @@ then
     wget -q -O $recipePath $recipeurl
 fi
 
-decho "Extraction Complete"
+decho "Extraction Complete. File at $recipePath"
+decho "Running instruction script"
+exec ./extract_scripts/extractInstructions.sh $recipePath
 exit 0
