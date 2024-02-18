@@ -42,19 +42,27 @@ class MyHTMLParser(HTMLParser):
     # Tells Feed function what to do with start tags
     #---------------
     def handle_starttag(self, tag, attrs):
-        return#print("Encountered a start tag:", tag)
+        if(DEBUG==1):
+            print("Encountered a start tag:", tag)
+        else:
+            return
     
     #---------------
     # Tells Feed function what to do with end tags
     #---------------
     def handle_endtag(self, tag):
-        return#print("Encountered an end tag :", tag)
+        if(DEBUG==1):
+            print("Encountered an end tag :", tag)
+        else:
+            return
     
     #---------------
     # Tells Feed function what to do with data
     #---------------
     def handle_data(self, data):
-        print("Data :", data)
+        if(DEBUG==1):
+            print("Data :", data)
+            
         self.dataList.append(data)
         
     #---------------

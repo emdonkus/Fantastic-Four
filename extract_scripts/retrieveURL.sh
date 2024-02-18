@@ -50,15 +50,15 @@ validateURL () {
     # -q = silent mode
     # Returns 0 if successful,  not 0 else
     #------------------
-    local invalidurl_flag=$(wget --spider -q $inputURL)
+    #local invalidurl_flag=$(wget --spider -q $inputURL)
 
     #------------------
     # If the weblink is good download to temp file
     #------------------
-    if [[ $invalidurl_flag ]];
+    if wget -q --spider $url 2>/dev/null;
     then
         decho "ERROR: Bad URL"
-        return 1
+        exit 1
     fi
     
     return 0
@@ -139,13 +139,13 @@ moveRawHTML () {
     #-----------------
     # Move temp.html to finalTitle.html, and under appropiate hierarchy structure
     #-----------------
-    rawHTML="$websiteName/$finalTitle/${finalTitle}_raw.html"
+    rawHTML="Recipes/$websiteName/$finalTitle/${finalTitle}_raw.html"
     decho "RAWHTML: $rawHTML"
 
-    decho "Moving raw HTML to subdir $websiteName/$finalTitle/"
+    decho "Moving raw HTML to subdir Recipes/$websiteName/$finalTitle/"
 
     #VVVV---STUB---VVVV#
-    mkdir -p $websiteName/$finalTitle/
+    mkdir -p Recipes/$websiteName/$finalTitle/
     #^^^^---STUB---^^^^#
 
     mv temp.html $rawHTML
@@ -234,6 +234,12 @@ fi
 #-----------------
 # Verify that file does not exist in heirarchy
 #-----------------
+extract_valid=$( command -v extract.sh )
+if [ "$extract_valid" == "" ];
+then
+    echo "Could Not find extract.sh"
+    exit 7
+fi
 #Hallee:heirarchy
     #ingredients based off print page
 #------------------
@@ -254,12 +260,18 @@ status=$?
 #------------------
 if [[ $status -eq 0 ]];
 then
-    recipePath="$websiteName/$finalTitle/$recipeHTML"
+    recipePath="Recipes/$websiteName/$finalTitle/$recipeHTML"
     decho "Getting the recipe print page"
     wget -q -O $recipePath $recipeurl
 fi
 
 decho "Extraction Complete. File at $recipePath"
+extract_valid=$( command -v extract.sh )
+if [ "$extract_valid" == "" ];
+then
+    echo "Could Not find extract.sh"
+    exit 7
+fi
 decho "Running instruction script"
 exec ./extract_scripts/extractInstructions.sh $recipePath
 exit 0
