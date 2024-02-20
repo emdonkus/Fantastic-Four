@@ -1,5 +1,5 @@
 **ERD (entity relationship diagram) for backend tables**: <br />
-If we have users, then the user can favority many recipes, add recipes to shopping cart, each recipe has a 'likes' count.
+If we have users, then the user can favorite many recipes, add recipes to shopping cart, each recipe has a 'likes' count.
 
 <img width="492" alt="ERD-CutNPasta" src=./ERD-CutNPasta.png>
 
