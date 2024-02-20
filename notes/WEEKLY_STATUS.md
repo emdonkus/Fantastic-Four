@@ -54,4 +54,4 @@ Image:<br>
 Additional Comments:<br>
     --Extraction Scripts started<br>
     --Basic Database started<br>
-    --Webpage Design started
+    --Webpage Design started (ERD and Component Hierarchy Diagram)<br>
