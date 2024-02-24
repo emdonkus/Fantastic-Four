@@ -55,3 +55,17 @@ Additional Comments:<br>
     --Extraction Scripts started<br>
     --Basic Database started<br>
     --Webpage Design started (ERD and Component Hierarchy Diagram)<br>
+
+-----------------------------
+Week Start: 20240219 <br>
+Week End: 20240225<br>
+Semester Week : #7<br>
+Image:<br>
+<figure width=100%>
+    <img src="weeklysnapshots/Snap20240223.png" alt="Deliverable Item"ALIGN="center" />
+</figure>
+Additional Comments:<br>
+    --Continued to work on Extraction scripts<br>
+    --Continued to stand up a database<br>
+    --Webpage Design started<br>
+
