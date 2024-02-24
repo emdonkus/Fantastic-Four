@@ -19,6 +19,7 @@
 #   1 = bad url
 #   2 = bad grep 
 #   3 = missing file
+#   4 = missing script
 #    
 # Changelog:
 #    Date (MM-DD-YYYY)     Name      Change Description
@@ -27,6 +28,7 @@
 #------------------------------------------------------------------
 #------------------------------------------------------------------
 DEBUG=1
+
 #---------------
 # Only echoes if debug is turned on
 #---------------
@@ -38,7 +40,11 @@ decho () {
     fi
 }
 
-
+#---------------
+#---------------
+# Validates a URL
+#---------------
+#---------------
 validateURL () {
     decho "Validating $1"
     
@@ -182,6 +188,16 @@ extractWPRM_PrintURL () {
     recipeurl="${temp#\"}"
     decho "RecipeURL: $recipeurl"
 }
+#-------------------
+# Checks value of given status
+#-------------------
+statusCheck () {
+    status=$1
+    if [[ $status -ne 0 ]];
+    then
+        exit $status
+    fi
+}
 #==============================================================================
 # MAIN SCRIPT
 #==============================================================================
@@ -190,66 +206,54 @@ extractWPRM_PrintURL () {
 #-------------------
 decho "Reassigning input"
 inputurl=$1
-
+exitTest
 validateURL $inputurl
-status=$?
+
 #-------------------
 # If valid url, get the html file
 #-------------------
-if [[ $status -eq 0 ]];
-then
-    wget -q -O temp.html $inputurl
-else
-    exit $status
-fi
+statusCheck $?
+wget -q -O temp.html $inputurl
 
 #-------------------
 # extracts recipe name from a header block
 #-------------------
 extractRecipeName
-status=$?
-if [[ $status -ne 0 ]];
-then
-    exit $status
-fi
-decho $finalTitle
+statusCheck $?
 
+decho $finalTitle
 
 #-------------------
 # Get the wbesite name from input URL
 #-------------------
 extractWebsiteName $inputurl
-if [[ $status -ne 0 ]];
-then
-    exit $status
-fi
+statusCheck $?
 #-----------------
 # Move temp.html to finalTitle.html, and under appropiate hierarchy structure
 #-----------------
 moveRawHTML
-if [[ $status -ne 0 ]];
-then
-    exit $status
-fi
+statusCheck $?
 #-----------------
 # Verify that file does not exist in heirarchy
 #-----------------
-extract_valid=$( command -v extract.sh )
+extract_valid=$( command -v extract_scripts/extractInstructions.sh )
 if [ "$extract_valid" == "" ];
 then
     echo "Could Not find extract.sh"
-    exit 7
+    exit 4
 fi
+
+extract_scripts/extractInstructions.sh
+statusCheck $?
+
 #Hallee:heirarchy
     #ingredients based off print page
 #------------------
 # extracts the print URL from print button HTML
 #--------------------
 extractWPRM_PrintURL
-if [[ $status -ne 0 ]];
-then
-    exit $status
-fi
+statusCheck $?
+
 #------------------
 # Validate print url. Should be good if grep worked
 #------------------
@@ -266,12 +270,18 @@ then
 fi
 
 decho "Extraction Complete. File at $recipePath"
-extract_valid=$( command -v extract.sh )
-if [ "$extract_valid" == "" ];
+
+#------------------
+# call Dataparser if found
+#------------------
+decho "Running instruction script"
+
+if [[ ! -e /extract_scripts/dataParser.py ]];
 then
     echo "Could Not find extract.sh"
-    exit 7
+    exit 4
 fi
-decho "Running instruction script"
+
 exec ./extract_scripts/extractInstructions.sh $recipePath
+decho "Extraction Complete"
 exit 0
