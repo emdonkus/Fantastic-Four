@@ -37,6 +37,7 @@ class MyHTMLParser(HTMLParser):
     def  __init__(self):
         HTMLParser.__init__(self)
         self.dataList=[]
+        self.ingredientSTR=""
     
     #---------------
     # Tells Feed function what to do with start tags
@@ -62,8 +63,64 @@ class MyHTMLParser(HTMLParser):
     def handle_data(self, data):
         if(DEBUG==1):
             print("Data :", data)
+        #get last start tag    
+        text=HTMLParser.get_starttag_text(self)
+        if(DEBUG==1):
+            print("Tag :", text)
+        #if running on instructions, just add it to data
+        if ( "instruction" in text):
+            self.dataList.append(data)
+        elif ("ingredient" in text):
+            # if ingredient then we want to get the full line (2 onces chicken (thighs are good))
+            # in one line and output the entire line to a single cell rather each part 
+            # of list on a single line
             
-        self.dataList.append(data)
+            if ( "unit" in text):
+                # if unit is in text, save it to string
+                                #remove the last item
+                ingredientSTR= self.dataList.pop()
+                
+                #append data to it
+                ingredientSTR+=data
+                
+                #append ingredientSTR back to dataList
+                self.dataList.append(ingredientSTR)
+
+            elif ("amount" in text):
+                # if amount in text, append to str
+                
+                # if the data string is empty, just add it to the last element string
+                if ( data == " "):
+                    #remove the last item
+                    ingredientSTR= self.dataList.pop()
+                    ingredientSTR+=data
+                    self.dataList.append(ingredientSTR)
+                else:
+                    #Unit tag should start a new line of code
+                    self.dataList.append(data)
+
+                
+            elif ( "name" or "ingredient-link" in text):
+                # if amount in text, append to str
+                #remove the last item
+                ingredientSTR= self.dataList.pop()
+                
+                #append data to it
+                ingredientSTR+=data
+                
+                #append ingredientSTR back to dataList
+                self.dataList.append(ingredientSTR)
+            elif ("notes" in text):
+                # if amount in text, append to str
+                #remove the last item
+                ingredientSTR= self.dataList.pop()
+                
+                #append data to it
+                ingredientSTR+=data
+                
+                #append ingredientSTR back to dataList
+                self.dataList.append(ingredientSTR)
+        
         
     #---------------
     # Removes empty strings from dataList

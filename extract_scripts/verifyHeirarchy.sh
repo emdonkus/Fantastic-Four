@@ -56,14 +56,21 @@ verifyRecipeDir () {
 #-------------------------
 #   Validate SubDir Path
 #-------------------------
-verifySubDirs() {
+verifySubDirs () {
     path=$1
+    echo $path
+    if [[ ! $path ]];
+    then 
+        decho "Error: No path specified"
+        exit 3
+    fi
+    
     if [[ -d $path ]];
     then
         #-------------------------
         #   File already exists, dont do anything else
         #-------------------------
-        decho "Path already exists!"
+        decho "Path $path already exists!"
         if [[ "$(ls $path)" ]];
         then
             decho "Checking if the files exist"
@@ -77,7 +84,7 @@ verifySubDirs() {
         #-------------------------
         #   Path doesnt exist, create it
         #-------------------------
-        
+        decho "Creating $path"
         mkdir -p $path
         
     fi
@@ -96,13 +103,13 @@ filePath=$1
 # Verify Data Dir exists
 #-------------------------
 decho "Checking Directory Structures"
-verifyRecipeDir()
+verifyRecipeDir
 
 #-------------------------
 #   Verify/create subdirectories
 #-------------------------
-echo "Checking subdirectories"
-verifySubDirs() 
+decho "Checking subdirectories"
+verifySubDirs $filePath
 
 
 decho "============Exiting $0 ================="

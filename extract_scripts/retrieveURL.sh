@@ -283,6 +283,25 @@ then
     exit 4
 fi
 
-exec ./extract_scripts/extractInstructions.sh $recipePath
-decho "Extraction Complete"
+extract_valid=$( command -v extract_scripts/extractInstructions.sh )
+if [ "$extract_valid" == "" ];
+then
+    echo "Could Not find extract_scripts/extractInstructions.sh"
+    exit 4
+fi
+    
+extract_scripts/extractInstructions.sh $recipePath
+decho "Instruction Extraction Complete"
+
+extract_valid=$( command -v extract_scripts/extractIngredients.sh )
+if [ "$extract_valid" == "" ];
+then
+    echo "Could Not find extract_scripts/extractIngredients.sh"
+    exit 4
+fi
+    
+extract_scripts/extractIngredients.sh $recipePath
+decho "Ingredient Extraction Complete"
+
+
 exit 0
