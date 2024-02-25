@@ -145,15 +145,23 @@ moveRawHTML () {
     #-----------------
     # Move temp.html to finalTitle.html, and under appropiate hierarchy structure
     #-----------------
-    rawHTML="Recipes/$websiteName/$finalTitle/${finalTitle}_raw.html"
+    recipePath="Recipes/$websiteName/$finalTitle/"
+    rawHTML="$recipePath/${finalTitle}_raw.html"
     decho "RAWHTML: $rawHTML"
 
+    # Validate existence of command else exit
+    decho "Validating Directory"
+    extract_valid=$( command -v extract_scripts/verifyHeirarchy.sh )
+    if [ "$extract_valid" == "" ];
+    then
+        echo "Could Not find extract_scripts/verifyHeirarchy.sh"
+        exit 4
+    fi
+    
+    extract_scripts/verifyHeirarchy.sh $recipePath
+    
     decho "Moving raw HTML to subdir Recipes/$websiteName/$finalTitle/"
-
-    #VVVV---STUB---VVVV#
-    mkdir -p Recipes/$websiteName/$finalTitle/
-    #^^^^---STUB---^^^^#
-
+    
     mv temp.html $rawHTML
 
     recipeHTML="${finalTitle}_recipe.html"
@@ -201,6 +209,7 @@ statusCheck () {
 #==============================================================================
 # MAIN SCRIPT
 #==============================================================================
+decho "==============Starting $0 ============="
 #-------------------
 # Take input and give name
 #-------------------
@@ -233,18 +242,6 @@ statusCheck $?
 #-----------------
 moveRawHTML
 statusCheck $?
-#-----------------
-# Verify that file does not exist in heirarchy
-#-----------------
-extract_valid=$( command -v extract_scripts/extractInstructions.sh )
-if [ "$extract_valid" == "" ];
-then
-    echo "Could Not find extract.sh"
-    exit 4
-fi
-
-extract_scripts/extractInstructions.sh
-statusCheck $?
 
 #Hallee:heirarchy
     #ingredients based off print page
@@ -269,6 +266,10 @@ then
     wget -q -O $recipePath $recipeurl
 fi
 
+#-----------------
+# Verify that file does not exist in heirarchy
+#-----------------
+
 decho "Extraction Complete. File at $recipePath"
 
 #------------------
@@ -276,9 +277,9 @@ decho "Extraction Complete. File at $recipePath"
 #------------------
 decho "Running instruction script"
 
-if [[ ! -e /extract_scripts/dataParser.py ]];
+if [[ ! -e extract_scripts/dataParser.py ]];
 then
-    echo "Could Not find extract.sh"
+    echo "Could Not find dataParser.py"
     exit 4
 fi
 

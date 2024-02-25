@@ -69,7 +69,7 @@ class MyHTMLParser(HTMLParser):
     # Removes empty strings from dataList
     #---------------
     def trimDataList(self):
-        self.dataList.remove("")
+        self.dataList.remove('')
         
 #--------------
 # Debug print only if Global DEBUG is 1
@@ -120,4 +120,4 @@ with open(new_txt_file, "w") as outputFile:
     for step in parser.dataList:
         outputFile.write(str(count)+ ". "+step+"\n")
         count+=1
-        
+

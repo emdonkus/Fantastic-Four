@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/bin/bash -x
 # Script:
-#  extractInstructions.sh
+#  extractIngredients.sh
 #
 # Purpose:
-#   extract the instructions from recipe
+#   extract the ingredietns from recipe
 #
 # Inputs:
 #   Recipe print URL
@@ -22,7 +22,7 @@
 #    
 # Changelog:
 #    Date (MM-DD-YYYY)     Name      Change Description
-#    02-16-2024            EDonkus   Initial Creation
+#    02-25-2024            EDonkus   Initial Creation
 #
 #------------------------------------------------------------------
 #------------------------------------------------------------------
@@ -53,13 +53,13 @@ fi
 #----------------
 tempHTML="${recipeFile%_recipe.html}"
 decho $tempHTML
-instructionHTML="${tempHTML}_instructions.html"
-instructionTXT="${tempHTML}_instructions.txt"
+ingredientsHTML="${tempHTML}_ingredients.html"
+ingredientsTXT="${tempHTML}_ingredients.txt"
 
 #-----------------
 # Grep out the instruction html from recipe print and put into instructionhtml
 #-----------------
-grep -oE "<ul.*recipe-instructions.*<\/ul>" $recipeFile > $instructionHTML
+grep -oE "<ul.*ingredient.*>.*<\/ul>" $recipeFile > $ingredientsHTML
 
 
 # Not Sure what I need this for now, but gonna keep it just in case
@@ -73,7 +73,7 @@ fi
 #-----------------
 # Process instructions.html and return atext file of instructions
 #-----------------
-python3 extract_scripts/dataParser.py $instructionHTML
+python3 extract_scripts/dataParser.py $ingredientsHTML
 
 echo "Extracion Complete"
 exit 0
