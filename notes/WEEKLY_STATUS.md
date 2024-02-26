@@ -85,6 +85,3 @@ Additional Comments:<br>
     --Continued to stand up a database and explore postgrep<br>
     --Webpage Design started, discussed functionality for pages<br>
     --Continued to work on templates for frontend<br>
-
-
-
