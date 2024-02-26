@@ -68,3 +68,4 @@ Additional Comments:<br>
     --Continued to work on Extraction scripts<br>
     --Continued to stand up a database<br>
     --Webpage Design started<br>
+    --Frontend framework started<br>
