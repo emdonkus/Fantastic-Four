@@ -15,9 +15,25 @@
     	
     	<h1>Recipe: {{ title }}</h1>
 	<p>{{ recipe_id }}</p>
+		
+	<img src="{{ url_for('get_image', recipe_id=recipe_id) }}" alt="Recipe Image">
+	
 	<h2>Ingredients</h2>
 	<p> {{ ingredients }}</p>
-	
+	<ul>
+        {% for ingredient in ingredients.split('\n') %}
+        	<li>{{ ingredient }}</li>
+        {% endfor %}
+    	</ul>
+
 	<h2>Instructions</h2>
+	<p>{{ instructions}} </p>
+	<ul style="list-style: none; padding: 0; margin: 0;">
+        {% for instruction in instructions.split('\n') %}
+                <li>{{ instruction }}</li>
+        {% endfor %}
+        </ul>
+	<img src="{{ image_path }}" alt="Recipe Image">
+
   </body>
 </html>
