@@ -20,6 +20,7 @@
 #   2 = bad grep 
 #   3 = missing file
 #   4 = missing script
+#   5 = no input
 #    
 # Changelog:
 #    Date (MM-DD-YYYY)     Name      Change Description
@@ -214,8 +215,14 @@ decho "==============Starting $0 ============="
 # Take input and give name
 #-------------------
 decho "Reassigning input"
-inputurl=$1
-exitTest
+if [[ $1 ]];
+then
+    inputurl=$1
+else
+    echo "ERROR: No Input"
+    exit 5
+fi
+
 validateURL $inputurl
 
 #-------------------

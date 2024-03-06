@@ -38,6 +38,8 @@ class MyHTMLParser(HTMLParser):
         HTMLParser.__init__(self)
         self.dataList=[]
         self.ingredientSTR=""
+        self.ingredient_list_flag=False
+        self.instruction_list_flag=False
     
     #---------------
     # Tells Feed function what to do with start tags
@@ -45,8 +47,22 @@ class MyHTMLParser(HTMLParser):
     def handle_starttag(self, tag, attrs):
         if(DEBUG==1):
             print("Encountered a start tag:", tag)
-        else:
-            return
+        #end debug if
+        text=HTMLParser.get_starttag_text(self)
+        #---------------
+        # If the start tag is a list with these in it, set the flag to true
+        #---------------
+        if ( '<ul class="wprm-recipe-instructions">' in text ):
+            if(DEBUG==1):
+                print("Setting instruction flag to true")
+            self.instruction_list_flag=True
+        elif ('<ul class="wprm-recipe-ingredients">' in text):
+            if(DEBUG==1):
+                print("Setting ingredient flag to true")
+            self.ingredient_list_flag=True
+        #end tag if
+        return
+    #end handle_starttag
     
     #---------------
     # Tells Feed function what to do with end tags
@@ -54,8 +70,20 @@ class MyHTMLParser(HTMLParser):
     def handle_endtag(self, tag):
         if(DEBUG==1):
             print("Encountered an end tag :", tag)
-        else:
-            return
+        #end debug
+        #---------------
+        # If the flag is true set to false at /ul
+        #---------------
+        if ( 'ul' in tag and self.instruction_list_flag==True ):
+            if(DEBUG==1):
+                print("Setting instruction flag to false")
+            self.instruction_list_flag=False
+        elif ('ul' in tag and self.ingredient_list_flag==True):
+            if(DEBUG==1):
+                print("Setting ingredient flag to false")
+            self.ingredient_list_flag=False
+        #end tag if
+    #end handle_endtag
     
     #---------------
     # Tells Feed function what to do with data
@@ -63,18 +91,29 @@ class MyHTMLParser(HTMLParser):
     def handle_data(self, data):
         if(DEBUG==1):
             print("Data :", data)
+        #end debug
+        
         #get last start tag    
         text=HTMLParser.get_starttag_text(self)
         if(DEBUG==1):
             print("Tag :", text)
+        #end debug
+        
         #if running on instructions, just add it to data
-        if ( "instruction" in text):
+        if ( self.instruction_list_flag == True):
+            if(DEBUG==1):
+                print("Appending data for instruction list")
+            
+            #end debug
             self.dataList.append(data)
-        elif ("ingredient" in text):
+
+        elif (self.ingredient_list_flag ==True ):
             # if ingredient then we want to get the full line (2 onces chicken (thighs are good))
             # in one line and output the entire line to a single cell rather each part 
             # of list on a single line
-            
+            if(DEBUG==1):
+                print("Appending data for ingredient list")
+            #end debug
             if ( "unit" in text):
                 # if unit is in text, save it to string
                                 #remove the last item
@@ -120,8 +159,15 @@ class MyHTMLParser(HTMLParser):
                 
                 #append ingredientSTR back to dataList
                 self.dataList.append(ingredientSTR)
-        
-        
+            #end ingredient datalist if
+            if(DEBUG==1):
+                print("Datalist: ")
+                for item in self.dataList:
+                    print(item)
+                #end print loop
+            #end debug
+    #end handle_data
+    
     #---------------
     # Removes empty strings from dataList
     #---------------
@@ -166,15 +212,19 @@ parser.feed(html_instructions)
 #-------------
 count = 1
 
+#-------------
 #create new text filename
+#-------------
 new_txt_file = full_file_name.replace(".html", ".txt")
+
 
 #----------------
 # Write parsed instructions to txt file with number
 #----------------
 with open(new_txt_file, "w") as outputFile:
-    
+    dprint("Writing to new file " + new_txt_file )
     for step in parser.dataList:
+        dprint(step)
         outputFile.write(str(count)+ ". "+step+"\n")
         count+=1
 

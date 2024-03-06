@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 # Script:
 #  extractIngredients.sh
 #
@@ -59,7 +59,7 @@ ingredientsTXT="${tempHTML}_ingredients.txt"
 #-----------------
 # Grep out the instruction html from recipe print and put into instructionhtml
 #-----------------
-grep -oE "<ul.*ingredient.*>.*<\/ul>" $recipeFile > $ingredientsHTML
+grep -oE "<ul.*recipe-ingredient.*>.*<\/ul>" $recipeFile > $ingredientsHTML
 
 
 # Not Sure what I need this for now, but gonna keep it just in case
