@@ -1,15 +1,15 @@
-#!/bin/bash
+#!/bin/bash -x
 # Script:
-#  extractIngredients.sh
+#  extratctImage.sh
 #
 # Purpose:
-#   extract the ingredietns from recipe
+#   Retrieves the image file from Recipe HTML
 #
 # Inputs:
-#   Recipe print URL
+#   REcipe HTML file path
 #
 # Outputs:
-#   extracted text file
+#   extracted image file
 #
 # Notes:
 #   
@@ -19,13 +19,16 @@
 #   1 = bad url
 #   2 = bad grep 
 #   3 = missing file
+#   4 = missing script
+#   5 = no input
 #    
 # Changelog:
 #    Date (MM-DD-YYYY)     Name      Change Description
-#    02-25-2024            EDonkus   Initial Creation
-#
+#    03-10-2024            EDonkus   Initial Creation
+
 #------------------------------------------------------------------
 #------------------------------------------------------------------
+
 DEBUG=1
 #---------------
 # Only echoes if debug is turned on
@@ -37,43 +40,54 @@ decho () {
         echo ""
     fi
 }
+
 decho "==============Starting $0 ============="
+
 #-------------
 # Reassign input
 #-------------
 recipeFile=$1
-# example: skinnytaste/Chicken_Florentine/Chicken_Florentine_recipe.html
 if [[ ! -e $recipeFile ]];
 then
     decho "Cannot find $recipeFile"
     exit 3
 fi
+
 #----------------
 # Trim the recipe part off and create path to instrcution html and the path for txt
 #----------------
 tempHTML="${recipeFile%_recipe.html}"
 decho $tempHTML
-ingredientsHTML="${tempHTML}_ingredients.html"
-ingredientsTXT="${tempHTML}_ingredients.txt"
+imageFile="${tempHTML}_image.jpg"
 
 #-----------------
-# Grep out the instruction html from recipe print and put into instructionhtml
+# Grep out the image tag from recipe print
 #-----------------
-grep -oE "<ul.*recipe-ingredient.*>.*<\/ul>" $recipeFile > $ingredientsHTML
+imageGrep=$(grep -Ei recipe-image $recipeFile | grep -Eo 'src=.*wp-content.*\.(jpg|png)\"')
+decho $imageGrep
 
-
-# Not Sure what I need this for now, but gonna keep it just in case
-if [[ 0 == 1 ]];
+if [[ ! $imageGrep ]];
 then
-    filePath="${recipeFile%/*}"
-    decho $filePath
+    exit 2
 fi
+#-----------------
+# Remove the beginning src=" and the end "
+#-----------------
+srcRemoved=${imageGrep#'src="'}
+decho $srcRemoved
 
+imageHTML=${srcRemoved%'"'}
+decho $imageHTML
 
 #-----------------
-# Process instructions.html and return atext file of instructions
+# Wget the image and save to file
 #-----------------
-python3 extract_scripts/dataParser.py $ingredientsHTML
+wget --output-document=$imageFile $imageHTML
 
-echo "Extracion Complete"
-exit 0
+status=$?
+if [[ $status -ne 0 ]];
+then
+    exit $status
+else
+    exit 0
+fi
