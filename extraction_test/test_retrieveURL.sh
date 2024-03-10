@@ -24,7 +24,7 @@
 # Changelog:
 #    Date (MM-DD-YYYY)     Name      Change Description
 #    02-18-2024            EDonkus   Initial Creation
-#
+#    03-07-2024            EDonkus   Added webpages with different HTML formatting 
 #------------------------------------------------------------------
 #------------------------------------------------------------------
 
@@ -42,6 +42,7 @@ then
     echo -e "No Input.\n"
     echo -e "USAGE: $0 [Test Case Number |'ALL'] [1 for pauses | 0 for running through]\n"
     echo "NOTE: Script will always pause after summary and in cleanup"
+    echo "NOTE: -1 for manul url and manul checking"
     exit -1
 fi
 currentDir=${pwd}
@@ -53,7 +54,7 @@ echo "Creating Test Case Results"
 #------------
 # UPDATE THIS FOR NEW TEST CASES
 #-------------
-NUM_TESTCASE=6
+NUM_TESTCASE=9
 declare -a test_case_results
 test_case_results[0]="$NUM_TESTCASE Test Cases"
 for (( i=1; i<=$NUM_TESTCASE; i++ ))
@@ -293,16 +294,169 @@ then
         read -p "Press [ENTER] to continue"
     fi
 fi
-echo "_________________________________________________"
-echo "--------------------Summary-----------------------------------"
-echo "_________________________________________________"
+#------------
+# UPDATE THIS FOR NEW TEST CASES
+#-------------
+if [[ $1 -eq 7 || "$1" == "ALL" ]];
+then
+    echo "_________________________________________________"
+    echo "----------------CASE 7: Not a www.----------------"
+    echo "_________________________________________________"
+    #-------------------
+    # UPDATE CASE NUM and URL FOR NEW TEST CASES
+    #-------------------
+    test_case=7     
+    test_url="https://moonandspoonandyum.com/slow-cooker-roasted-potatoes/?utm_source=msn&utm_medium=page&utm_campaign=msn#recipe"
+    echo "Testing: extract_scripts.sh $test_url"
+    extract_scripts/retrieveURL.sh $test_url
+    
+    status=$?
+    #-------------------
+    # UPDATE THIS FOR NEW TEST CASES
+    #-------------------
+    expected_result=0
+    echo "Error Status: $status"
+    echo "Expected : $expected_result"
+    if [[ $status -eq $expected_result ]];
+    then
+        test_case_results[$test_case]="CASE $test_case Successful"
+        filepath='Recipes/moonandspoonandyum/Easy_Slow_Cooker_Roasted_Potatoes/Easy_Slow_Cooker_Roasted_Potatoes_instructions.txt'
+        if [[  ! -s $filepath ]];
+        then
+            test_case_results[$test_case]="CASE $test_case Unsuccessful"
+        fi
+        #status1="CASE 1 Successful"
+    else
+        test_case_results[$test_case]="CASE $test_case Unsuccessful"
+        #status1="CASE 1 Unsuccesful"       
+    fi
+    
+    if [[ $2 -eq 1 ]];
+    then
+        read -p "Press [ENTER] to continue"
+    fi
+fi
+#------------
+# UPDATE THIS FOR NEW TEST CASES
+#-------------
+if [[ $1 -eq 8 || "$1" == "ALL" ]];
+then
+    echo "_________________________________________________"
+    echo "----------------CASE 8: Multiple href pages----------------"
+    echo "_________________________________________________"
+    #-------------------
+    # UPDATE CASE NUM and URL FOR NEW TEST CASES
+    #-------------------
+    test_case=8    
+    test_url="https://www.halfbakedharvest.com/one-pot-chili-mac-and-cheese/"
+    echo "Testing: extract_scripts.sh $test_url"
+    extract_scripts/retrieveURL.sh $test_url
+    
+    status=$?
+    #-------------------
+    # UPDATE THIS FOR NEW TEST CASES
+    #-------------------
+    expected_result=0
+    echo "Error Status: $status"
+    echo "Expected : $expected_result"
+    if [[ $status -eq $expected_result ]];
+    then
+        test_case_results[$test_case]="CASE $test_case Successful"
+        filepath='Recipes/halfbakedharvest/One_Pot_Chili_Mac_and_Cheese./One_Pot_Chili_Mac_and_Cheese._instructions.html'
+        if [[  ! -s $filepath ]];
+        then
+            test_case_results[$test_case]="CASE $test_case Unsuccessful"
+        fi
+        #status1="CASE 1 Successful"
+    else
+        test_case_results[$test_case]="CASE $test_case Unsuccessful"
+        #status1="CASE 1 Unsuccesful"       
+    fi
+    
+    if [[ $2 -eq 1 ]];
+    then
+        read -p "Press [ENTER] to continue"
+    fi
+fi
+#------------
+# UPDATE THIS FOR NEW TEST CASES
+#-------------
+if [[ $1 -eq 9 || "$1" == "ALL" ]];
+then
+    echo "_________________________________________________"
+    echo "----------------CASE 9: Multiple tag in instruction html----------------"
+    echo "_________________________________________________"
+    #-------------------
+    # UPDATE CASE NUM and URL FOR NEW TEST CASES
+    #-------------------
+    test_case=9   
+    test_url="https://damndelicious.net/2022/10/14/perfect-pot-roast/ "
+    echo "Testing: extract_scripts.sh $test_url"
+    extract_scripts/retrieveURL.sh $test_url
+    
+    status=$?
+    #-------------------
+    # UPDATE THIS FOR NEW TEST CASES
+    #-------------------
+    expected_result=0
+    echo "Error Status: $status"
+    echo "Expected : $expected_result"
+    if [[ $status -eq $expected_result ]];
+    then
+        test_case_results[$test_case]="CASE $test_case Successful"
+        filepath='Recipes/damndelicious/Perfect_Pot_Roast/Perfect_Pot_Roast_instructions.txt'
+        if [[  ! -s $filepath ]];
+        then
+            test_case_results[$test_case]="CASE $test_case Unsuccessful"
+        fi
+        #status1="CASE 1 Successful"
+    else
+        test_case_results[$test_case]="CASE $test_case Unsuccessful"
+        #status1="CASE 1 Unsuccesful"       
+    fi
+    
+    if [[ $2 -eq 1 ]];
+    then
+        read -p "Press [ENTER] to continue"
+    fi
+fi
+#------------
+# UPDATE THIS FOR NEW TEST CASES
+#-------------
+if [[ $1 -eq -1 ]];
+then
+    echo "_________________________________________________"
+    echo "----------------CASE Manual: Entering a URL----------------"
+    echo "_________________________________________________"
+    #-------------------
+    # UPDATE CASE NUM and URL FOR NEW TEST CASES
+    #-------------------
+    test_case=""     
+    read -p "Please enter a website: " test_url
+    echo $test_url
+    
+    echo "Testing: extract_scripts.sh $test_url"
+    extract_scripts/retrieveURL.sh $test_url
+    
+    #NO Auto VALIDATION ON this ONE Manual
+    
+    if [[ $2 -eq 1 ]];
+    then
+        read -p "Press [ENTER] to continue to cleanup"
+    fi
+fi
+if [[ $1 -ne -1 ]]; 
+then
+    echo "_________________________________________________"
+    echo "--------------------Summary-----------------------------------"
+    echo "_________________________________________________"
 
-for (( i=0; i<=$NUM_TESTCASE ; i=i+1 ));
-do
-    echo -e "${test_case_results[$i]}\n"
-done
-read -p "Press [ENTER] to continue"
-
+    for (( i=0; i<=$NUM_TESTCASE ; i=i+1 ));
+    do
+        echo "${test_case_results[$i]}"
+    done
+    read -p "Press [ENTER] to continue"
+fi
 echo "--------------------Cleaning Up------------------------------"
 read -p "Press [ENTER] to clean up directory"
  

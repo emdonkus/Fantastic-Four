@@ -25,7 +25,7 @@
 # Changelog:
 #    Date (MM-DD-YYYY)     Name      Change Description
 #    02-15-2024            EDonkus   Initial Creation
-#
+#    03-07-2024            EDonkus   Updated to fail out if python fails
 #------------------------------------------------------------------
 #------------------------------------------------------------------
 DEBUG=1
@@ -130,7 +130,14 @@ extractWebsiteName () {
     # Get just the name of website xyz in www.xyz.com
     #-----------------
     decho "Input: $inputurl"
-    local tempURL="${inputurl#*www.}"
+    
+    #-----------------
+    # cuts the url by strings, 
+    # and then removes the www. if it exists
+    #-----------------    
+    iptURL=$(echo $inputurl | cut -d'/' -f3)   
+    local tempURL="${iptURL#*www.}"
+    
     decho "Shortened: $tempURL"
 
     # Since we stripped all leading characters before base name
@@ -181,6 +188,12 @@ extractWPRM_PrintURL () {
     # Looks to be a fairly common plugin 
     #--------------------
     local grep_print_url=$(grep -ia "wprm_print" $rawHTML | grep -Eo 'href=\"https?:\/\/[^"]+\"'| grep -Eo '\"https?:\/\/[^"]+\"')
+    
+    #--------------------
+    # If website comes back with more than one link, should only get us the recipe print
+    # for example if href for a register apge is there
+    #--------------------
+    local grep_print_url=$(grep -Eo '\".*wprm_print.*' <<< $grep_print_url)
     echo "grepout: $grep_print_url"
     
     if [[ ! $grep_print_url ]];
@@ -298,8 +311,16 @@ then
 fi
     
 extract_scripts/extractInstructions.sh $recipePath
-decho "Instruction Extraction Complete"
+status=$?
 
+if [[ $status -eq 0 ]];
+then
+    decho "Instruction Extraction Complete"
+
+else
+    echo"ERROR: Data Parsing broke."
+    exit $status
+fi
 extract_valid=$( command -v extract_scripts/extractIngredients.sh )
 if [ "$extract_valid" == "" ];
 then
@@ -308,7 +329,32 @@ then
 fi
     
 extract_scripts/extractIngredients.sh $recipePath
-decho "Ingredient Extraction Complete"
+status=$?
+if [[ $status -eq 0 ]];
+then
+    decho "Instruction Extraction Complete"
 
+else
+    echo"ERROR: Data Parsing broke."
+    exit $status
+fi
 
-exit 0
+extract_valid=$( command -v extract_scripts/extractImage.sh )
+if [ "$extract_valid" == "" ];
+then
+    echo "Could Not find extract_scripts/extractImage.sh"
+    exit 4
+fi
+
+extract_scripts/extractImage.sh $recipePath
+status=$?
+if [[ $status -eq 0 ]];
+then
+    decho "Image Extraction Complete"
+
+else
+    echo"ERROR: Image Extraction broke."
+    exit $status
+fi
+
+exit 
