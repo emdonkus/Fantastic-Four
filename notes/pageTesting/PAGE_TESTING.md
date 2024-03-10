@@ -43,4 +43,100 @@ List of tests for verifying the rendering of the page<br>
     Ingredients in the shopping cart are displayed with the correct quantity for all recipes added to the shopping cart<br>
     
     
- 
+Shopping Cart
+----------------------
+Page Description: This page displays all of the ingredients currently in the shopping cart. When the user adds recipes to the shopping cart, like ingredients are aggregated and the total quantity of each ingredient is displayed. There are buttons for the user to add or remove from the quantity of each ingredient. There is a list of the recipe names that were added to the shopping cart. The user can deselect a recipe to remove all of the associated ingredients from the shopping cart. If there are redundant ingredients, only the quantity required for the removed recipe are removed from the shopping cart.
+<figure width=100%>
+    <img src="images_design/shopping_cart.png" alt="CutNPasta Shopping Cart"ALIGN="center" />
+</figure>
+-----------------------
+Parameters needed for the page:
+----------------------
+Data needed to render the page:
+-----------------------
+Link destinations for the page: Links are used to redirect the user to the recipe page of a recipe when the name of the recipe is clicked on.
+
+------------------------
+List of tests for verifying the rendering of the page:<br>
+Recipe names include links to the recipe page of the recipe on click<br>
+Clicking add or remove from quantity adds or removes the quantity of the ingredient by 1<br>
+clicking remove a recipe name removes only the quantity of each ingredient needed for the recipe from the shopping cart<br>
+If an ingredient is needed in multiple recipes, the ingredient name only appears once in shopping cart with the quantity of the ingredient for all the recipes displayed<br>
+
+
+Favorites
+----------------------
+Page Description (include a mockup or hand drawn image of the page): <br>
+Displays the recipes, recipe image, and ingredients for recipes that have been marked as favorite by the user.
+<figure width=100%>
+    <img src="images_design/favorites.png" alt="CutNPasta Favorites"ALIGN="center" />
+</figure>
+-----------------------
+Parameters needed for the page
+----------------------
+Data needed to render the page
+-----------------------
+Link destinations for the page
+------------------------
+List of tests for verifying the rendering of the page
+
+
+
+Recents
+----------------------
+Page Description (include a mockup or hand drawn image of the page):<br>
+Displays recipe name, recipe image, and ingredients for recipes' whose pages were recently visited by the user.
+<figure width=100%>
+    <img src="images_design/recents.png" alt="CutNPasta Recents"ALIGN="center" />
+</figure>
+-----------------------
+Parameters needed for the page
+----------------------
+Data needed to render the page
+-----------------------
+Link destinations for the page
+------------------------
+List of tests for verifying the rendering of the page
+
+
+
+Recipe Display
+----------------------
+Page Description (include a mockup or hand drawn image of the page):<br>
+Displays recipe name, recipe image, ingredients, and instructions for the recipe. Buttons allow users to add the recipe to favorites, shopping cart, and/or weekly plan. When the button for weekly plan is clicked, a pop up menu allows the user to select the day of week and meal (breakfast, lunch, or dinner) to add the recipe to.
+<figure width=100%>
+    <img src="images_design/recipe_display.png" alt="CutNPasta Recipe Display"ALIGN="center" />
+</figure>
+-----------------------
+Parameters needed for the page
+----------------------
+Data needed to render the page
+-----------------------
+Link destinations for the page
+------------------------
+List of tests for verifying the rendering of the page
+
+
+
+Weekly Plan
+----------------------
+Page Description (include a mockup or hand drawn image of the page):<br>
+The weekly plan displays a weekly calendar with the recipe selection for each day and meal (breakfast, lunch, and dinner). A button can be clicked to add all ingredients from the recipe to the shopping cart.
+<figure width=100%>
+    <img src="images_design/weeklyplan.png" alt="CutNPasta Weekly Plan"ALIGN="center" />
+</figure>
+-----------------------
+Parameters needed for the page
+----------------------
+Data needed to render the page
+-----------------------
+Link destinations for the page
+------------------------
+List of tests for verifying the rendering of the page
+
+
+
+
+
+
+
