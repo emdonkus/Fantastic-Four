@@ -100,3 +100,19 @@ Additional Comments:<br>
     --Postgres database and flask<br>
     --Webpage Design started, discussed functionality for pages<br>
     --Continued to work on templates for frontend<br>
+    
+-----------------------------
+Week Start: 202400311 <br>
+Week End: 20240317<br>
+Semester Week : #9<br>
+Image:<br>
+<figure width=100%>
+    <img src="weeklysnapshots/Snap20240311.png" alt="Deliverable Item"ALIGN="center" />
+</figure>
+
+Additional Comments:<br>
+    --Added image extraction and better parsing<br>
+    --Webpage Design continued, discussed functionality for pages<br>
+    --PAGE_TESTING.md added<br>
+    --Continued to work on templates for frontend<br>
+    --Scheduled meeting to discuss Database script<br>
