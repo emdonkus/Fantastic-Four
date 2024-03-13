@@ -196,7 +196,7 @@ Data needed to render the page:<br>
     
 -----------------------
 Link destinations for the page: <br>
-    Route: /$recipe_name<br>
+    Route: /recipe/$recipe_name<br>
     href links to all other pages<br>
     
 ------------------------
