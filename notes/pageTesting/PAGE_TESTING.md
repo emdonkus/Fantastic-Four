@@ -35,7 +35,7 @@ Link destinations include \<a href> links to the shopping cart page, weekly plan
 
     
 ------------------------
-List of tests for verifying the rendering of the page<br>
+List of tests for verifying the rendering of the page:<br>
     The search bar appears in the top right and takes in user input<br>
     Entering user input into the search bar redirects the user to the corresponding recipe page<br>
     Clicking on a container or button for weekly snapshot directs the user to the weekly plan page<br>
@@ -54,6 +54,7 @@ Page Description: This page displays all of the ingredients currently in the sho
 <figure width=100%>
     <img src="images_design/shopping_cart.png" alt="CutNPasta Shopping Cart"ALIGN="center" />
 </figure>
+
 -----------------------
 
 Parameters needed for the page:<br>
@@ -70,6 +71,7 @@ Data needed to render the page:<bR>
     Recipe name<br>
     Ingredients<br>
     Ingredient quantity<br>
+    
 -----------------------
 
 Link destinations for the page:<br>
@@ -91,6 +93,7 @@ Displays the recipes, recipe image, and ingredients for recipes that have been m
 <figure width=100%>
     <img src="images_design/favorites.png" alt="CutNPasta Favorites"ALIGN="center" />
 </figure>
+
 -----------------------
 Parameters needed for the page:<br>
     Page Title<br>
@@ -132,6 +135,7 @@ Displays recipe name, recipe image, and ingredients for recipes' whose pages wer
 <figure width=100%>
     <img src="images_design/recents.png" alt="CutNPasta Recents"ALIGN="center" />
 </figure>
+
 -----------------------
 Parameters needed for the page: <br>
     Page Title<br>
@@ -139,6 +143,7 @@ Parameters needed for the page: <br>
     Recipe Name<br>
     href redirect link to recipe page<br>
     button to add to favorites<br>
+    
 ----------------------
 Data needed to render the page: <br>
     Recipe name<br>
@@ -146,10 +151,12 @@ Data needed to render the page: <br>
     Ingredients<br>
     Ingredient quantity<br>
     Time the recipe page was accessed<br>
+    
 -----------------------
 Link destinations for the page: <br>
     Route: /recents<br>
     href to recipe pages<br>
+    
 ------------------------
 List of tests for verifying the rendering of the page: <br>
 Ensure the image appears on the right side of the recipe name and ingredients<br>
@@ -168,6 +175,7 @@ Displays recipe name, recipe image, ingredients, and instructions for the recipe
 <figure width=100%>
     <img src="images_design/recipe_display.png" alt="CutNPasta Recipe Display"ALIGN="center" />
 </figure>
+
 -----------------------
 Parameters needed for the page: <br>
 Page Title<br>
@@ -177,6 +185,7 @@ Recipe Image<br>
 Quantity of each ingredient<br>
 Ingredient names<br>
 buttons to add or remove ingredient/recipe from shopping cart, favorites, weekly plan<br>
+
 ----------------------
 Data needed to render the page:<br>
     Recipe Name<br>
@@ -184,10 +193,12 @@ Data needed to render the page:<br>
     Ingredients<br>
     Ingredient quantity<br>
     Instructions<br>
+    
 -----------------------
 Link destinations for the page: <br>
     Route: /$recipe_name<br>
     href links to all other pages<br>
+    
 ------------------------
 List of tests for verifying the rendering of the page: <br>
     Ensure the image appears on the right side of the recipe name and ingredients<br>
@@ -206,11 +217,13 @@ The weekly plan displays a weekly calendar with the recipe selection for each da
 <figure width=100%>
     <img src="images_design/weeklyplan.png" alt="CutNPasta Weekly Plan"ALIGN="center" />
 </figure>
+
 -----------------------
 Parameters needed for the page: <br>
     Weekday display<br>
     Meal Selection<br>
     Recipe Names<br>
+    
 ----------------------
 Data needed to render the page: <br>
     Recipe Names<br>
@@ -224,6 +237,7 @@ Data needed to render the page: <br>
 Link destinations for the page:<br>
     Route: /plan<br>
     href links to recipe pages<br>
+    
 ------------------------
 List of tests for verifying the rendering of the page: <br>
     Images are not blocking other containers on page<br>
