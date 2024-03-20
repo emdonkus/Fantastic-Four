@@ -37,6 +37,20 @@ Descriptions:
   Ingredient: Includes the recipe id that the ingredient belongs to and a string for the actual ingredient.
   Instruction: Includes the recipe id that the instruction belongs to, the step number for it to be read and displayed on the HTML webpage in the correct order, and the string for that specific recipe step.
   User: Includes the user's unique id and an email string as well as a password.
+
+
+LIST OF TESTS:
+####LEX TO ADD
+
+DATA ACCESS METHOD TESTS: (Hallee: ingredients pulling correctly,Hallee: instruction pulling correctly,Evan: Favorites (recipe table),Matt user login should only work for correct email/password combo,Lex: search by text of the recipe table for ingredient (chicken recipe ingredient),Lex: Search ingredients table for recipe with specific ingredient (corn))
+    Recipe Tests:
+    Test1
+    Name: Add data to table
+    Description: Tests to make sure the recipe is properly added to the table
+    Parameters
+    return values
+    List of tests for verifying each access method
+
   
     Table Name
     Table Description
@@ -45,7 +59,7 @@ Descriptions:
 
 You must also provide the following (in SQL_TESTING.md)for each data access method (at least one access method for each table or query required to get the data to display):
 
-    Name
+    Use case name
     Description
     Parameters
     return values
