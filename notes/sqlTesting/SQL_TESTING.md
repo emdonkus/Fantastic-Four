@@ -38,6 +38,24 @@ Descriptions:
   Instruction: Includes the recipe id that the instruction belongs to, the step number for it to be read and displayed on the HTML webpage in the correct order, and the string for that specific recipe step.
   User: Includes the user's unique id and an email string as well as a password.
 
+Use case name
+    Verify Favorites Table
+Description
+    Test data entry for favorites table
+Pre-conditions
+    User has recipe data
+Test steps
+    1. Enter recipe into extraction area
+Expected result
+    Favorites recipe should be added
+Actual result
+    User's recipe area has a recipe shown
+Status (Pass/Fail)
+    Pass
+Notes
+    N/A
+Post-conditions
+    Recipe is successfully extracted and added to database. User has recipes in their recipes area
 
 LIST OF TESTS:
 ####LEX TO ADD
