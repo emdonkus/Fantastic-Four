@@ -33,3 +33,7 @@ Print function seems to be a reliable source. EatingWell and AllRecipes have it 
 Skinnytastes and budgetbytes have the wprm_print method that takes you a pdf file.
 
 theKitchn uses an event I think to create next page. Not sure hwo to deal with that
+
+--------------------------------------
+FutureWork
+-User authentication

@@ -116,3 +116,18 @@ Additional Comments:<br>
     --PAGE_TESTING.md added<br>
     --Continued to work on templates for frontend<br>
     --Scheduled meeting to discuss Database script<br>
+    
+-----------------------------
+Week Start: 202400318 <br>
+Week End: 20240324<br>
+Semester Week : #10<br>
+Image:<br>
+<figure width=100%>
+    <img src="weeklysnapshots/Snap20240318.png" alt="Deliverable Item"ALIGN="center" />
+</figure>
+
+Additional Comments:<br>
+    --Webpage Design finished<br>
+    --Continued to work on templates for frontend<br>
+    --Meeting to discuss Database script<br>
+    --Database Testing started<br>
