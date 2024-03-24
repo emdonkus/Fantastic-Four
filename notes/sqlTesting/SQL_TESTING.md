@@ -57,6 +57,31 @@ Notes
 Post-conditions
     Recipe is successfully extracted and added to database. User has recipes in their recipes area
 
+
+Use case name
+    Verify User Login Table
+Description
+    User login should only work for correct email/password combo
+Pre-conditions
+    User has an account and valid email/password
+Test steps
+    1. Enter email into login test area
+    2. Verify email exists in table
+    3. Enter password for email
+    4. Verify password/email combination is valid
+    5. Verify that user data matches after login
+Expected result
+    User should be able to login
+Actual result
+    User can see their user information and recipes
+Status (Pass/Fail)
+    Pass
+Notes
+    N/A
+Post-conditions
+    User is validated with database and successfully signed into their account.
+
+
 LIST OF TESTS:
 ####LEX TO ADD
 
