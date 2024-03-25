@@ -9,6 +9,7 @@ Recipe Table:
   Image: jpeg, png, jpg
       An image associated with the specific recipe
 
+
 Ingredient Table
   recipeID: foreign key
       Represents the id that the ingredient belongs to
@@ -37,6 +38,14 @@ Descriptions:
   Ingredient: Includes the recipe id that the ingredient belongs to and a string for the actual ingredient.
   Instruction: Includes the recipe id that the instruction belongs to, the step number for it to be read and displayed on the HTML webpage in the correct order, and the string for that specific recipe step.
   User: Includes the user's unique id and an email string as well as a password.
+
+List of Tests:
+    -Test adding values to the table, should add all columns successfully
+    -Test adding duplicate recipe, should error on duplicate primary key id
+    -Test removing recipe, should remove all columns with that recipe id
+    -Test non-null constraints work by attempting to add blank columns
+    -Test foreign key constraints by adding values with correct and incorrect foreign keys
+    -Test table creation for each table to ensure it exists and was created with correct data types (can be done with a query)
 
 Use case name
     Verify Favorites Table
@@ -82,8 +91,54 @@ Post-conditions
     User is validated with database and successfully signed into their account.
 
 
-LIST OF TESTS:
-####LEX TO ADD
+            Use case name
+               Search for Recipe by Name
+            Description
+                Search the stored recipes by part of the recipe name
+            Pre-conditions
+                Recipes are stored in the recepie database
+            Test steps
+                1. Navigate to recipe search bar
+                2. Type text string of desired search value
+                3. SQL API will return query of all recipes with user input text string somewhere in the recipe name
+                4. Show results on webpage
+            Expected result
+                User should be able to see list of recipes with the input text thread in the name on the webpage
+            Actual result
+                Query is created, but user value is not being passed in to query and query is not reporting results to webpage
+            Status (Pass/Fail)
+                Fail
+            Notes
+                Test is failing becuase feature has not been completed yet
+            Post-conditions
+                Webpage is updated displaying recipes with user input text in the recipe name
+                Webpage navigation is updated to go back and try again or open one of the recipes shown
+
+
+            Use case name
+                Search for Recipe by Ingredient
+            Description
+                Search the Ingredients table for recipe ID's (foreign key) that contain a specific ingredient
+            Pre-conditions
+                Recipe table has data in it
+                Ingredients table has data in it
+                Foreign Key of Indgredients table is functioning correctly with recipe table primary key
+            Test steps
+                1. Navigate to ingredient search bar
+                2. Type desired test string of ingredient to search for
+                3. SQL API will return query of all recipe names with a recipe ID that matches the foreign key of any ingredient in the ingredients table that has a name that matches the user input text string
+                4. Show results on webpage
+            Expected result
+                List of recipes that contain the user input ingredient will display on the webpage
+            Actual result
+                Nothing is displayed on webpage
+            Status (Pass/Fail)
+                Fail
+            Notes
+                Test fails as the feature has not been completed yet
+            Post-conditions
+                List of recipes with the user typed ingredient are displayed on the webpage
+                Webpage navigation is updated to go back and try again or open one of the recipes shown
 
 DATA ACCESS METHOD TESTS: (Hallee: ingredients pulling correctly,Hallee: instruction pulling correctly,Evan: Favorites (recipe table),Matt user login should only work for correct email/password combo,Lex: search by text of the recipe table for ingredient (chicken recipe ingredient),Lex: Search ingredients table for recipe with specific ingredient (corn))
     Recipe Tests:
