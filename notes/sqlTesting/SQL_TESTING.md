@@ -48,9 +48,9 @@ List of Tests:
     -Test table creation for each table to ensure it exists and was created with correct data types (can be done with a query)
 
 Use case name
-    Verify Favorites Table
+    Verify Recipe Table
 Description
-    Test data entry for favorites table
+    Test data extraction and entry for recipe table
 Pre-conditions
     User has recipe data
 Test steps
@@ -60,9 +60,9 @@ Expected result
 Actual result
     User's recipe area has a recipe shown
 Status (Pass/Fail)
-    Pass
+    Fail
 Notes
-    N/A
+    Front end display of feature has not been created yet. Extraction algorithm is passing tests.
 Post-conditions
     Recipe is successfully extracted and added to database. User has recipes in their recipes area
 
@@ -84,9 +84,9 @@ Expected result
 Actual result
     User can see their user information and recipes
 Status (Pass/Fail)
-    Pass
+    Fail
 Notes
-    N/A
+    Feature has not been created yet
 Post-conditions
     User is validated with database and successfully signed into their account.
 
