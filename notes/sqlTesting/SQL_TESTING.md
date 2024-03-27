@@ -32,12 +32,15 @@ User Table:
   Password: string
       Uniqe user password paired with email
 
-  
+ 
+
 Descriptions:   
   Recipe: Includes a uniqe _id, whether the recipe is included in the favorites (represented by a boolean), a string for the title, and finally an image that will be stored as pngs or jpegs.
   Ingredient: Includes the recipe id that the ingredient belongs to and a string for the actual ingredient.
   Instruction: Includes the recipe id that the instruction belongs to, the step number for it to be read and displayed on the HTML webpage in the correct order, and the string for that specific recipe step.
   User: Includes the user's unique id and an email string as well as a password.
+
+
 
 List of Tests:
     -Test adding values to the table, should add all columns successfully
@@ -46,6 +49,8 @@ List of Tests:
     -Test non-null constraints work by attempting to add blank columns
     -Test foreign key constraints by adding values with correct and incorrect foreign keys
     -Test table creation for each table to ensure it exists and was created with correct data types (can be done with a query)
+
+
 
 Use case name
     Verify Recipe Table
@@ -91,100 +96,97 @@ Post-conditions
     User is validated with database and successfully signed into their account.
 
 
-            Use case name
-               Search for Recipe by Name
-            Description
-                Search the stored recipes by part of the recipe name
-            Pre-conditions
-                Recipes are stored in the recepie database
-            Test steps
-                1. Navigate to recipe search bar
-                2. Type text string of desired search value
-                3. SQL API will return query of all recipes with user input text string somewhere in the recipe name
-                4. Show results on webpage
-            Expected result
-                User should be able to see list of recipes with the input text thread in the name on the webpage
-            Actual result
-                Query is created, but user value is not being passed in to query and query is not reporting results to webpage
-            Status (Pass/Fail)
-                Fail
-            Notes
-                Test is failing becuase feature has not been completed yet
-            Post-conditions
-                Webpage is updated displaying recipes with user input text in the recipe name
-                Webpage navigation is updated to go back and try again or open one of the recipes shown
+Use case name
+    Search for Recipe by Name
+Description
+    Search the stored recipes by part of the recipe name
+Pre-conditions
+    Recipes are stored in the recepie database
+Test steps
+    1. Navigate to recipe search bar
+    2. Type text string of desired search value
+    3. SQL API will return query of all recipes with user input text string somewhere in the recipe name
+    4. Show results on webpage
+Expected result
+    User should be able to see list of recipes with the input text thread in the name on the webpage
+Actual result
+    Query is created, but user value is not being passed in to query and query is not reporting results to webpage
+Status (Pass/Fail)
+    Fail
+Notes
+    Test is failing becuase feature has not been completed yet
+Post-conditions
+    Webpage is updated displaying recipes with user input text in the recipe name
+    Webpage navigation is updated to go back and try again or open one of the recipes shown
 
 
-            Use case name
-                Search for Recipe by Ingredient
-            Description
-                Search the Ingredients table for recipe ID's (foreign key) that contain a specific ingredient
-            Pre-conditions
-                Recipe table has data in it
-                Ingredients table has data in it
-                Foreign Key of Indgredients table is functioning correctly with recipe table primary key
-            Test steps
-                1. Navigate to ingredient search bar
-                2. Type desired test string of ingredient to search for
-                3. SQL API will return query of all recipe names with a recipe ID that matches the foreign key of any ingredient in the ingredients table that has a name that matches the user input text string
-                4. Show results on webpage
-            Expected result
-                List of recipes that contain the user input ingredient will display on the webpage
-            Actual result
-                Nothing is displayed on webpage
-            Status (Pass/Fail)
-                Fail
-            Notes
-                Test fails as the feature has not been completed yet
-            Post-conditions
-                List of recipes with the user typed ingredient are displayed on the webpage
-                Webpage navigation is updated to go back and try again or open one of the recipes shown
+Use case name
+    Search for Recipe by Ingredient
+Description
+    Search the Ingredients table for recipe ID's (foreign key) that contain a specific ingredient
+Pre-conditions
+    Recipe table has data in it
+    Ingredients table has data in it
+    Foreign Key of Indgredients table is functioning correctly with recipe table primary key
+Test steps
+    1. Navigate to ingredient search bar
+    2. Type desired test string of ingredient to search for
+    3. SQL API will return query of all recipe names with a recipe ID that matches the foreign key of any ingredient in the ingredients table that has a name that matches the user input text string
+    4. Show results on webpage
+Expected result
+    List of recipes that contain the user input ingredient will display on the webpage
+Actual result
+    Nothing is displayed on webpage
+Status (Pass/Fail)
+    Fail
+Notes
+    Test fails as the feature has not been completed yet
+Post-conditions
+    List of recipes with the user typed ingredient are displayed on the webpage
+    Webpage navigation is updated to go back and try again or open one of the recipes shown
+                
+                
+Use case name
+    Verify ingredients
+Description
+    Test that the ingredients for a recipe are displayed correctly 
+Pre-conditions
+    The ingredients table associated with a recipe id is populated	
+Test steps
+    1.Navigate to the recipes page
+    2. User clicks desired recipe
+    3. Verify that the ingredients shown include the correct quantity and name with no redundancy 
+Expected result
+    The correct ingredients and quantity should be displayed for the desired recipe
+Actual result
+    The ingredients and quantity are not displayed on the page
+Status (Pass/Fail)
+    Fail
+Notes
+    Feature not yet implemented
+Post-conditions
+    Recipe ingredients displayed on the page 
+    Next button appears to navigate to next recipe
 
-DATA ACCESS METHOD TESTS: (Hallee: ingredients pulling correctly,Hallee: instruction pulling correctly,Evan: Favorites (recipe table),Matt user login should only work for correct email/password combo,Lex: search by text of the recipe table for ingredient (chicken recipe ingredient),Lex: Search ingredients table for recipe with specific ingredient (corn))
-    Recipe Tests:
-    Test1
-    Name: Add data to table
-    Description: Tests to make sure the recipe is properly added to the table
-    Parameters
-    return values
-    List of tests for verifying each access method
-
-  
-    Table Name
-    Table Description
-    For each field of the table, provide name and short description.
-    List of tests for verifying each table
-
-You must also provide the following (in SQL_TESTING.md)for each data access method (at least one access method for each table or query required to get the data to display):
-
-    Use case name
-    Description
-    Parameters
-    return values
-    List of tests for verifying each access method
-
-Here is a format that can be used for describing each test:
-
-            
-            Use case name
-                Verify login with valid user name and password
-            Description
-                Test the Google login page
-            Pre-conditions
-                User has valid user name and password
-            Test steps
-                1. Navigate to login page
-                2. Provide valid user name
-                3. Provide valid password
-                4. Click login button
-            Expected result
-                User should be able to login
-            Actual result
-                User is navigated to dashboard with successful login
-            Status (Pass/Fail)
-                Pass
-            Notes
-                N/A
-            Post-conditions
-                User is validated with database and successfully signed into their account.
-                The account session details are logged in database. 
+Use case name
+    Verify instructions
+Description
+    Test that the instructions for a recipe are displayed correctly 
+Pre-conditions
+    The instructions table associated with a recipe id is populated
+    Foreign Key of Ingredients table is functioning correctly with recipe table primary key
+Test steps
+    1. Navigate to the recipes page
+    2. User selects desired recipe
+    3. Verify that the instructions shown are correct, in the correct order
+Expected result
+    The correct instructions and order should be displayed for a given recipe
+Actual result
+    The instructions are not displayed on the page
+Status (Pass/Fail)
+    Fail
+Notes
+    Feature not yet implemented
+Post-conditions
+    Recipe instructions displayed on the page in the correct order
+    Next button appears to allow navigation to the next recipe
