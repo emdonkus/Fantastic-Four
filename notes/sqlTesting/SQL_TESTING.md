@@ -1,36 +1,46 @@
+Fantastic Four
+Team 4
+Evan Donkus, Lex Bukowski, Matthew Scott, Hallee Ray
+USAGE : SQL Table design and testing
+
+
 TABLE NAME:
 Recipe Table: 
   _id: int
-      Uniqe id for the recipe
+      Unique id for the recipe (PRIMARY KEY)
   Favorite: bool
-      True or false that the item has been favorited
+      True or false that the item has been favorited (NOT-NULL)
   Title: string
-      The title of the recipe
+      The title of the recipe (NOT-NULL)
   Image: jpeg, png, jpg
-      An image associated with the specific recipe
+      An image associated with the specific recipe (NO CONTRAINTS)
 
 
 Ingredient Table
-  recipeID: foreign key
-      Represents the id that the ingredient belongs to
+  ID: int 
+      Unique ID for the ingredient (PRIMARY KEY)
+  recipeID: (foreign key to recipe table)
+      Represents the id that the ingredient belongs to (NOT-NULL)
   Food: string 
-      The ingredient and its quantity as a string ('1 onion')
+      The ingredient and its quantity as a string ('1 onion') (NOT-NULL)
 
 Instruction Table
-  recipeID: foreign key
-      Represents the id that the ingredient belongs to
+  ID: int 
+      Unique ID for the instruction (PRIMARY KEY)
+  recipeID: (foreign key to recipe table)
+      Represents the id that the ingredient belongs to (NOT-NULL)
   StepNumber: int
-      Represents the order that the instruction should be displayed on the HTML webpage
+      Represents the order that the instruction should be displayed on the HTML webpage (NOT-NULL)
   Description: string 
-      The string description of the specific instruction step the chef should use 
+      The string description of the specific instruction step the chef should use (NOT-NULL)
 
 User Table:
   UserID: key
-      Unique user id
+      Unique user id (PRIMARY KEY)
   Email: string
-      User's email used for signin purposes
+      User's email used for signin purposes (NOT-NULL)
   Password: string
-      Uniqe user password paired with email
+      Uniqe user password paired with email (NOT-NULL)
 
  
 
