@@ -146,3 +146,26 @@ Additional Comments:<br>
     --Meeting to discuss Database script<br>
     --Database Testing started<br>
     --Use Cases for Database started<br>
+    
+-----------------------------
+Week Start: 20240401 <br>
+Week End: 20240407<br>
+Semester Week : #12<br>
+
+Additional Comments:<br>
+    --Continued development
+    
+-----------------------------
+Week Start: 20240408 <br>
+Week End: 20240414<br>
+Semester Week : #13<br>
+Image:<br>
+<figure width=100%>
+    <img src="weeklysnapshots/Snap20240408.png" alt="Deliverable Item"ALIGN="center" />
+</figure>
+
+Additional Comments:<br>
+    --Continued to work on templates for frontend<br>
+    --Meeting to discuss Database script<br>
+    --Database Testing started<br>
+    --Use Cases for Database started<br>
