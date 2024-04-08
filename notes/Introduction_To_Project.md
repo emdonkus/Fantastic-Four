@@ -128,6 +128,7 @@ Here is a format that can be used for describing each test:
 Project Milestone 6: Individual Interview (5 points)
 
 An individual meeting with the instructor by each member of the team to discuss your contributions to the project.
+
 Project Milestone 7: Presentation (15 points)
 
 Your team will give a 10-15 minute presentation (with additional 5 mins for questions) of your project through via Zoom. All members must be present and each member must present information during the presentation.
