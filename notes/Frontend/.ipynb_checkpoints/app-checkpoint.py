@@ -87,8 +87,24 @@ def search():
 
 @app.route('/favorites')
 def favorites():
-    filename = 'static/favorites.html'
-    return send_file(filename)
+    recipe_id = 'Perfect_Pot_Roast'
+    
+    # Getting file paths for different components of the recipe
+    image_path = url_for('static', filename=f'recipe/{recipe_id}/image.jpeg')
+    title_path = f'static/recipe/{recipe_id}/title.txt'
+
+    # Print the file paths for debugging
+    print("Image Path:", image_path)
+    print("Title Path:", title_path)
+
+    # Reading content from the files
+    with open(title_path, 'r') as f:
+        title = f.read().strip()
+
+    # Rendering the template with the data
+    return render_template('favorites.html', 
+                           image_path=image_path, 
+                           title=title)
 
 @app.route('/cart')
 def cart():

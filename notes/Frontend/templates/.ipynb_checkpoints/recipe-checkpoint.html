@@ -3,32 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Recipe</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="static/css/recipe.css">
+    <script src="static/javascript/recipe.js"></script>
 </head>
 <body>
     <main>
         <h1>Recipe page</h1>  
     </main>
     
-    <h1>Recipe: {{ title }}</h1>
-    <img src="{{ image_path }}" alt="Recipe Image">
-    
-    <h2>Ingredients</h2>
-    <ul>
-        {% for ingredient in ingredients.split('\n') %}
-            <li>{{ ingredient }}</li>
-        {% endfor %}
-    </ul>
-
-    <h2>Instructions</h2>
-    <ul style="list-style: none; padding: 0; margin: 0;">
+    <h1 id="title">Recipe: {{ title }}</h1>
+    <div id="image_ingredients">
+        <img id="recipe_image" src="{{ image_path }}" alt="Recipe Image">
+        <div id="ingred">
+            <h2 id="ingredients_header">Ingredients</h2>
+            <ul id="ingredients_list">
+                {% for ingredient in ingredients.split('\n') %}
+                    <li>{{ ingredient }}</li>
+                {% endfor %}
+            </ul>
+            <button id="cartbtn">Add Ingredients to Cart</button>
+        </div>
+    </div>
+    <h2 id="instructions_header">Instructions</h2>
+    <ol id="instructions_list">
         {% for instruction in instructions.split('\n') %}
             <li>{{ instruction }}</li>
         {% endfor %}
-    </ul>
+    </ol>
 
 </body>
 </html>

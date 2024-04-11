@@ -1,0 +1,66 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 10em;
+    padding: 0;
+}
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#title {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 28px;
+    color: #333;
+}
+
+#image_ingredients {
+    display: flex; /* Use flexbox */
+    align-items: center; /* Align items vertically */
+    justify-content: center; /* Center items horizontally */
+/*     padding: 2em; */
+}
+
+#recipe_image {
+    max-width: 50%; /* Adjust width of image */
+    height: auto;
+    margin-right: 20px; /* Add some spacing */
+}
+
+#ingred{
+/*     border: 5px blue; */
+    border-style: solid;
+    border-color: blue;
+}
+
+#ingredients_header,
+#instructions_header {
+    font-size: 24px;
+    color: #333;
+    margin-top: 20px;
+    margin-left: 2em;
+}
+
+#cartbtn{
+    margin-left: 4em;
+    margin-bottom: 20px;
+}
+
+#ingredients_list,
+#instructions_list {
+    list-style-type: none;
+    padding: 0;
+    margin-left: 2em;
+}
+
+#ingredients_list li,
+#instructions_list li {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #666;
+    line-height: 1.5;
+}
