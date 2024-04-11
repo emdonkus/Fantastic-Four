@@ -4,10 +4,33 @@ from flask import Flask, url_for
 from flask import send_file
 from flask import render_template, request
 import os
+import prefix
 
+from flask import Flask, url_for
 
 # create app to use in this Flask application
 app = Flask(__name__)
+
+# Insert the wrapper for handling PROXY when using csel.io virtual machine
+# Calling this routine will have no effect if running on local machine
+prefix.use_PrefixMiddleware(app)   
+
+# test route to show prefix settings
+@app.route('/prefix_url')  
+def prefix_url():
+    return 'The URL for this page is {}'.format(url_for('prefix_url'))
+
+@app.route('/prefix_image')  
+def prefix_image():
+    image_path = url_for('static',filename='recipe/Perfect_Pot_Roast/image.jpeg')
+    title_path = url_for('static',filename='recipe/Perfect_Pot_Roast/title.txt')
+    # image_path = url_for('static', filename="image.jpeg")
+    print("image_path2: ", image_path)
+    print("title_path2: ", title_path)
+    page = f'<img src="{image_path}" alt="Recipe Image">'
+    title = f'<h1>Recipe: { title_path }</h1>'
+    return title #page
+
 
 #. venv/bin/activate
 #flask --app app.py run
@@ -75,55 +98,37 @@ def cart():
 ####Dynamic
 @app.route('/recipe')
 def recipe():
-    # # Extract the query parameters from the URL
-    # recipe_id = request.args.get('recipe_id')
-    # title = request.args.get('title')
-    # ingredients = request.args.get('ingredients')
-    #/movie?title=Avatar&director=James%20Cameron
-    #/recipe?recipe_id=1&title=Bolognese&ingredients=meatsauce
-    # Extract the query parameters from the URL
-    recipe_id = request.args.get('recipe_id')
-        #/recipe?recipe_id=Perfect_Pot_Roast
-    # Assuming your recipe text files are stored in the 'recipe' folder
-    recipe_folder = os.path.join(app.root_path, f'recipe/{recipe_id}')
+    recipe_id = 'Perfect_Pot_Roast'
     
-    # Check if the recipe folder exists
-    if not os.path.exists(recipe_folder):
-        return "Recipe not found", 404
+    # Getting file paths for different components of the recipe
+    image_path = url_for('static', filename=f'recipe/{recipe_id}/image.jpeg')
+    title_path = f'static/recipe/{recipe_id}/title.txt'
+    ingredients_path = f'static/recipe/{recipe_id}/ingredients.txt'
+    instructions_path = f'static/recipe/{recipe_id}/instructions.txt'
     
-    # Construct the path to the recipe text file based on the recipe_id
-    title_file_path = os.path.join(recipe_folder, f'title.txt')
-    ingredients_file_path = os.path.join(recipe_folder, f'ingredients.txt')
-    instructions_file_path = os.path.join(recipe_folder, f'instructions.txt')
-    image_path = os.path.join(recipe_folder, 'image.jpeg')
+    # Print the file paths for debugging
+    print("Image Path:", image_path)
+    print("Title Path:", title_path)
+    print("Ingredients Path:", ingredients_path)
+    print("Instructions Path:", instructions_path)
     
-    # Check if the files exist
-    if not all(map(os.path.exists, [title_file_path, ingredients_file_path, instructions_file_path, image_path])):
-        return "Recipe files not found", 404
-    
-    # Read the content of each recipe text file
-    with open(title_file_path, 'r') as title_file:
-        title = title_file.read()
-    
-    with open(ingredients_file_path, 'r') as ingredients_file:
-        ingredients = ingredients_file.read()
-    
-    with open(instructions_file_path, 'r') as instructions_file:
-        instructions = instructions_file.read()
-    
-    return render_template('recipe.html', recipe_id=recipe_id, title=title, ingredients=ingredients, instructions=instructions, image_path=image_path)
+    # Reading content from the files
+    with open(title_path, 'r') as f:
+        title = f.read().strip()
 
-@app.route('/recipe/image.jpeg')
-def get_image():
-    # Extract the query parameters from the URL
-    recipe_id = request.args.get('recipe_id')
-    
-    # Get the path to the image file
-    # image_path = os.path.join(app.root_path, f'recipe/{recipe_id}', 'image.jpeg')
-    image_path = os.path.join(app.root_path, 'static', 'image.jpeg')
+    with open(ingredients_path, 'r') as f:
+        ingredients = f.read().strip()
 
-    # Return the image file
-    return send_from_directory(os.path.dirname(image_path), 'image.jpeg')
+    with open(instructions_path, 'r') as f:
+        instructions = f.read().strip()
+    
+    # Rendering the template with the data
+    return render_template('recipe.html', 
+                           image_path=image_path, 
+                           title=title, 
+                           ingredients=ingredients, 
+                           instructions=instructions)
+
 ###############################################################################
 # main driver function
 if __name__ == '__main__':
