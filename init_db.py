@@ -50,8 +50,8 @@ cur.execute(
     '''
         INSERT INTO ingredients (id, recipeID, food)
         VALUES
-        (1, 1, chicken),
-        (2, 1, waffles);
+        (1, 1, 'chicken'),
+        (2, 1, 'waffles');
 
 '''
 )
