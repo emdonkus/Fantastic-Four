@@ -153,7 +153,7 @@ Week End: 20240407<br>
 Semester Week : #12<br>
 
 Additional Comments:<br>
-    --Continued development
+    --Continued development<br>
     
 -----------------------------
 Week Start: 20240408 <br>
@@ -169,3 +169,17 @@ Additional Comments:<br>
     --Meeting to discuss Database script<br>
     --Database Testing started<br>
     --Use Cases for Database started<br>
+    
+-----------------------------
+Week Start: 20240415 <br>
+Week End: 20240421<br>
+Semester Week : #14<br>
+Image:<br>
+<figure width=100%>
+    <img src="weeklysnapshots/Snap20240415.png" alt="Deliverable Item"ALIGN="center" />
+</figure>
+
+Additional Comments:<br>
+    --Added Database stuff<br>
+    --Worked on web pages<br>
+    --Recipe.css nearly done, adding flourishes<br>

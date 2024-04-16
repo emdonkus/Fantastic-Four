@@ -27,3 +27,17 @@ def ingredients():
         cur.close()
         conn.close()
         return data
+    
+@app.route('/instructions', methods=('GET','POST'))
+def instructions():
+    if request.method == 'GET':
+        conn = get_db_connection()
+        cur = conn.cursor()
+        cur.execute('''
+                    SELECT *
+                    FROM instructions;
+                    ''')
+        data = cur.fetchall()
+        cur.close()
+        conn.close()
+        return data
