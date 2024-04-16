@@ -1,31 +1,83 @@
 /*edited Matthew Scott, Hallee Ray 4/11/2024
-edited Hallee Ray 4/12/2024 */
+edited Hallee Ray 4/12/2024 
+edited Hallee Ray 4/16/2024 */
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-    /*margin: 1em;
-    padding: 0;*/
+
+/* basic format for site name and navigation */
+#siteheader {
+    display: flex;
+    flex-direction: row; /* display items in siteheader horizontally */
+    align-items: center;
+    justify-content: space-between;
+    
+    margin: 2em auto;
+    padding: 10px;
+    background-color: #f2dea7;
 }
 
-/* should be included in every css */
-#siteheader {
-    margin: 0em auto;
-    padding: 10px;
-    font-family: "Lucida Handwriting", cursive;
+/* text formatting for site name*/
+#siteheader p {
+    font-family: "Bebas Neue", sans-serif;
     font-size: 60px;
-    text-align: center;
-    background-color: #ffd480;
+    padding: 0;
+    margin: 0;
+    margin-right: 40vw;
+}
+
+/* formatting for navigation links */
+#siteheader a {
+    color: black;
+    padding: 1em;
+    text-decoration: none;
+    cursor: pointer;
+} 
+#siteheader a:hover{
+    color: darkred;
+}
+
+/* formatting for search bar */
+#searchbar {
+    padding: 5px;
+}
+#searchbar input[type="text"] {
+    height: 30px; 
+    padding: 5px; 
+    border: none; 
+    border-radius: 5px; 
+}
+#searchbar button.search-button {
+    width: 40px; 
+    height: 40px; 
+    background-color: darkred;
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer;
+}
+#searchbar button.search-button:hover {
+    background-color: darkgray; /* Change background color on hover */
+}
+
+/*  -------------------------------------------------------------------  */
+
+
+/*formatting for body elements */
+body {
+    background-image: url('../backgroundimage.jpg'); 
+    font-family: "Poppins", sans-serif;
+    margin: 2em; 
+    padding: 0;
 }
 
 #recnamebox {
+    background-color: darkred; 
+    color: white;
     display: flex;
     flex-direction: row;
-    margin: 20px;
+    margin-bottom: 1em;
 }
 
 #title {
-    text-align: left;
     margin: 20px;
     font-size: 35px;
 }
@@ -33,23 +85,12 @@ body {
 #fave,
 #cart {
     transition-duration: 0.4s;
+    background-color: white;
     margin: 25px;
-    border-radius: 50%;
+    border-radius: 5px;
+    border-color: black;
     padding: 10px;
-}
-
-/*hover over button effect 
-#fave:hover,
-#cart:hover {
-    background-color: darkgray;
-    color: white;
-} */
-
-#faveclicked,
-#cartclicked {
-    margin-top: 4em;
-    text-align: left;
-    font-size: 10px;
+    cursor: pointer;
 }
 
 #recipeoutline {
@@ -57,11 +98,12 @@ body {
     flex-direction: row;
     align-items: center; /* Align items at the start of the cross axis */
     justify-content: center;
-    background-color: lightgray;
+    background-color: white;
 }
 
 #ingred{
     flex-grow: 1;
+    align-self: flex-start;
     margin: 10px;
 }
 
@@ -81,11 +123,6 @@ body {
     margin-left: 2em;
 }
 
-#cartbtn{
-    margin-left: 4em;
-    margin-bottom: 20px;
-}
-
 #ingredients_list,
 #instructions_list {
     list-style-type: none;
@@ -99,4 +136,8 @@ body {
     font-size: 18px;
     color: #666;
     line-height: 1.5;
+}
+
+#instruct  {
+    background-color: white;
 }

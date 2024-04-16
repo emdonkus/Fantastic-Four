@@ -1,58 +1,36 @@
-/* edited 4/12/2024 Hallee Ray */
+/* edited 4/12/2024 Hallee Ray 
+edited 4/16/2024 Hallee Ray*/
+
 document.addEventListener('DOMContentLoaded', function() {
 
     var favebutton = document.getElementById('fave');
-    var fclicked = document.getElementById('faveclicked');
-    var isYellow = false;
-    
-    favebutton.addEventListener("onmouseover", function() {
-        favebutton.style.backgroundColor = "darkgray";
-        favebutton.style.color = "white";
-    }); 
-                                
+    var isfave = false; //need to get favorite status from DB -> should we change to button to read add/remove from favorites based on DB bool?                        
     favebutton.addEventListener("click", function() {
-        if (isYellow) {
-            fclicked.textContent = "Removed recipe from favorites.";
+        if (isfave) {
             favebutton.style.backgroundColor = 'white';
-            favebutton.style.color = 'black';
-            isYellow = false;
+            isfave = false;
         }
         else {
-            fclicked.textContent = "Added recipe to favorites!";
-            favebutton.style.backgroundColor = "darkgray";
-            favebutton.style.color = "yellow";
-            isYellow = true;
+            favebutton.style.backgroundColor = "#f2dea7";
+            isfave = true;
         }
-        
-        //hide the text after 2 seconds
-        setTimeout(function() {
-        fclicked.textContent = "";
-        }, 3000);
         
     });
     
     var cartbutton = document.getElementById('cart');
-    var cclicked = document.getElementById('cartclicked');
-    var isClicked = false;
+    var isincart = false;
     cartbutton.addEventListener("click", function() {
-        if (isClicked) {
-            cclicked.textContent = "Removed ingredients from shopping cart";
+        if (isincart) {
             cartbutton.style.backgroundColor = 'white';
-            cartbutton.style.color = 'black';
-            isClicked = false;
+            isincart = false;
         }
         else {
-            cclicked.textContent = "Added ingredients to shopping cart!";
-            cartbutton.style.backgroundColor = 'darkgrey';
-            cartbutton.style.color = 'white';
-            isClicked = true;
+            cartbutton.style.backgroundColor = '#f2dea7';
+            isincart = true;
         }
-        
-        //hide the text after 2 seconds
-        setTimeout(function() {
-        cclicked.textContent = "";
-        }, 2000);
     });
+ 
+    
     
 });
                             

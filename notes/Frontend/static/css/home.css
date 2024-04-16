@@ -1,6 +1,4 @@
-/*edited Matthew Scott, Hallee Ray 4/11/2024
-edited Hallee Ray 4/12/2024 
-edited Hallee Ray 4/16/2024 */
+/* Created Hallee Ray 4/16/2024 */
 
 
 /* basic format for site name and navigation */
@@ -69,75 +67,22 @@ body {
     padding: 0;
 }
 
-#recnamebox {
-    background-color: darkred; 
+h2 {
+    background-color: darkred;
     color: white;
+}
+
+#plan {
     display: flex;
     flex-direction: row;
-    margin-bottom: 1em;
+    justify-content: space-between;
+    background-color: #f2dea7;
 }
 
-#title {
-    margin: 20px;
-    font-size: 35px;
+#plan div{
+    border-color: darkred;
 }
 
-#fave,
-#cart {
-    transition-duration: 0.4s;
-    background-color: white;
-    margin: 25px;
-    border-radius: 5px;
-    border-color: black;
-    padding: 10px;
-    cursor: pointer;
-}
-
-#recipeoutline {
-    display: flex;
-    flex-direction: row;
-    align-items: center; /* Align items at the start of the cross axis */
-    justify-content: center;
-    background-color: white;
-}
-
-#ingred{
-    flex-grow: 1;
-    align-self: flex-start;
-    margin: 10px;
-}
-
-#recipe_image {
-    max-width: 50%; /* Adjust width of image */
-    max-height: 50%;
-    height: auto;
-    margin: 20px;
-    align-self: center;
-}
-
-#ingredients_header,
-#instructions_header {
-    font-size: 24px;
-    color: #333;
-    margin-top: 20px;
-    margin-left: 2em;
-}
-
-#ingredients_list,
-#instructions_list {
+#plan ul {
     list-style-type: none;
-    padding: 0;
-    margin-left: 2em;
-}
-
-#ingredients_list li,
-#instructions_list li {
-    margin-bottom: 10px;
-    font-size: 18px;
-    color: #666;
-    line-height: 1.5;
-}
-
-#instruct  {
-    background-color: white;
 }

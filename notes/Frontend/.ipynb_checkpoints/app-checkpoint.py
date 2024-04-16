@@ -46,17 +46,19 @@ def prefix_image():
 
 ################
 @app.route('/')
-def index():
-    lst = ''' 
-        <h1>Home Index</h1>
-        <ul>
-            <li>{}</li>
-            <li>{}</li>
-            <li>{}</li>
-            <li>{}</li>
-        </ul>
-        '''.format(url_for('index'),url_for('search'),url_for('favorites'),url_for('about'),url_for('recipe'))
-    return lst
+def home():
+    #lst = ''' 
+    #    <h1>Home Index</h1>
+    #    <ul>
+    #        <li>{}</li>
+    #        <li>{}</li>
+    #        <li>{}</li>
+    #        <li>{}</li>
+    #    </ul>
+    #    '''.format(url_for('home'),url_for('search'),url_for('favorites'),url_for('about'),url_for('recipe'))
+    #return lst
+    # Rendering the template with the data
+    return render_template('home.html')
 
 @app.route('/hello')
 def hello():
