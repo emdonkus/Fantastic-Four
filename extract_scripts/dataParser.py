@@ -212,52 +212,64 @@ def dprint(input):
     #end if DEBUG
 #end dprint
 
-#-------------    
-# Reassign input to var
-#-------------
-full_file_name = sys.argv[1]
-dprint(full_file_name)
+if __name__ == "__main__":
+    #-------------    
+    # Reassign input to var
+    #-------------
+    full_file_name = sys.argv[1]
+    dprint(full_file_name)
 
-#-------------
-# Make sure path exists
-#-------------
-if (os.path.exists(full_file_name) == False):
-    exit(1)
+    #-------------
+    # Make sure path exists
+    #-------------
+    if (os.path.exists(full_file_name) == False):
+        exit(1)
 
-if(os.path.getsize(full_file_name) <= 0):
-    exit(2)
-#--------------
-# Read in input file into variable
-#--------------
-with open(full_file_name, "r") as htmlfile:
-    html_instructions=htmlfile.read()
-    
-#-------------
-# Instantiate parser and run on instruction list, comes from imported lib
-#-------------        
-parser = MyHTMLParser()
-parser.feed(html_instructions) 
+    if(os.path.getsize(full_file_name) <= 0):
+        exit(2)
+    #--------------
+    # Read in input file into variable
+    #--------------
+    with open(full_file_name, "r") as htmlfile:
+        html_instructions=htmlfile.read()
 
-#-------------
-# Take dataList and write to file
-#-------------
-count = 1
+    #-------------
+    # Instantiate parser and run on instruction list, comes from imported lib
+    #-------------        
+    parser = MyHTMLParser()
+    parser.feed(html_instructions) 
 
-#-------------
-#create new text filename
-#-------------
-new_txt_file = full_file_name.replace(".html", ".txt")
+    #-------------
+    # Take dataList and write to file
+    #-------------
+    count = 1
+
+    #-------------
+    #create new text filename
+    #-------------
+    new_txt_file = full_file_name.replace(".html", ".txt")
 
 
-#----------------
-# Write parsed instructions to txt file with number
-#----------------
-with open(new_txt_file, "w") as outputFile:
-    dprint("Writing to new file " + new_txt_file )
-    for step in parser.dataList:
-        dprint(step)
-        outputFile.write(str(count)+ ". "+step+"\n")
-        count+=1
+    #----------------
+    # Write parsed instructions to txt file with number
+    #----------------
+    with open(new_txt_file, "w") as outputFile:
+        dprint("Writing to new file " + new_txt_file )
+        for step in parser.dataList:
+            dprint(step)
+            outputFile.write(str(count)+ ". "+step+"\n")
+            count+=1
 
-if(os.path.getsize(new_txt_file) <= 0):
-    exit(2)
+    #    conn = connect_to_db()
+    #    recipe_name = full_file_name.replace("_ingredients.html", "")
+    #    dprint(recipe_name)
+    #    insert_recipe(conn, recipe_name)
+    #    if (instruction_flag == 1):
+    #        insert_instructions(conn, new_txt_file, recipe_name)
+    #    else if (instruction_flag == 2):
+    #        insert_ingredients(conn, new_txt_file)
+    #    else:
+    #        dprint(instruction_flag + " Not Valid")
+
+    if(os.path.getsize(new_txt_file) <= 0):
+        exit(2)
