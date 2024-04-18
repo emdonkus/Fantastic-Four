@@ -39,34 +39,34 @@ cur.execute('CREATE TABLE instructions ('
             )
 
 
-# Add sample data to the recipe table
-cur.execute('''INSERT INTO recipe (title, favorite)
-            VALUES
-            ('Perfect_Pot_Roast', True),
-            ('Chicken Noodle Soup', False);            
-            ''')
+# # Add sample data to the recipe table
+# cur.execute('''INSERT INTO recipe (title, favorite)
+#             VALUES
+#             ('Perfect_Pot_Roast', True),
+#             ('Chicken Noodle Soup', False);            
+#             ''')
 
-# Add sample data to the ingredients table
-cur.execute(
-    '''
-        INSERT INTO ingredients (id, recipeID, food)
-        VALUES
-        (1, 1, 'chicken'),
-        (2, 1, 'waffles');
+# # Add sample data to the ingredients table
+# cur.execute(
+#     '''
+#         INSERT INTO ingredients (id, recipeID, food)
+#         VALUES
+#         (1, 1, 'chicken'),
+#         (2, 1, 'waffles');
 
-'''
-)
+# '''
+# )
 
-# Add sample data to the instructions table
-cur.execute(
-    '''
-    INSERT INTO instructions (id, recipeID, StepNumber, Description)
-    VALUES
-    (1, 1, 1, 'Fry the chicken'),
-    (2, 1, 2, 'Make some waffles');
+# # Add sample data to the instructions table
+# cur.execute(
+#     '''
+#     INSERT INTO instructions (id, recipeID, StepNumber, Description)
+#     VALUES
+#     (1, 1, 1, 'Fry the chicken'),
+#     (2, 1, 2, 'Make some waffles');
 
-'''
-)
+# '''
+# )
 
 
 

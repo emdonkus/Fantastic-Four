@@ -39,25 +39,32 @@ def insert_instructions(conn, file_name):
 
 
 # Function to read ingredients from the file and insert into the database
-def insert_ingredients(conn, file_name):
+def insert_ingredients(conn, file_name, recipe_name):
     try:
         cursor = conn.cursor()
+        
+        # Find the recipeID for the given recipe name
+        find_recipe_query = "SELECT id FROM recipe WHERE title = %s;"
+        cursor.execute(find_recipe_query, (recipe_name,))
+        recipe_id = cursor.fetchone()[0]
+        
         with open(file_name, 'r') as file:
             for line_number, line in enumerate(file, start=1):
                 ingredient = line.strip()
-                insert_query = "INSERT INTO ingredients (ingredient) VALUES (%s);"
-                cursor.execute(insert_query, (ingredient,))
+                insert_query = "INSERT INTO ingredients (recipeID, food) VALUES (%s, %s);"
+                cursor.execute(insert_query, (recipe_id, ingredient))
                 print(f"Inserted ingredient {line_number}: {ingredient}")
+        
         conn.commit()
         cursor.close()
     except psycopg2.Error as e:
-        print("Error inserting instructions:", e)
+        print("Error inserting ingredients:", e)
 
 def main():
     conn = create_connection()
     if conn is not None:
         insert_recipe(conn,"Perfect Pot Roast")
-#        insert_ingredients(conn, "Perfect_Pot_Roast_ingredients-checkpoint.txt")
+        insert_ingredients(conn, "Perfect_Pot_Roast_ingredients-checkpoint.txt","Perfect Pot Roast")
         conn.close()
         print("Database conn closed.")
 
