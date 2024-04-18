@@ -1,7 +1,7 @@
 import psycopg2
 
 # Function to create a database connection
-def create_connection():
+def connect_to_db():
     try:
         conn = psycopg2.connect('postgres://fantastic_four_user:DtcLO5teJIArKgIREMDgxPqJDjwM06gj@dpg-cogoo4u3e1ms73e6r6ig-a.oregon-postgres.render.com/fantastic_four')
         return conn
@@ -61,7 +61,7 @@ def insert_ingredients(conn, file_name, recipe_name):
         print("Error inserting ingredients:", e)
 
 def main():
-    conn = create_connection()
+    conn = connect_to_db()
     if conn is not None:
         insert_recipe(conn,"Perfect Pot Roast")
         insert_ingredients(conn, "Perfect_Pot_Roast_ingredients-checkpoint.txt","Perfect Pot Roast")
