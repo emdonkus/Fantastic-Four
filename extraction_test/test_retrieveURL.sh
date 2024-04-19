@@ -439,6 +439,8 @@ then
     extract_scripts/retrieveURL.sh $test_url
     
     #NO Auto VALIDATION ON this ONE Manual
+    ls -lR Recipes/
+    find Recipes/ -iname "*_*.txt" | xargs cat
     
     if [[ $2 -eq 1 ]];
     then

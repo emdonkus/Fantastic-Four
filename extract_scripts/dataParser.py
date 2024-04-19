@@ -213,6 +213,29 @@ def dprint(input):
     #end if DEBUG
 #end dprint
 
+
+def readhtmlfile(full_file_name):
+    #--------------
+    # Read in input file into variable
+    #--------------
+    with open(full_file_name, "r") as htmlfile:
+        html_instructions=htmlfile.read()
+    
+    return html_instructions
+#end readhtmlfile
+
+def writetextfile(new_txt_file):
+    #----------------
+    # Write parsed instructions to txt file with number
+    #----------------
+    with open(new_txt_file, "w") as outputFile:
+        dprint("Writing to new file " + new_txt_file )
+        for step in parser.dataList:
+            dprint(step)
+            outputFile.write(str(count)+ ". "+step+"\n")
+            count+=1
+#end writetextfile
+
 if __name__ == "__main__":
     #-------------    
     # Reassign input to var
@@ -228,12 +251,13 @@ if __name__ == "__main__":
 
     if(os.path.getsize(full_file_name) <= 0):
         exit(2)
+
     #--------------
     # Read in input file into variable
     #--------------
     with open(full_file_name, "r") as htmlfile:
         html_instructions=htmlfile.read()
-
+    #html_instructions = readhtmlfile(full_file_name)   
     #-------------
     # Instantiate parser and run on instruction list, comes from imported lib
     #-------------        
@@ -260,7 +284,7 @@ if __name__ == "__main__":
             dprint(step)
             outputFile.write(str(count)+ ". "+step+"\n")
             count+=1
-
+    #writetextfile(new_txt_file)
     #    conn = connect_to_db()
     #    recipe_name = full_file_name.replace("_ingredients.html", "")
     #    dprint(recipe_name)
