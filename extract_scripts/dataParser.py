@@ -27,6 +27,7 @@
 from html.parser import HTMLParser #Basis for python, used to parse through HTML
 import sys #used to read in command line inputs, ie when called from bash script
 import os
+#import adding_data.py
 ##-----------------------
 ## HTML Parser reads in  an html file and parses between data and tags
 #-----------------------
