@@ -294,17 +294,25 @@ if __name__ == "__main__":
             dprint(step)
             outputFile.write(str(count)+ ". "+step+"\n")
             count+=1
+            
     #writetextfile(new_txt_file)
-    #    conn = connect_to_db()
-    #    recipe_name = full_file_name.replace("_ingredients.html", "")
-    #    dprint(recipe_name)
-    #    insert_recipe(conn, recipe_name)
-    #    if (instruction_flag == 1):
-    #        insert_instructions(conn, new_txt_file, recipe_name)
-    #    else if (instruction_flag == 2):
-    #        insert_ingredients(conn, new_txt_file)
-    #    else:
-    #        dprint(instruction_flag + " Not Valid")
+    conn = connect_to_db()
+    
+    #Extract recipe name from file path
+    recipe_name = full_file_name.replace("_ingredients.html", "")
+    recipe_name = recipe_name.split('/',1)[-1]
+    
+    dprint(recipe_name)
+    if ( get_recipe_name(recipe_name):
+        insert_recipe(conn, recipe_name)
+    
+    if (instruction_flag == 1):
+        insert_instructions(conn, new_txt_file, recipe_name)
+    else if (instruction_flag == 2):
+        insert_ingredients(conn, new_txt_file, recipe_name)
+    else:
+        dprint(instruction_flag + " Not Valid")
+        exit(3)
 
     if(os.path.getsize(new_txt_file) <= 0):
         exit(2)
