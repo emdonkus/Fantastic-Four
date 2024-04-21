@@ -287,9 +287,8 @@ if __name__ == "__main__":
     #--------------
     # Read in input file into variable
     #--------------
-    #with open(full_file_name, "r") as htmlfile:
-    #    html_instructions=htmlfile.read()
     html_instructions = readhtmlfile(full_file_name)   
+    
     #-------------
     # Instantiate parser and run on instruction list, comes from imported lib
     #-------------        
@@ -309,18 +308,8 @@ if __name__ == "__main__":
 
     #----------------
     # Write parsed instructions to txt file with number
-    #----------------
-    #with open(new_txt_file, "w") as outputFile:
-    #    dprint("Writing to new file " + new_txt_file )
-    #    for step in parser.dataList:
-    #        dprint(step)
-    #        outputFile.write(str(count)+ ". "+step+"\n")
-    #        count+=1
-            
+    #----------------           
     writetextfile(new_txt_file)
-    
-    #COnect to database
-    #conn = connect_to_db()
     
     #Extract recipe name from file path
     recipe_name = full_file_name.replace("_ingredients.html", "")
@@ -334,20 +323,3 @@ if __name__ == "__main__":
     if(os.path.getsize(new_txt_file) <= 0):
         exit(2)
         
-        
-        
-        
-        
-            #Adding recipe to database, check if already there first
-    #if ( !check_recipe_exists(recipe_name) ):
-     #   insert_recipe(conn, recipe_name)
-    
-    #if we are adding the instructions or ingredients, else exit out
-    #if (instruction_flag == 1):
-    #    insert_instructions(conn, new_txt_file, recipe_name)
-    #else if (instruction_flag == 2):
-    #    insert_ingredients(conn, new_txt_file, recipe_name)
-    #else:
-    #    dprint(instruction_flag + " Not Valid")
-    #    exit(3)
-    #conn.close()
