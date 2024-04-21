@@ -47,6 +47,7 @@ def insert_ingredients(conn, file_name, recipe_name):
         find_recipe_query = "SELECT id FROM recipe WHERE title = %s;"
         cursor.execute(find_recipe_query, (recipe_name,))
         recipe_id = cursor.fetchone()[0]
+        #Add error handling for not finding the foreign key
         
         with open(file_name, 'r') as file:
             for line_number, line in enumerate(file, start=1):
@@ -60,11 +61,16 @@ def insert_ingredients(conn, file_name, recipe_name):
     except psycopg2.Error as e:
         print("Error inserting ingredients:", e)
 
+# Function to Get Recipe Name
+def get_recipe_name():
+    
+    return
+
 def main():
     conn = connect_to_db()
     if conn is not None:
-        insert_recipe(conn,"Perfect Pot Roast")
-        insert_ingredients(conn, "Perfect_Pot_Roast_ingredients-checkpoint.txt","Perfect Pot Roast")
+        insert_recipe(conn,"Perfect_Pot_Roast")
+        insert_ingredients(conn, "Perfect_Pot_Roast_ingredients-checkpoint.txt","Perfect_Pot_Roast")
         conn.close()
         print("Database conn closed.")
 
