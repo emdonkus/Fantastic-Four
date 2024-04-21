@@ -27,6 +27,7 @@
 from html.parser import HTMLParser #Basis for python, used to parse through HTML
 import sys #used to read in command line inputs, ie when called from bash script
 import os
+import argparse
 #import adding_data.py
 ##-----------------------
 ## HTML Parser reads in  an html file and parses between data and tags
@@ -238,11 +239,20 @@ def writetextfile(new_txt_file):
 
 if __name__ == "__main__":
     #-------------    
-    # Reassign input to var
+    # Reassign input to var, validate it
     #-------------
-    full_file_name = sys.argv[1]
+    if (sys.argv[1]):
+        full_file_name = sys.argv[1]
+    else:
+        exit(2)
+        
     dprint(full_file_name)
-
+    
+    if (sys.argv[2]):
+        instruction_flag = sys.argv[2]
+    else:
+        instruction_flag = -1
+        
     #-------------
     # Make sure path exists
     #-------------

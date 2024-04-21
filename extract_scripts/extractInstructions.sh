@@ -73,7 +73,7 @@ fi
 #-----------------
 # Process instructions.html and return atext file of instructions
 #-----------------
-python3 extract_scripts/dataParser.py $instructionHTML
+python3 extract_scripts/dataParser.py $instructionHTML 1
 
 echo "Extracion Complete"
 exit 0
