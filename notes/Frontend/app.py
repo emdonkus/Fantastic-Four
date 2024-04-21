@@ -5,6 +5,8 @@ from flask import send_file
 from flask import render_template, request
 import os
 import prefix
+import adding_data
+import psycopg2
 
 from flask import Flask, url_for
 
@@ -91,6 +93,19 @@ def search():
 def favorites():
     recipe_id = 'Perfect_Pot_Roast'
     
+    conn = adding_data.connect_to_db()
+
+    try:
+        cursor = conn.cursor()
+        select_query = "SELECT title FROM recipe WHERE favorite = %s;"
+        cursor.execute(select_query, (True,))
+        favorite_recipes = [row[0] for row in cursor.fetchall()]
+        cursor.close()
+
+    except psycopg2.Error as e:
+        print("Error fetching favorite recipes:", e)
+        return []
+
     # Getting file paths for different components of the recipe
     image_path = url_for('static', filename=f'recipe/{recipe_id}/image.jpeg')
     title_path = f'static/recipe/{recipe_id}/title.txt'
