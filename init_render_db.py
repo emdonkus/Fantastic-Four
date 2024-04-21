@@ -33,7 +33,7 @@ cur.execute('CREATE TABLE instructions ('
             'id serial PRIMARY KEY,'
             'recipeID INT NOT NULL,'
             'StepNumber INT NOT NULL,'
-            'Description VARCHAR(255) NOT NULL,'
+            'Description VARCHAR(500) NOT NULL,'
             'FOREIGN KEY (recipeID) REFERENCES recipe(id)'
             ');'
             )
