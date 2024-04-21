@@ -71,9 +71,21 @@ def insert_ingredients(conn, file_name, recipe_name):
         print("Error inserting ingredients:", e)
 
 # Function to Get Recipe Name
-def get_recipe_name():
-    
-    return
+def check_recipe_exist(conn, recipe):
+    try:
+        cursor = conn.cursor()
+        select_query = "SELECT EXISTS(SELECT 1 FROM recipe WHERE title = %s);"
+        cursor.execute(select_query, (recipe,))
+        recipe_exists = cursor.fetchone()[0]
+        cursor.close()
+        if recipe_exists:
+            print("Recipe exists")
+        else:
+            print("Doesn't exist")
+        return recipe_exists
+    except psycopg2.Error as e:
+        print("Error checking recipe existence:", e)
+        return False
 
 def main():
     conn = connect_to_db()
@@ -81,6 +93,8 @@ def main():
         insert_recipe(conn,"Chicken_Florentine")
         insert_ingredients(conn, "Recipes/skinnytaste/Chicken_Florentine/Chicken_Florentine_ingredients.txt","Chicken_Florentine")
         insert_instructions(conn,"Recipes/skinnytaste/Chicken_Florentine/Chicken_Florentine_instructions.txt","Chicken_Florentine")
+        # check_recipe_exist(conn, "Chicken_Florentine")
+        # check_recipe_exist(conn,"adsfasfs")
         conn.close()
         print("Database conn closed.")
 
