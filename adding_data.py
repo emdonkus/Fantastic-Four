@@ -44,9 +44,6 @@ def insert_instructions(conn, file_name, recipe_name):
         print("Error inserting instructions:", e)
 
 
-
-
-
 # Function to read ingredients from the file and insert into the database
 def insert_ingredients(conn, file_name, recipe_name):
     try:
