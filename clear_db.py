@@ -1,3 +1,11 @@
+'''
+Author: Lex Bukowski
+Date: April 22, 2024
+Usage: Clears the database of all tables and information stored
+
+'''
+
+
 import os
 import psycopg2
 

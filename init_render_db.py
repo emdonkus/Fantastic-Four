@@ -1,10 +1,9 @@
 '''
 Author: Lex Bukowski
 Date: 4/21/2024
-Usage: This file clears the Render hosted database and creates the three tables "recipe", "ingredients", and "instructions" that store
+Usage: This file connects to the Render hosted database and creates the three tables "recipe", "ingredients", and "instructions" that store
 the recipes, ingredients, and instructions that were extraced using the extraction algorithm. These database tables are then used to
-populate the application. This file should only be run once to create the database tables. Running it clears the content of the database.
-
+populate the application.
 '''
 
 
