@@ -5,8 +5,8 @@ from flask import send_file
 from flask import render_template, request
 import os
 import prefix
-import adding_data
-import psycopg2
+# import adding_data
+# import psycopg2
 
 from flask import Flask, url_for
 
@@ -89,44 +89,49 @@ def search():
     filename = 'static/search.html'
     return send_file(filename)
 
-@app.route('/favorites')
-def favorites():
-    recipe_id = 'Perfect_Pot_Roast'
+# @app.route('/favorites')
+# def favorites():
+#     recipe_id = 'Perfect_Pot_Roast'
     
-    conn = adding_data.connect_to_db()
+#     conn = adding_data.connect_to_db()
 
-    try:
-        cursor = conn.cursor()
-        select_query = "SELECT title FROM recipe WHERE favorite = %s;"
-        cursor.execute(select_query, (True,))
-        favorite_recipes = [row[0] for row in cursor.fetchall()]
-        cursor.close()
+#     try:
+#         cursor = conn.cursor()
+#         select_query = "SELECT title FROM recipe WHERE favorite = %s;"
+#         cursor.execute(select_query, (True,))
+#         favorite_recipes = [row[0] for row in cursor.fetchall()]
+#         cursor.close()
 
-    except psycopg2.Error as e:
-        print("Error fetching favorite recipes:", e)
-        return []
+#     except psycopg2.Error as e:
+#         print("Error fetching favorite recipes:", e)
+#         return []
 
-    # Getting file paths for different components of the recipe
-    image_path = url_for('static', filename=f'recipe/{recipe_id}/image.jpeg')
-    title_path = f'static/recipe/{recipe_id}/title.txt'
+#     # Getting file paths for different components of the recipe
+#     image_path = url_for('static', filename=f'recipe/{recipe_id}/image.jpeg')
+#     title_path = f'static/recipe/{recipe_id}/title.txt'
 
-    # Print the file paths for debugging
-    print("Image Path:", image_path)
-    print("Title Path:", title_path)
+#     # Print the file paths for debugging
+#     print("Image Path:", image_path)
+#     print("Title Path:", title_path)
 
-    # Reading content from the files
-    with open(title_path, 'r') as f:
-        title = f.read().strip()
+#     # Reading content from the files
+#     with open(title_path, 'r') as f:
+#         title = f.read().strip()
 
-    # Rendering the template with the data
-    return render_template('favorites.html', 
-                           image_path=image_path, 
-                           title=title)
+#     # Rendering the template with the data
+#     return render_template('favorites.html', 
+#                            image_path=image_path, 
+#                            title=title)
 
 @app.route('/cart')
 def cart():
+    ## Get request for shopping cart table
+    ## title and ingredients
+    thisdict = {'Perfect Pot Roast': ['1. 4 pounds boneless chuck roast, excess fat trimmedKosher salt and freshly ground black pepper, to taste','2. 2 tablespoons canola oil', '3. 1 medium sweet onion, cut into 1-inch wedges','4. 2 tablespoons tomato paste','5. 4 cloves garlic, minced','6. 1 cup dry red wine*','7. 1 cup beef stock'],
+           '2Perfect Pot Roast2': ['1. 4 pounds boneless chuck roast, excess fat trimmedKosher salt and freshly ground black pepper, to taste','2. 2 tablespoons canola oil', '3. 1 medium sweet onion, cut into 1-inch wedges','4. 2 tablespoons tomato paste','5. 4 cloves garlic, minced','6. 1 cup dry red wine*','7. 1 cup beef stock']}
     filename = 'static/cart.html'
-    return send_file(filename)
+    # return send_file(filename)
+    return render_template('cart.html', recipes=thisdict)
 
 ####Dynamic
 @app.route('/recipe')
@@ -161,6 +166,26 @@ def recipe():
                            title=title, 
                            ingredients=ingredients, 
                            instructions=instructions)
+
+##New Recipe URL
+from flask import jsonify
+import subprocess
+
+@app.route('/fetch-recipe')
+def fetch_recipe():
+    return render_template('fetchRecipe.html')
+    # data = request.json
+    # url = data.get('url')
+
+    # if not url:
+    #     return jsonify(success=False, message="No URL provided"), 400
+    
+    # Trigger script.sh with the provided URL
+    # try:
+    #     subprocess.run(['./script.sh', url], check=True)
+    #     return jsonify(success=True)
+    # except subprocess.CalledProcessError:
+    #     return jsonify(success=False, message="Error during scraping")
 
 ###############################################################################
 # main driver function

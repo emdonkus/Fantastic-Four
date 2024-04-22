@@ -30,7 +30,7 @@
         
         <!-- links for navigation -->
         <a href="{{ url_for('home') }}"><i class="fa-solid fa-house"></i></a>
-        <a href="{{ url_for('favorites') }}"><i class="fa-solid fa-star"></i></a>
+        
         <a href="{{ url_for('cart') }}"><i class="fa-solid fa-cart-shopping"></i></a>
         
         <!-- search bar -->
@@ -42,26 +42,25 @@
         </div>  
     </div> 
     
-    <!-- container for weekly plan -->
-    <h2> Weekly Plan </h2>
-    <div id="plan">
-        <!-- need to access DB to get weekly plan selections, dynamically add the recipe names for each day -->
-        <div id="monday">Monday
-        </div>
-        <div id="tuesday">Tuesday
-        </div>
-        <div id="wednesday">Wednesday
-        </div>
-        <div id="thursday">Thursday
-        </div>
-        <div id="friday">Friday
-        </div>
-        <div id="saturday">Saturday
-        </div>
-        <div id="sunday">Sunday
-        </div>
+<!--     About, add recipe through url, first 3-5 favorites in database -->
+    <h2>About Cut N Pasta</h2>
+    <div id="about">
+        
+        <p>Let’s talk about these roasty, sweet, nutty brussels sprouts that combine those tender-crisp, whole-brussel bites with the ultra thin and crispy leaves, all coated with a lil’ mustard-maple drench and speckled with juicy bites of dried cranberry. Oh my gosh. WHY ARE THEY SO GOOD.
+
+To be honest, I have very few “house favorites” in our house because I always change it up. Always trying new recipes, always moving on to the next thing. We hardly stay on any one recipe for more than just a few repeats because new! exciting! rah rah rah. But this recipe has been made WEEKLY for… um, the last five months? It has solidly earned its House Favorite status. We make these brussels sprouts all. the. time.
+
+Dad loves them, toddler loves them, Mom loves them AND loves that everyone loves them. Also: guests love them, although usually if it’s more than just us, we’re going to need to double the recipe because, yes, in our house, we will for sure finish one pan between the three of us.</p>
     </div>
     
+    <div id="addRecipe">
+        {% include 'fetchRecipe.html' %}
+    </div>
+    
+    <h2>Favorites</h2>
+    <div id="favorites">
+        
+    </div>
 </body>
 </html>  
  
