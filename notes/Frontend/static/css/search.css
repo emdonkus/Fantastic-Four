@@ -1,7 +1,3 @@
-/* edited Matthew Scott, Hallee Ray 4/22/2024 */
-
-
-
 /* basic format for site name and navigation */
 #siteheader {
     display: flex;
@@ -67,4 +63,3 @@ body {
     margin: 2em; 
     padding: 0;
 }
-

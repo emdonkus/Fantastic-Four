@@ -116,3 +116,7 @@ h2 {
 #fetchbar button.fetch-button:hover {
     background-color: darkgray; /* Change background color on hover */
 }
+
+/* function as flex box to display favorites cards*/
+#favorites {
+}

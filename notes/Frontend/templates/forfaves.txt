@@ -1,0 +1,1 @@
+<!--         <a href="{{ url_for('favorites') }}"><i class="fa-solid fa-star"></i></a> -->
