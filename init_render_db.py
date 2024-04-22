@@ -1,3 +1,13 @@
+'''
+Author: Lex Bukowski
+Date: 4/21/2024
+Usage: This file clears the Render hosted database and creates the three tables "recipe", "ingredients", and "instructions" that store
+the recipes, ingredients, and instructions that were extraced using the extraction algorithm. These database tables are then used to
+populate the application. This file should only be run once to create the database tables. Running it clears the content of the database.
+
+'''
+
+
 import os
 import psycopg2
 
@@ -5,22 +15,16 @@ conn = psycopg2.connect('postgres://fantastic_four_user:DtcLO5teJIArKgIREMDgxPqJ
 
 cur = conn.cursor()
 
-#Clean up for re-init
-cur.execute('DROP TABLE IF EXISTS ingredients')
-cur.execute('DROP TABLE IF EXISTS instructions')
-
 
 # Create recipe table
-cur.execute('DROP TABLE IF EXISTS recipe')
-cur.execute('CREATE TABLE recipe (              id serial PRIMARY KEY,'
+cur.execute('CREATE TABLE IF NOT EXISTS recipe ( id serial PRIMARY KEY,'
                                                 'title varchar(150) NOT NULL,'
                                                 'favorite boolean NOT NULL);'
                                                 # Image somehow
                                                 )
 
 # Create ingredients table
-cur.execute('DROP TABLE IF EXISTS ingredients;')
-cur.execute('CREATE TABLE ingredients (id serial PRIMARY KEY,'
+cur.execute('CREATE TABLE IF NOT EXISTS ingredients (id serial PRIMARY KEY,'
                                         'recipeID INT NOT NULL,'
                                        'food varchar(150) NOT NULL,'
                                        'FOREIGN KEY (recipeID) REFERENCES recipe(id)'
@@ -28,8 +32,7 @@ cur.execute('CREATE TABLE ingredients (id serial PRIMARY KEY,'
             )
 
 # Create instructions table
-cur.execute('DROP TABLE IF EXISTS instructions')
-cur.execute('CREATE TABLE instructions ('
+cur.execute('CREATE TABLE IF NOT EXISTS instructions ('
             'id serial PRIMARY KEY,'
             'recipeID INT NOT NULL,'
             'StepNumber INT NOT NULL,'
