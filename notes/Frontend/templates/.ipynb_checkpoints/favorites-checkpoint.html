@@ -3,21 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Favorites</title>
+    <title>Recipe</title>
     <link rel="stylesheet" href="static/css/favorites.css">
+    
+    <!-- fonts: -->
+    <!-- Page name font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Courgette&family=Jacquarda+Bastarda+9+Charted&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- Body font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Jacquarda+Bastarda+9+Charted&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    
     <script src="static/javascript/favorites.js"></script>
+    
+    <!-- icons -->
+    <script src="https://kit.fontawesome.com/b21cecda70.js" crossorigin="anonymous"></script>
+    
 </head>
 <body>
-    <main>
-<!--         <h1>Favorite Card</h1>   -->
-    </main>
-    <div id="fav_card">
-        <h1 id="title">{{ title }}</h1>
-        <div id="image_ingredients">
-            <img id="recipe_image" src="{{ image_path }}" alt="Recipe Image">
+    
+    <!-- container for the site header, navigation links, search bar -->
+    <div id="siteheader">
+        <p>Cut n Pasta</p>
+        
+        <!-- links for navigation -->
+        <a href="{{ url_for('home') }}"><i class="fa-solid fa-house"></i></a>
 
+        <a href="{{ url_for('cart') }}"><i class="fa-solid fa-cart-shopping"></i></a>
+        
+        <!-- search bar -->
+        <div id="searchbar">
+            <input type="text" placeholder="Search...">
+            <button type="submit" class="search-button">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
         </div>
-    </div>
+        
+    </div>   
+    
+<!--     <div id="favoritebox">
+       <h1>Favorites</h1>
 
+   
+    {% for title, items in recipes.items() %}
+        <h3 id='title'>{{ title }}</h3>
+        <ul id='ingredients_list'>
+          
+            {% for item in items %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+    </div> -->
 </body>
 </html>

@@ -70,19 +70,49 @@ body {
 h2 {
     background-color: darkred;
     color: white;
+    padding: 1em;
 }
 
-#plan {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+#about,
+#addRecipe {
+    padding: 2em;
     background-color: #f2dea7;
+    font-size: 20px;
 }
 
-#plan div{
+#about div{
     border-color: darkred;
 }
 
 #plan ul {
     list-style-type: none;
+}
+
+#addRecipe{
+    align-items: center;
+    text-align: center;
+}
+#fetchbar {
+    padding: 5px;
+    display: block;
+/*     align-items: center;
+    text-align: center; */
+}
+#fetchbar input[type="text"] {
+    height: 30px; 
+    padding: 5px; 
+    border: none; 
+    border-radius: 5px; 
+}
+#fetchbar button.fetch-button {
+    width: 120px; 
+    height: 40px; 
+    background-color: darkred;
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer;
+}
+#fetchbar button.fetch-button:hover {
+    background-color: darkgray; /* Change background color on hover */
 }

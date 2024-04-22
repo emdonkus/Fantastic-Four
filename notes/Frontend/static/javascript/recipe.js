@@ -23,10 +23,12 @@ document.addEventListener('DOMContentLoaded', function() {
         if (isincart) {
             cartbutton.style.backgroundColor = 'white';
             isincart = false;
+//             Remove from shopping cart
         }
         else {
             cartbutton.style.backgroundColor = '#f2dea7';
             isincart = true;
+//             Add to shopping cart
         }
     });
  
