@@ -1,3 +1,11 @@
+'''
+Author: Lex Bukowski
+Date: April 21, 2024
+Usage: This file runs tests on the adding_data.py file to test that the data from the extraction files is being correctly added to
+the database with the functions written in the adding_data.py file.
+'''
+
+
 import unittest
 import psycopg2
 import sys

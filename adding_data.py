@@ -1,3 +1,17 @@
+'''
+Author: Lex Bukowski
+Date: April 21, 2024
+Usage: These are support functions that will populate the Render database with the information extracted from the wget extraction
+algorithm that are stored in text files. Each function reads a .txt file that is created by the extraciton algorithm and adds the
+information to the database. The usage statements are:
+
+    insert_recipe(database_connection,recipe_name)
+    insert_instructions(database_connection,instructions_file,recipe_name)
+    insert_ingredients(database_connection,ingredients_file,recipe_name)
+
+'''
+
+
 import psycopg2
 
 # Function to create a database connection
@@ -9,7 +23,7 @@ def connect_to_db():
         print("Error connecting to PostgreSQL database:", e)
         return None
 
-# Function to read Recipe name from the file and insert into the database
+# Function to read Recipe name from the extraction text file and insert into the database
 def insert_recipe(connection, recipe_name):
     try:
         cursor = connection.cursor()
@@ -22,7 +36,7 @@ def insert_recipe(connection, recipe_name):
         print("Error inserting recipe:", e)
 
 
-# Function to read instructions from the file and insert into the database
+# Function to read instructions from the extraction text file and insert into the database
 def insert_instructions(conn, file_name, recipe_name):
     try:
         cursor = conn.cursor()
@@ -44,7 +58,7 @@ def insert_instructions(conn, file_name, recipe_name):
         print("Error inserting instructions:", e)
 
 
-# Function to read ingredients from the file and insert into the database
+# Function to read ingredients from the extraction text file and insert into the database
 def insert_ingredients(conn, file_name, recipe_name):
     try:
         cursor = conn.cursor()
