@@ -1,0 +1,143 @@
+/*edited Matthew Scott, Hallee Ray 4/11/2024
+edited Hallee Ray 4/12/2024 
+edited Hallee Ray 4/16/2024 */
+
+
+/* basic format for site name and navigation */
+#siteheader {
+    display: flex;
+    flex-direction: row; /* display items in siteheader horizontally */
+    align-items: center;
+    justify-content: space-between;
+    
+    margin: 2em auto;
+    padding: 10px;
+    background-color: #f2dea7;
+}
+
+/* text formatting for site name*/
+#siteheader p {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 60px;
+    padding: 0;
+    margin: 0;
+    margin-right: 40vw;
+}
+
+/* formatting for navigation links */
+#siteheader a {
+    color: black;
+    padding: 1em;
+    text-decoration: none;
+    cursor: pointer;
+} 
+#siteheader a:hover{
+    color: darkred;
+}
+
+/* formatting for search bar */
+#searchbar {
+    padding: 5px;
+}
+#searchbar input[type="text"] {
+    height: 30px; 
+    padding: 5px; 
+    border: none; 
+    border-radius: 5px; 
+}
+#searchbar button.search-button {
+    width: 40px; 
+    height: 40px; 
+    background-color: darkred;
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer;
+}
+#searchbar button.search-button:hover {
+    background-color: darkgray; /* Change background color on hover */
+}
+
+/*  -------------------------------------------------------------------  */
+
+
+/*formatting for body elements */
+body {
+    background-image: url('../backgroundimage.jpg'); 
+    font-family: "Poppins", sans-serif;
+    margin: 2em; 
+    padding: 0;
+}
+
+#recnamebox {
+    background-color: darkred; 
+    color: white;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1em;
+}
+
+#title {
+    margin: 20px;
+    font-size: 35px;
+}
+
+#fave,
+#cart {
+    transition-duration: 0.4s;
+    background-color: white;
+    margin: 25px;
+    border-radius: 5px;
+    border-color: black;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#recipeoutline {
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Align items at the start of the cross axis */
+    justify-content: center;
+    background-color: white;
+}
+
+#ingred{
+    flex-grow: 1;
+    align-self: flex-start;
+    margin: 10px;
+}
+
+#recipe_image {
+    max-width: 50%; /* Adjust width of image */
+    max-height: 50%;
+    height: auto;
+    margin: 20px;
+    align-self: center;
+}
+
+#ingredients_header,
+#instructions_header {
+    font-size: 24px;
+    color: #333;
+    margin-top: 20px;
+    margin-left: 2em;
+}
+
+#ingredients_list,
+#instructions_list {
+    list-style-type: none;
+    padding: 0;
+    margin-left: 2em;
+}
+
+#ingredients_list li,
+#instructions_list li {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #666;
+    line-height: 1.5;
+}
+
+#instruct  {
+    background-color: white;
+}

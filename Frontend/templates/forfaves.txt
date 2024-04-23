@@ -1,0 +1,17 @@
+
+
+
+<!--     <div id="favoritebox">
+       <h1>Favorites</h1>
+
+   
+    {% for title, items in recipes.items() %}
+        <h3 id='title'>{{ title }}</h3>
+        <ul id='ingredients_list'>
+          
+            {% for item in items %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+    </div> -->
