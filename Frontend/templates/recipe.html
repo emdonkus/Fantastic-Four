@@ -17,6 +17,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Jacquarda+Bastarda+9+Charted&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     
     <script src="static/javascript/recipe.js"></script>
+    <script>
+    // JavaScript function to send a POST request to the Flask backend
+    function updateFavoriteStatus() {
+        const recipeTitle = document.getElementById("title").innerText;
+        const isFavorited = true; // Change to false if you want to remove from favorites
+
+        fetch('/update_favorite', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                title: recipeTitle,
+                is_favorited: isFavorited
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(data.message); // Show the response message
+        })
+        .catch(error => console.error('Error:', error));
+    }
+    </script>
     
     <!-- icons -->
     <script src="https://kit.fontawesome.com/b21cecda70.js" crossorigin="anonymous"></script>
@@ -45,7 +68,7 @@
     
     <div id="recnamebox">
         <h1 id="title">{{ title }}</h1>
-        <button id="fave">Add to Favorites</button>
+        <button id="fave" onclick='updateFavoriteStatus()'>Add to Favorites</button>
         <button id="cart">Add to Shopping Cart</button>  
     </div>
     

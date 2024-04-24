@@ -2,6 +2,8 @@
 edited 4/16/2024 Hallee Ray*/
 
 document.addEventListener('DOMContentLoaded', function() {
+    
+    
 
     var favebutton = document.getElementById('fave');
     var isfave = false; //need to get favorite status from DB -> should we change to button to read add/remove from favorites based on DB bool?                        

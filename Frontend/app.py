@@ -47,7 +47,7 @@ def prefix_image():
 #     return 'The URL for this page is {}'.format(url_for('prefix_url'))
 
 ################
-@app.route('/')
+@app.route('/', methods=['POST', 'GET'])
 def home():
     #lst = ''' 
     #    <h1>Home Index</h1>
@@ -98,9 +98,13 @@ def search():
                            title=title,)
 
 
-@app.route('/favorites')
+@app.route('/favorites', methods=['POST', 'GET'])
 def favorites():
     recipe_id = 'Perfect_Pot_Roast'
+    
+    if (method == 'GET')
+    
+    if (method == 'POST')
     
     conn = adding_data.connect_to_db()
 
