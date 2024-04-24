@@ -31,7 +31,6 @@ def insert_recipe(connection, recipe_name):
         cursor.execute(insert_query, (recipe_name, False))
         connection.commit()
         cursor.close()
-        print(f"Inserted recipe: {recipe_name}")
     except psycopg2.Error as e:
         print("Error inserting recipe:", e)
 
@@ -51,7 +50,6 @@ def insert_instructions(conn, file_name, recipe_name):
                 instruction = line.strip()
                 insert_query = "INSERT INTO instructions (recipeID, StepNumber, Description) VALUES (%s, %s, %s);"
                 cursor.execute(insert_query, (recipe_id, line_number, instruction,))
-                print(f"Inserted instruction {line_number}: {instruction}")
         conn.commit()
         cursor.close()
     except psycopg2.Error as e:
@@ -74,7 +72,6 @@ def insert_ingredients(conn, file_name, recipe_name):
                 ingredient = line.strip()
                 insert_query = "INSERT INTO ingredients (recipeID, food) VALUES (%s, %s);"
                 cursor.execute(insert_query, (recipe_id, ingredient))
-                print(f"Inserted ingredient {line_number}: {ingredient}")
         
         conn.commit()
         cursor.close()
