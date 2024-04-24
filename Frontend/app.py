@@ -5,7 +5,7 @@ from flask import send_file
 from flask import render_template, request
 import os
 import prefix
-import adding_data
+from Frontend import adding_data
 import psycopg2
 
 from flask import Flask, url_for
