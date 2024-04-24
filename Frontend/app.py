@@ -102,22 +102,22 @@ def search():
 def favorites():
     recipe_id = 'Perfect_Pot_Roast'
     
-    if request.method == 'POST':
-        # Extract recipe ID from the POST request
-        recipe_id = request.form['recipe_id']
+    # if request.method == 'POST':
+    #     # Extract recipe ID from the POST request
+    #     recipe_id = request.form['recipe_id']
 
-        # Toggle the favorite boolean in the database for the specified recipe ID
-        conn = adding_data.connect_to_db()
+    #     # Toggle the favorite boolean in the database for the specified recipe ID
+    #     conn = adding_data.connect_to_db()
 
-        try:
-            cursor = conn.cursor()
-            update_query = "UPDATE recipe SET favorite = NOT favorite WHERE id = %s;"
-            cursor.execute(update_query, (recipe_id,))
-            conn.commit()
-            cursor.close()
-        except psycopg2.Error as e:
-            print("Error toggling favorite:", e)
-            return "Error toggling favorite"
+    #     try:
+    #         cursor = conn.cursor()
+    #         update_query = "UPDATE recipe SET favorite = NOT favorite WHERE id = %s;"
+    #         cursor.execute(update_query, (recipe_id,))
+    #         conn.commit()
+    #         cursor.close()
+    #     except psycopg2.Error as e:
+    #         print("Error toggling favorite:", e)
+    #         return "Error toggling favorite"
 
 
     if request.method == 'GET':
@@ -164,10 +164,28 @@ def cart():
     return render_template('cart.html', recipes=thisdict)
 
 ####Dynamic
-@app.route('/recipe')
+@app.route('/recipe', methods=['POST', 'GET'])
 def recipe():
     recipe_id = 'Perfect_Pot_Roast'
-    
+        
+    if request.method == 'POST':
+        # Extract recipe ID from the POST request
+        recipe_id = request.form['recipe_id']
+
+        # Toggle the favorite boolean in the database for the specified recipe ID
+        conn = adding_data.connect_to_db()
+
+        try:
+            cursor = conn.cursor()
+            update_query = "UPDATE recipe SET favorite = NOT favorite WHERE id = %s;"
+            cursor.execute(update_query, (recipe_id,))
+            conn.commit()
+            cursor.close()
+        except psycopg2.Error as e:
+            print("Error toggling favorite:", e)
+            return "Error toggling favorite"
+
+
     # Getting file paths for different components of the recipe
     image_path = url_for('static', filename=f'recipe/{recipe_id}/image.jpeg')
     title_path = f'static/recipe/{recipe_id}/title.txt'
