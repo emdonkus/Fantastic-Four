@@ -15,7 +15,7 @@ app = Flask(__name__)
 
 # Insert the wrapper for handling PROXY when using csel.io virtual machine
 # Calling this routine will have no effect if running on local machine
-prefix.use_PrefixMiddleware(app)   
+#prefix.use_PrefixMiddleware(app)   
 
 # test route to show prefix settings
 # @app.route('/prefix_url')  
@@ -127,7 +127,7 @@ def favorites():
         try:
             cursor = conn.cursor()
             select_query = "SELECT title FROM recipe WHERE favorite = %s;"
-            cursor.execute(select_query, (False,))
+            cursor.execute(select_query, (True,))
             favorite_recipes = [row[0] for row in cursor.fetchall()]
             cursor.close()
 
@@ -234,11 +234,24 @@ def recipes(recipe_title):
             cursor.close()
             conn.close()
 
+            # Concatenate ingredients into a single string
+            ingredients_str = '\n'.join([ingredient[0] for ingredient in ingredients])
+
+            # Concatenate instructions into a single string
+            instructions_str = '\n'.join([instruction[0] for instruction in instructions])
+
+            image_path = url_for('static', filename=f'recipe/{title}/image.jpeg')
+
         except psycopg2.Error as e:
             return print("Error fetching recipe:", e)
 
 
-    return title
+            # Rendering the template with the data
+    return render_template('recipe.html', 
+                            image_path=image_path, 
+                            title=title, 
+                            ingredients=ingredients_str, 
+                            instructions=instructions_str)
 
 @app.route('/recipe')
 def recipe():
