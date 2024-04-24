@@ -4,7 +4,7 @@ from flask import Flask, url_for
 from flask import send_file
 from flask import render_template, request
 import os
-import prefix
+from Frontend import prefix
 from Frontend import adding_data
 import psycopg2
 
@@ -15,7 +15,7 @@ app = Flask(__name__)
 
 # Insert the wrapper for handling PROXY when using csel.io virtual machine
 # Calling this routine will have no effect if running on local machine
-# prefix.use_PrefixMiddleware(app)   
+prefix.use_PrefixMiddleware(app)   
 
 # test route to show prefix settings
 # @app.route('/prefix_url')  
