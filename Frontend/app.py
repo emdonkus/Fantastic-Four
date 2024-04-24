@@ -102,40 +102,55 @@ def search():
 def favorites():
     recipe_id = 'Perfect_Pot_Roast'
     
-    if (method == 'GET')
-    
-    if (method == 'POST')
-    
-    conn = adding_data.connect_to_db()
+    if request.method == 'POST':
+        # Extract recipe ID from the POST request
+        recipe_id = request.form['recipe_id']
 
-    try:
-        cursor = conn.cursor()
-        select_query = "SELECT title FROM recipe WHERE favorite = %s;"
-        cursor.execute(select_query, (False,))
-        favorite_recipes = [row[0] for row in cursor.fetchall()]
-        cursor.close()
+        # Toggle the favorite boolean in the database for the specified recipe ID
+        conn = adding_data.connect_to_db()
 
-    except psycopg2.Error as e:
-        print("Error fetching favorite recipes:", e)
-        return []
+        try:
+            cursor = conn.cursor()
+            update_query = "UPDATE recipe SET favorite = NOT favorite WHERE id = %s;"
+            cursor.execute(update_query, (recipe_id,))
+            conn.commit()
+            cursor.close()
+        except psycopg2.Error as e:
+            print("Error toggling favorite:", e)
+            return "Error toggling favorite"
 
-    # Getting file paths for different components of the recipe
-    image_path = url_for('static', filename=f'recipe/{recipe_id}/image.jpeg')
-    title_path = f'static/recipe/{recipe_id}/title.txt'
 
-    # Print the file paths for debugging
-    print("Image Path:", image_path)
-    print("Title Path:", title_path)
+    if request.method == 'GET':
+        conn = adding_data.connect_to_db()
 
-    # Reading content from the files
-    with open(title_path, 'r') as f:
-        title = f.read().strip()
+        try:
+            cursor = conn.cursor()
+            select_query = "SELECT title FROM recipe WHERE favorite = %s;"
+            cursor.execute(select_query, (False,))
+            favorite_recipes = [row[0] for row in cursor.fetchall()]
+            cursor.close()
 
-    # Rendering the template with the data
-    #return favorite_recipes
-    return render_template('favorites.html', 
-                            image_path=image_path, 
-                           titles=favorite_recipes)
+        except psycopg2.Error as e:
+            print("Error fetching favorite recipes:", e)
+            return []
+
+        # Getting file paths for different components of the recipe
+        image_path = url_for('static', filename=f'recipe/{recipe_id}/image.jpeg')
+        title_path = f'static/recipe/{recipe_id}/title.txt'
+
+        # Print the file paths for debugging
+        print("Image Path:", image_path)
+        print("Title Path:", title_path)
+
+        # Reading content from the files
+        with open(title_path, 'r') as f:
+            title = f.read().strip()
+
+        # Rendering the template with the data
+        #return favorite_recipes
+        return render_template('favorites.html', 
+                                image_path=image_path, 
+                            titles=favorite_recipes)
     
 
 @app.route('/cart')
