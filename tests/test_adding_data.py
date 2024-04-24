@@ -5,27 +5,14 @@ Usage: This file runs tests on the adding_data.py file to test that the data fro
 the database with the functions written in the adding_data.py file.
 '''
 
-
 import unittest
 import psycopg2
 import sys
 import os
 
-import sys
-import os
-
-import sys
-import os
-
-# Get the current directory
-current_dir = os.path.dirname(os.path.realpath(__file__))
-
 # Add the parent directory to the Python path so that adding_data.py functions can be called
-parent_dir = os.path.abspath(os.path.join(current_dir, '..'))
-sys.path.append(parent_dir)
 
 from Frontend import adding_data
-
 
 
 class TestRecipeFunctions(unittest.TestCase):
