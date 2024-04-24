@@ -11,9 +11,22 @@ import psycopg2
 import sys
 import os
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+import sys
+import os
 
-from adding_data import insert_recipe, insert_instructions, insert_ingredients
+import sys
+import os
+
+# Get the current directory
+current_dir = os.path.dirname(os.path.realpath(__file__))
+
+# Add the parent directory to the Python path so that adding_data.py functions can be called
+parent_dir = os.path.abspath(os.path.join(current_dir, '..'))
+sys.path.append(parent_dir)
+
+from Frontend import adding_data
+
+
 
 class TestRecipeFunctions(unittest.TestCase):
 
@@ -59,7 +72,7 @@ class TestRecipeFunctions(unittest.TestCase):
     def test_1_insert_recipe(self):
         # Test inserting a recipe into the database
         recipe_name = "Test Recipe"
-        insert_recipe(self.conn, recipe_name)
+        adding_data.insert_recipe(self.conn, recipe_name)
 
         cursor = self.conn.cursor()
         cursor.execute("SELECT COUNT(*) FROM recipe WHERE title = %s;", (recipe_name,))
@@ -72,7 +85,7 @@ class TestRecipeFunctions(unittest.TestCase):
         # Test inserting instructions into the database
         recipe_name = "Test Recipe"
  
-        insert_instructions(self.conn, "tests/test_instructions.txt", recipe_name)
+        adding_data.insert_instructions(self.conn, "tests/test_instructions.txt", recipe_name)
 
         cursor = self.conn.cursor()
         cursor.execute("SELECT COUNT(*) FROM instructions WHERE recipeID IN (SELECT id FROM recipe WHERE title = %s);", (recipe_name,))
@@ -85,7 +98,7 @@ class TestRecipeFunctions(unittest.TestCase):
         # Test inserting ingredients into the database
         recipe_name = "Test Recipe"
 
-        insert_ingredients(self.conn, "tests/test_ingredients.txt", recipe_name)
+        adding_data.insert_ingredients(self.conn, "tests/test_ingredients.txt", recipe_name)
 
         cursor = self.conn.cursor()
         cursor.execute("SELECT COUNT(*) FROM ingredients WHERE recipeID IN (SELECT id FROM recipe WHERE title = %s);", (recipe_name,))
