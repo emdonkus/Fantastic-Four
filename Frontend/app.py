@@ -4,8 +4,8 @@ from flask import Flask, url_for
 from flask import send_file
 from flask import render_template, request
 import os
-import prefix
-import adding_data
+from Frontend import prefix
+from Frontend import adding_data
 import psycopg2
 
 from flask import Flask, url_for
@@ -18,24 +18,25 @@ app = Flask(__name__)
 prefix.use_PrefixMiddleware(app)   
 
 # test route to show prefix settings
-@app.route('/prefix_url')  
-def prefix_url():
-    return 'The URL for this page is {}'.format(url_for('prefix_url'))
+# @app.route('/prefix_url')  
+# def prefix_url():
+#     return 'The URL for this page is {}'.format(url_for('prefix_url'))
 
-@app.route('/prefix_image')  
-def prefix_image():
-    image_path = url_for('static',filename='recipe/Perfect_Pot_Roast/image.jpeg')
-    title_path = url_for('static',filename='recipe/Perfect_Pot_Roast/title.txt')
-    # image_path = url_for('static', filename="image.jpeg")
-    print("image_path2: ", image_path)
-    print("title_path2: ", title_path)
-    page = f'<img src="{image_path}" alt="Recipe Image">'
-    title = f'<h1>Recipe: { title_path }</h1>'
-    return title #page
+# @app.route('/prefix_image')  
+# def prefix_image():
+#     image_path = url_for('static',filename='recipe/Perfect_Pot_Roast/image.jpeg')
+#     title_path = url_for('static',filename='recipe/Perfect_Pot_Roast/title.txt')
+#     # image_path = url_for('static', filename="image.jpeg")
+#     print("image_path2: ", image_path)
+#     print("title_path2: ", title_path)
+#     page = f'<img src="{image_path}" alt="Recipe Image">'
+#     title = f'<h1>Recipe: { title_path }</h1>'
+#     return title #page
 
 
 #. venv/bin/activate
-#flask --app app.py run
+# export FLASK_DEBUG=true
+# flask --app app.py run
 
 # Insert the wrapper for handling PROXY when using csel.io virtual machine
 # Calling this routine will have no effect if running on local machine
@@ -100,24 +101,25 @@ def search():
 
 @app.route('/favorites', methods=['POST', 'GET'])
 def favorites():
+
     recipe_id = 'Perfect_Pot_Roast'
     
-    if request.method == 'POST':
-        # Extract recipe ID from the POST request
-        recipe_id = request.form['recipe_id']
+    # if request.method == 'POST':
+    #     # Extract recipe ID from the POST request
+    #     recipe_id = request.form['recipe_id']
 
-        # Toggle the favorite boolean in the database for the specified recipe ID
-        conn = adding_data.connect_to_db()
+    #     # Toggle the favorite boolean in the database for the specified recipe ID
+    #     conn = adding_data.connect_to_db()
 
-        try:
-            cursor = conn.cursor()
-            update_query = "UPDATE recipe SET favorite = NOT favorite WHERE id = %s;"
-            cursor.execute(update_query, (recipe_id,))
-            conn.commit()
-            cursor.close()
-        except psycopg2.Error as e:
-            print("Error toggling favorite:", e)
-            return "Error toggling favorite"
+    #     try:
+    #         cursor = conn.cursor()
+    #         update_query = "UPDATE recipe SET favorite = NOT favorite WHERE id = %s;"
+    #         cursor.execute(update_query, (recipe_id,))
+    #         conn.commit()
+    #         cursor.close()
+    #     except psycopg2.Error as e:
+    #         print("Error toggling favorite:", e)
+    #         return "Error toggling favorite"
 
 
     if request.method == 'GET':
@@ -163,11 +165,94 @@ def cart():
     # return send_file(filename)
     return render_template('cart.html', recipes=thisdict)
 
+
+@app.route('/recipes',methods = ['GET'])
+def get_recipes():
+    # dummy image
+    recipe_id = 'Perfect_Pot_Roast'
+    image_path = url_for('static', filename=f'recipe/{recipe_id}/image.jpeg')
+    
+    if request.method == 'GET':
+        conn = adding_data.connect_to_db()
+
+        try:
+            cursor = conn.cursor()
+            select_query = "SELECT title FROM recipe;"
+            cursor.execute(select_query)
+            recipes = [row[0] for row in cursor.fetchall()]
+            cursor.close()
+
+        except psycopg2.Error as e:
+            print("Error fetching recipes:", e)
+            return []
+
+    return render_template('allrecipes.html', recipes=recipes, image=image_path)
+
+
+
 ####Dynamic
+@app.route('/recipes/<recipe_title>', methods=['POST', 'GET'])
+def recipes(recipe_title):
+        
+    if request.method == 'POST':
+        # Extract recipe ID from the POST request
+        recipe_id = request.form['recipe_id']
+
+        # Toggle the favorite boolean in the database for the specified recipe ID
+        conn = adding_data.connect_to_db()
+
+        try:
+            cursor = conn.cursor()
+            update_query = "UPDATE recipe SET favorite = NOT favorite WHERE id = %s;"
+            cursor.execute(update_query, (recipe_id,))
+            conn.commit()
+            cursor.close()
+            return
+
+        except psycopg2.Error as e:
+            print("Error toggling favorite:", e)
+            return "Error toggling favorite"
+        
+
+    if request.method == 'GET':
+        conn = adding_data.connect_to_db()
+        try:
+            cursor = conn.cursor()
+            title_query = "SELECT title FROM recipe WHERE title = %s;"
+            cursor.execute(title_query, (recipe_title,))
+            title = cursor.fetchone()[0]
+            print(title)
+
+            find_recipe_query = "SELECT id FROM recipe WHERE title = %s;"
+            cursor.execute(find_recipe_query, (recipe_title,))
+            recipe_id = cursor.fetchone()[0]
+            print(recipe_id)
+
+            ingredients_query = "SELECT food FROM ingredients WHERE recipeID = %s;"
+            cursor.execute(ingredients_query, (recipe_id,))
+            ingredients = cursor.fetchall()
+            print(ingredients)
+
+            instructions_query = "SELECT description FROM instructions WHERE recipeID = %s;"
+            cursor.execute(instructions_query, (recipe_id,))
+            instructions = cursor.fetchall()
+
+            cursor.close()
+            conn.close()
+
+        except psycopg2.Error as e:
+            return print("Error fetching recipe:", e)
+
+    return render_template('recipe.html', 
+                            # image_path=image_path, 
+                            title=title, 
+                            ingredients=ingredients, 
+                            instructions=instructions)
+
 @app.route('/recipe')
 def recipe():
+
     recipe_id = 'Perfect_Pot_Roast'
-    
     # Getting file paths for different components of the recipe
     image_path = url_for('static', filename=f'recipe/{recipe_id}/image.jpeg')
     title_path = f'static/recipe/{recipe_id}/title.txt'
@@ -189,13 +274,13 @@ def recipe():
 
     with open(instructions_path, 'r') as f:
         instructions = f.read().strip()
-    
-    # Rendering the template with the data
+        
+        # Rendering the template with the data
     return render_template('recipe.html', 
-                           image_path=image_path, 
-                           title=title, 
-                           ingredients=ingredients, 
-                           instructions=instructions)
+                            image_path=image_path, 
+                            title=title, 
+                            ingredients=ingredients, 
+                            instructions=instructions)
 
 ##New Recipe URL
 from flask import jsonify

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CutNPasta</title>
-    <link rel="stylesheet" href="static/css/home.css">
+    <title>Recipe</title>
+    <link rel="stylesheet" href="static/css/recipe.css">
     
     <!-- fonts: -->
     <!-- Page name font -->
@@ -16,7 +16,30 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Jacquarda+Bastarda+9+Charted&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     
-<!--     <script src="static/javascript/fetchRecipe.js"></script> -->
+    <script src="static/javascript/recipe.js"></script>
+    <script>
+    // JavaScript function to send a POST request to the Flask backend
+    function updateFavoriteStatus() {
+        const recipeTitle = document.getElementById("title").innerText;
+        const isFavorited = true; // Change to false if you want to remove from favorites
+
+        fetch('/update_favorite', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                title: recipeTitle,
+                is_favorited: isFavorited
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(data.message); // Show the response message
+        })
+        .catch(error => console.error('Error:', error));
+    }
+    </script>
     
     <!-- icons -->
     <script src="https://kit.fontawesome.com/b21cecda70.js" crossorigin="anonymous"></script>
@@ -42,25 +65,19 @@
                 <i class="fa-solid fa-magnifying-glass"></i>
             </button> -->
 <!--         </div> -->
-    
-<!--     About, add recipe through url, first 3-5 favorites in database -->
-    <h2>About Cut N Pasta</h2>
-    <div id="about">
         
-        <p>Here at Cut N Pasta we're tired of scrolling through miles of mommy blog when we are just interested in the recipe we'd like to make. Easily eliminate all that garbage with Cut N Pasta in just a few simple steps! First, locate a recipe you're interested in on the internet. Paste the URL into the recipe fetcher, then access all of your recipes! You can mark your favorite recipes to access easily later and add all of the ingredients into your shopping cart. Looking for a recipe you've added before? Quickly locate it by searching Cut N Pasta. </p>
-    </div>
     
-    <div id="addRecipe">
-        {% include 'fetchRecipe.html' %}
-    </div>
-    
-    <h2>Favorites</h2>
-    <div id="favorites">
-        <div id='favecard'>
-        <img id="recipe_image" src="{{ image_path }}" alt="Recipe Image">
+    <!-- display recipe names from database -->
+    <div id="allrecs">
+        {% for recipe in recipes %}
+        <div id='reccard'>
+            <div class="recipe-info">
+            <a href="{{ url_for('recipes', recipe_title=recipe) }}">{{ recipe.replace("_", " ") }}</a> 
+            <img id="recipe_image" src="{{ image }}" alt="Recipe Image">
+                    </div>
         </div>
+        {% endfor %}
     </div>
-        
+
 </body>
-</html>  
- 
+</html>

@@ -1,4 +1,4 @@
-
+<button id="fave" onclick='updateFavoriteStatus()'>Add to Favorites</button>
 
 
 <!--     <div id="favoritebox">
