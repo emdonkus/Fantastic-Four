@@ -100,6 +100,7 @@ def search():
 
 @app.route('/favorites', methods=['POST', 'GET'])
 def favorites():
+
     recipe_id = 'Perfect_Pot_Roast'
     
     # if request.method == 'POST':
@@ -163,10 +164,30 @@ def cart():
     # return send_file(filename)
     return render_template('cart.html', recipes=thisdict)
 
+
+@app.route('/recipes',methods = ['GET'])
+def get_recipes():
+     if request.method == 'GET':
+        conn = adding_data.connect_to_db()
+
+        try:
+            cursor = conn.cursor()
+            select_query = "SELECT title FROM recipe;"
+            cursor.execute(select_query)
+            recipes = [row[0] for row in cursor.fetchall()]
+            cursor.close()
+
+        except psycopg2.Error as e:
+            print("Error fetching recipes:", e)
+            return []
+
+        return recipes
+
+
+
 ####Dynamic
-@app.route('/recipe', methods=['POST', 'GET'])
-def recipe():
-    recipe_id = 'Perfect_Pot_Roast'
+@app.route('/recipes/<recipe_title>', methods=['POST', 'GET'])
+def recipes(recipe_title):
         
     if request.method == 'POST':
         # Extract recipe ID from the POST request
@@ -181,11 +202,48 @@ def recipe():
             cursor.execute(update_query, (recipe_id,))
             conn.commit()
             cursor.close()
+            return
+
         except psycopg2.Error as e:
             print("Error toggling favorite:", e)
             return "Error toggling favorite"
+        
+
+    if request.method == 'GET':
+        conn = adding_data.connect_to_db()
+        try:
+            cursor = conn.cursor()
+            title_query = "SELECT title FROM recipe WHERE title = %s;"
+            cursor.execute(title_query, (recipe_title,))
+            title = cursor.fetchone()[0]
+            print(title)
+
+            find_recipe_query = "SELECT id FROM recipe WHERE title = %s;"
+            cursor.execute(find_recipe_query, (recipe_title,))
+            recipe_id = cursor.fetchone()[0]
+            print(recipe_id)
+
+            ingredients_query = "SELECT food FROM ingredients WHERE recipeID = %s;"
+            cursor.execute(ingredients_query, (recipe_id,))
+            ingredients = cursor.fetchall()
+
+            instructions_query = "SELECT description FROM instructions WHERE recipeID = %s;"
+            cursor.execute(instructions_query, (recipe_id,))
+            instructions = cursor.fetchall()
+
+            cursor.close()
+            conn.close()
+
+        except psycopg2.Error as e:
+            return print("Error fetching recipe:", e)
 
 
+    return title
+
+@app.route('/recipe')
+def recipe():
+
+    recipe_id = 'Perfect_Pot_Roast'
     # Getting file paths for different components of the recipe
     image_path = url_for('static', filename=f'recipe/{recipe_id}/image.jpeg')
     title_path = f'static/recipe/{recipe_id}/title.txt'
@@ -207,13 +265,13 @@ def recipe():
 
     with open(instructions_path, 'r') as f:
         instructions = f.read().strip()
-    
-    # Rendering the template with the data
+        
+        # Rendering the template with the data
     return render_template('recipe.html', 
-                           image_path=image_path, 
-                           title=title, 
-                           ingredients=ingredients, 
-                           instructions=instructions)
+                            image_path=image_path, 
+                            title=title, 
+                            ingredients=ingredients, 
+                            instructions=instructions)
 
 ##New Recipe URL
 from flask import jsonify
