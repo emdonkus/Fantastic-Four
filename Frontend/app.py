@@ -15,23 +15,23 @@ app = Flask(__name__)
 
 # Insert the wrapper for handling PROXY when using csel.io virtual machine
 # Calling this routine will have no effect if running on local machine
-prefix.use_PrefixMiddleware(app)   
+# prefix.use_PrefixMiddleware(app)   
 
 # test route to show prefix settings
-@app.route('/prefix_url')  
-def prefix_url():
-    return 'The URL for this page is {}'.format(url_for('prefix_url'))
+# @app.route('/prefix_url')  
+# def prefix_url():
+#     return 'The URL for this page is {}'.format(url_for('prefix_url'))
 
-@app.route('/prefix_image')  
-def prefix_image():
-    image_path = url_for('static',filename='recipe/Perfect_Pot_Roast/image.jpeg')
-    title_path = url_for('static',filename='recipe/Perfect_Pot_Roast/title.txt')
-    # image_path = url_for('static', filename="image.jpeg")
-    print("image_path2: ", image_path)
-    print("title_path2: ", title_path)
-    page = f'<img src="{image_path}" alt="Recipe Image">'
-    title = f'<h1>Recipe: { title_path }</h1>'
-    return title #page
+# @app.route('/prefix_image')  
+# def prefix_image():
+#     image_path = url_for('static',filename='recipe/Perfect_Pot_Roast/image.jpeg')
+#     title_path = url_for('static',filename='recipe/Perfect_Pot_Roast/title.txt')
+#     # image_path = url_for('static', filename="image.jpeg")
+#     print("image_path2: ", image_path)
+#     print("title_path2: ", title_path)
+#     page = f'<img src="{image_path}" alt="Recipe Image">'
+#     title = f'<h1>Recipe: { title_path }</h1>'
+#     return title #page
 
 
 #. venv/bin/activate
