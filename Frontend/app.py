@@ -231,7 +231,6 @@ def recipes(recipe_title):
             ingredients_query = "SELECT food FROM ingredients WHERE recipeID = %s;"
             cursor.execute(ingredients_query, (recipe_id,))
             ingredients = cursor.fetchall()
-            print(ingredients)
 
             instructions_query = "SELECT description FROM instructions WHERE recipeID = %s;"
             cursor.execute(instructions_query, (recipe_id,))
@@ -249,38 +248,39 @@ def recipes(recipe_title):
                             ingredients=ingredients, 
                             instructions=instructions)
 
-@app.route('/recipe')
-def recipe():
+#testing route for Perfect Pot Roast Recipe Page
+# @app.route('/recipe')
+# def recipe():
 
-    recipe_id = 'Perfect_Pot_Roast'
-    # Getting file paths for different components of the recipe
-    image_path = url_for('static', filename=f'recipe/{recipe_id}/image.jpeg')
-    title_path = f'static/recipe/{recipe_id}/title.txt'
-    ingredients_path = f'static/recipe/{recipe_id}/ingredients.txt'
-    instructions_path = f'static/recipe/{recipe_id}/instructions.txt'
+#     recipe_id = 'Perfect_Pot_Roast'
+#     # Getting file paths for different components of the recipe
+#     image_path = url_for('static', filename=f'recipe/{recipe_id}/image.jpeg')
+#     title_path = f'static/recipe/{recipe_id}/title.txt'
+#     ingredients_path = f'static/recipe/{recipe_id}/ingredients.txt'
+#     instructions_path = f'static/recipe/{recipe_id}/instructions.txt'
     
-    # Print the file paths for debugging
-    print("Image Path:", image_path)
-    print("Title Path:", title_path)
-    print("Ingredients Path:", ingredients_path)
-    print("Instructions Path:", instructions_path)
+#     # Print the file paths for debugging
+#     print("Image Path:", image_path)
+#     print("Title Path:", title_path)
+#     print("Ingredients Path:", ingredients_path)
+#     print("Instructions Path:", instructions_path)
     
-    # Reading content from the files
-    with open(title_path, 'r') as f:
-        title = f.read().strip()
+#     # Reading content from the files
+#     with open(title_path, 'r') as f:
+#         title = f.read().strip()
 
-    with open(ingredients_path, 'r') as f:
-        ingredients = f.read().strip()
+#     with open(ingredients_path, 'r') as f:
+#         ingredients = f.read().strip()
 
-    with open(instructions_path, 'r') as f:
-        instructions = f.read().strip()
+#     with open(instructions_path, 'r') as f:
+#         instructions = f.read().strip()
         
-        # Rendering the template with the data
-    return render_template('recipe.html', 
-                            image_path=image_path, 
-                            title=title, 
-                            ingredients=ingredients, 
-                            instructions=instructions)
+#         # Rendering the template with the data
+#     return render_template('recipe.html', 
+#                             image_path=image_path, 
+#                             title=title, 
+#                             ingredients=ingredients, 
+#                             instructions=instructions)
 
 ##New Recipe URL
 from flask import jsonify
@@ -303,8 +303,17 @@ def fetch_recipe():
     except subprocess.CalledProcessError:
         return jsonify(success=False, message="Error during scraping")
     
-# @app.route('/get_recipe')
-# def get_recipe():
+
+@app.route('/process_url', methods=['POST'])
+def process_url():
+    # Retrieve URL from JSON data sent in the request body
+    data = request.get_json()
+    user_url = data.get('url')
+
+    # Process the URL (e.g., fetch data from the URL)
+    # Here, you can add your logic to process the URL and return any data
+    # For now, just return a simple response
+    return jsonify({'message': 'URL received', 'url': user_url})
     
 
 ###############################################################################
