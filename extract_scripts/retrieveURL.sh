@@ -116,8 +116,8 @@ extractRecipeName () {
     decho "TEMP2 title: $tempTitle2"
 
     # Replaces spaces with '_'
-    finalTitle="${tempTitle2// /\_}"
-    finalTitle="${finalTitle/\./}"
+    finalTitle="${tempTitle2// /_}"
+    finalTitle="${finalTitle//./}"
     decho "Final: $finalTitle"
     
 }
