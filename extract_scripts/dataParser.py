@@ -243,7 +243,11 @@ def writetextfile(new_txt_file):
 #---------------
 def addToDatabase(recipe_name, new_txt_file, instruction_flag):
     #Conect to database
-
+    print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+    print(new_txt_file)
+    print('Instruction flag type')
+    print(type(instruction_flag))
+    print(recipe_name)
     conn = adding_data.connect_to_db()
     
     #Adding recipe to database, check if already there first
@@ -276,7 +280,7 @@ if __name__ == "__main__":
     dprint(full_file_name)
     
     if (sys.argv[2]):
-        instruction_flag = sys.argv[2]
+        instruction_flag = int(sys.argv[2])
     else:
         instruction_flag = -1
         
@@ -317,6 +321,8 @@ if __name__ == "__main__":
     recipe_name = recipe_name.replace("_instructions.html", "")
     recipe_name = recipe_name.split('/')[-1]
     
+    add_instructions_db = recipe_name + '.txt'
+    add_ingredients_db = recipe_name + '.txt'
 
 
 
