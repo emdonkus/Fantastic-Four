@@ -28,7 +28,7 @@ from html.parser import HTMLParser #Basis for python, used to parse through HTML
 import sys #used to read in command line inputs, ie when called from bash script
 import os
 import argparse
-import adding_data.py
+from Frontend import adding_data
 ##-----------------------
 ## HTML Parser reads in  an html file and parses between data and tags
 #-----------------------
@@ -242,19 +242,19 @@ def writetextfile(new_txt_file):
 #---------------
 def addToDatabase(recipe_name, new_txt_file, instruction_flag):
     #Conect to database
-    conn = connect_to_db()
+    conn = adding_data.connect_to_db()
     
     #Adding recipe to database, check if already there first
-    if ( !check_recipe_exists(recipe_name) ):
-        insert_recipe(conn, recipe_name)
+    if ( adding_data.check_recipe_exist(recipe_name) ):
+        adding_data.insert_recipe(conn, recipe_name)
     else:
         exit(4)
     
     #if we are adding the instructions or ingredients, else exit out
     if (instruction_flag == 1):
-        insert_instructions(conn, new_txt_file, recipe_name)
-    else if (instruction_flag == 2):
-        insert_ingredients(conn, new_txt_file, recipe_name)
+        adding_data.insert_instructions(conn, new_txt_file, recipe_name)
+    elif (instruction_flag == 2):
+        adding_data.insert_ingredients(conn, new_txt_file, recipe_name)
     else:
         dprint(instruction_flag + " Not Valid")
         exit(3)

@@ -58,7 +58,7 @@ class TestRecipeFunctions(unittest.TestCase):
 
     def test_1_insert_recipe(self):
         # Test inserting a recipe into the database
-        recipe_name = "Test Recipe"
+        recipe_name = "Test_Recipe"
         adding_data.insert_recipe(self.conn, recipe_name)
 
         cursor = self.conn.cursor()
@@ -70,7 +70,7 @@ class TestRecipeFunctions(unittest.TestCase):
 
     def test_insert_instructions(self):
         # Test inserting instructions into the database
-        recipe_name = "Test Recipe"
+        recipe_name = "Test_Recipe"
  
         adding_data.insert_instructions(self.conn, "tests/test_instructions.txt", recipe_name)
 
@@ -83,7 +83,7 @@ class TestRecipeFunctions(unittest.TestCase):
 
     def test_insert_ingredients(self):
         # Test inserting ingredients into the database
-        recipe_name = "Test Recipe"
+        recipe_name = "Test_Recipe"
 
         adding_data.insert_ingredients(self.conn, "tests/test_ingredients.txt", recipe_name)
 
