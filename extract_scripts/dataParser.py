@@ -243,10 +243,11 @@ def writetextfile(new_txt_file):
 #---------------
 def addToDatabase(recipe_name, new_txt_file, instruction_flag):
     #Conect to database
+
     conn = adding_data.connect_to_db()
     
     #Adding recipe to database, check if already there first
-    if ( adding_data.check_recipe_exist(recipe_name) ):
+    if  not adding_data.check_recipe_exist(conn, recipe_name):
         adding_data.insert_recipe(conn, recipe_name)
     else:
         exit(4)
@@ -311,9 +312,14 @@ if __name__ == "__main__":
     writetextfile(new_txt_file)
     
     #Extract recipe name from file path
+
     recipe_name = full_file_name.replace("_ingredients.html", "")
-    recipe_name = recipe_name.split('/',1)[-1]
+    recipe_name = recipe_name.replace("_instructions.html", "")
+    recipe_name = recipe_name.split('/')[-1]
     
+
+
+
     dprint(recipe_name)
     
 

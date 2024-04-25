@@ -98,9 +98,9 @@ def check_recipe_exist(conn, recipe):
 def main():
     conn = connect_to_db()
     if conn is not None:
-        insert_recipe(conn,"Chicken_Florentine")
-        insert_ingredients(conn, "../Recipes/skinnytaste/Chicken_Florentine/Chicken_Florentine_ingredients.txt","Chicken_Florentine")
-        insert_instructions(conn,"../Recipes/skinnytaste/Chicken_Florentine/Chicken_Florentine_instructions.txt","Chicken_Florentine")
+        # insert_recipe(conn,"Chicken_Florentine")
+        # # insert_ingredients(conn, "../Recipes/skinnytaste/Chicken_Florentine/Chicken_Florentine_ingredients.txt","Chicken_Florentine")
+        # # insert_instructions(conn,"../Recipes/skinnytaste/Chicken_Florentine/Chicken_Florentine_instructions.txt","Chicken_Florentine")
         # check_recipe_exist(conn, "Chicken_Florentine")
         # check_recipe_exist(conn,"adsfasfs")
         conn.close()
