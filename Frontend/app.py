@@ -7,6 +7,7 @@ import os
 from Frontend import prefix
 from Frontend import adding_data
 import psycopg2
+import subprocess
 
 from flask import Flask, url_for
 
@@ -49,6 +50,12 @@ app = Flask(__name__)
 ################
 @app.route('/', methods=['POST', 'GET'])
 def home():
+
+    if request.method == 'POST':
+        #Call genRecipes.sh<URL form form>
+
+        return
+
     #lst = ''' 
     #    <h1>Home Index</h1>
     #    <ul>
