@@ -75,7 +75,7 @@ class TestRecipeFunctions(unittest.TestCase):
         adding_data.insert_instructions(self.conn, "tests/test_instructions.txt", recipe_name)
 
         cursor = self.conn.cursor()
-        cursor.execute("SELECT COUNT(*) FROM instructions WHERE recipeID IN (SELECT id FROM recipe WHERE title = %s);", (recipe_name,))
+        cursor.execute("SELECT COUNT(*) FROM instructions WHERE recipeid IN (SELECT id FROM recipe WHERE title = %s);", (recipe_name,))
         count = cursor.fetchone()[0]
         cursor.close()
         
@@ -88,7 +88,7 @@ class TestRecipeFunctions(unittest.TestCase):
         adding_data.insert_ingredients(self.conn, "tests/test_ingredients.txt", recipe_name)
 
         cursor = self.conn.cursor()
-        cursor.execute("SELECT COUNT(*) FROM ingredients WHERE recipeID IN (SELECT id FROM recipe WHERE title = %s);", (recipe_name,))
+        cursor.execute("SELECT COUNT(*) FROM ingredients WHERE recipeid IN (SELECT id FROM recipe WHERE title = %s);", (recipe_name,))
         count = cursor.fetchone()[0]
         cursor.close()
         

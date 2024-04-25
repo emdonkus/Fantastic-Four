@@ -70,7 +70,7 @@ def insert_ingredients(conn, file_name, recipe_name):
         with open(file_name, 'r') as file:
             for line_number, line in enumerate(file, start=1):
                 ingredient = line.strip()
-                insert_query = "INSERT INTO ingredients (recipeID, food) VALUES (%s, %s);"
+                insert_query = "INSERT INTO ingredients (recipeid, food) VALUES (%s, %s);"
                 cursor.execute(insert_query, (recipe_id, ingredient))
         
         conn.commit()

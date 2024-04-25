@@ -243,18 +243,15 @@ def writetextfile(new_txt_file):
 #---------------
 def addToDatabase(recipe_name, new_txt_file, instruction_flag):
     #Conect to database
-    print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
     print(new_txt_file)
     print('Instruction flag type')
-    print(type(instruction_flag))
+    print(instruction_flag)
     print(recipe_name)
     conn = adding_data.connect_to_db()
     
     #Adding recipe to database, check if already there first
     if  not adding_data.check_recipe_exist(conn, recipe_name):
         adding_data.insert_recipe(conn, recipe_name)
-    else:
-        exit(4)
     
     #if we are adding the instructions or ingredients, else exit out
     if (instruction_flag == 1):
