@@ -237,6 +237,9 @@ def writetextfile(new_txt_file):
             count+=1
 #end writetextfile
 
+#--------------
+# Writes text file to database
+#---------------
 def addToDatabase(recipe_name, new_txt_file, instruction_flag):
     #Conect to database
     conn = connect_to_db()
