@@ -229,6 +229,7 @@ def writetextfile(new_txt_file):
     #----------------
     # Write parsed instructions to txt file with number
     #----------------
+    count = 1
     with open(new_txt_file, "w") as outputFile:
         dprint("Writing to new file " + new_txt_file )
         for step in parser.dataList:
@@ -297,11 +298,6 @@ if __name__ == "__main__":
     #-------------        
     parser = MyHTMLParser()
     parser.feed(html_instructions) 
-
-    #-------------
-    # Take dataList and write to file
-    #-------------
-    count = 1
 
     #-------------
     #create new text filename
