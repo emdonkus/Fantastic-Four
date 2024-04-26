@@ -2,30 +2,17 @@
 Author: Lex Bukowski
 Date: April 21, 2024
 Usage: This file runs tests on the adding_data.py file to test that the data from the extraction files is being correctly added to
-the database with the functions written in the adding_data.py file.
+the database with the functions written in the adding_data.py file. Run this file from the command line with python -m unittest tests.test_adding_data
 '''
-
 
 import unittest
 import psycopg2
 import sys
 import os
 
-import sys
-import os
-
-import sys
-import os
-
-# Get the current directory
-current_dir = os.path.dirname(os.path.realpath(__file__))
-
 # Add the parent directory to the Python path so that adding_data.py functions can be called
-parent_dir = os.path.abspath(os.path.join(current_dir, '..'))
-sys.path.append(parent_dir)
 
 from Frontend import adding_data
-
 
 
 class TestRecipeFunctions(unittest.TestCase):
@@ -71,7 +58,7 @@ class TestRecipeFunctions(unittest.TestCase):
 
     def test_1_insert_recipe(self):
         # Test inserting a recipe into the database
-        recipe_name = "Test Recipe"
+        recipe_name = "Test_Recipe"
         adding_data.insert_recipe(self.conn, recipe_name)
 
         cursor = self.conn.cursor()
@@ -83,12 +70,12 @@ class TestRecipeFunctions(unittest.TestCase):
 
     def test_insert_instructions(self):
         # Test inserting instructions into the database
-        recipe_name = "Test Recipe"
+        recipe_name = "Test_Recipe"
  
         adding_data.insert_instructions(self.conn, "tests/test_instructions.txt", recipe_name)
 
         cursor = self.conn.cursor()
-        cursor.execute("SELECT COUNT(*) FROM instructions WHERE recipeID IN (SELECT id FROM recipe WHERE title = %s);", (recipe_name,))
+        cursor.execute("SELECT COUNT(*) FROM instructions WHERE recipeid IN (SELECT id FROM recipe WHERE title = %s);", (recipe_name,))
         count = cursor.fetchone()[0]
         cursor.close()
         
@@ -96,12 +83,12 @@ class TestRecipeFunctions(unittest.TestCase):
 
     def test_insert_ingredients(self):
         # Test inserting ingredients into the database
-        recipe_name = "Test Recipe"
+        recipe_name = "Test_Recipe"
 
         adding_data.insert_ingredients(self.conn, "tests/test_ingredients.txt", recipe_name)
 
         cursor = self.conn.cursor()
-        cursor.execute("SELECT COUNT(*) FROM ingredients WHERE recipeID IN (SELECT id FROM recipe WHERE title = %s);", (recipe_name,))
+        cursor.execute("SELECT COUNT(*) FROM ingredients WHERE recipeid IN (SELECT id FROM recipe WHERE title = %s);", (recipe_name,))
         count = cursor.fetchone()[0]
         cursor.close()
         

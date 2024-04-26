@@ -39,3 +39,57 @@ Development method: scrum, kanban, waterfall: with specifics!
 
 Trello: 
     https://trello.com/b/yO1r4fG0/class3308
+
+
+## Overview
+
+This Flask application serves as a personal cookbook, allowing users to manage recipes, mark favorites, and search for recipes by name. The application is hosted on a Render cloud database.
+
+## Initializing Database
+
+To initialize the database, follow these steps:
+
+1. **Ensure Working Directory:** Make sure your working directory is set to Fantastic-Four.
+2. **Run Scripts:**
+    ```bash
+    python clear_db.py
+    python init_render_db.py
+    python -m unittest tests.test_adding_data
+    ```
+    These scripts clear any previous test data, initialize the necessary tables, and test adding data to the database.
+3. **Testing Completion:**
+    After testing, run:
+    ```bash
+    python clear_db.py
+    python init_render_db.py
+    ```
+    This clears the database of test data and initializes new blank tables.
+
+## Starting Flask Server
+
+To start the Flask server, run the following command in your terminal:
+```bash
+flask --app Frontend/app.py run
+```
+This command runs the Flask server on the default port 5000.
+
+## Application Functionality
+
+### Routes
+
+- `/`: Home page where users can paste a URL into the recipe fetcher to add recipe information to the database.
+- `/recipes`: Displays a list of recipes added by the user.
+- `/recipes/<recipe_title>`: Displays details of the specified recipe.
+- `/favorites`: Displays recipes marked as favorites by the user.
+- `/search`: Allows users to search for recipes by name.
+- `/cart`: Displays a list of ingredients needed to make the recipes marked as favorites.
+
+
+
+
+
+
+
+Usage
+/: Paste a URL into the field to add recipe information from the webpage to the personal cookbook (database).
+/favorites: Click the favorites button to toggle a recipe as a favorite.

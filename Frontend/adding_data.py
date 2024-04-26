@@ -70,7 +70,7 @@ def insert_ingredients(conn, file_name, recipe_name):
         with open(file_name, 'r') as file:
             for line_number, line in enumerate(file, start=1):
                 ingredient = line.strip()
-                insert_query = "INSERT INTO ingredients (recipeID, food) VALUES (%s, %s);"
+                insert_query = "INSERT INTO ingredients (recipeid, food) VALUES (%s, %s);"
                 cursor.execute(insert_query, (recipe_id, ingredient))
         
         conn.commit()
@@ -98,9 +98,9 @@ def check_recipe_exist(conn, recipe):
 def main():
     conn = connect_to_db()
     if conn is not None:
-        insert_recipe(conn,"Chicken_Florentine")
-        insert_ingredients(conn, "../Recipes/skinnytaste/Chicken_Florentine/Chicken_Florentine_ingredients.txt","Chicken_Florentine")
-        insert_instructions(conn,"../Recipes/skinnytaste/Chicken_Florentine/Chicken_Florentine_instructions.txt","Chicken_Florentine")
+        # insert_recipe(conn,"Chicken_Florentine")
+        # # insert_ingredients(conn, "../Recipes/skinnytaste/Chicken_Florentine/Chicken_Florentine_ingredients.txt","Chicken_Florentine")
+        # # insert_instructions(conn,"../Recipes/skinnytaste/Chicken_Florentine/Chicken_Florentine_instructions.txt","Chicken_Florentine")
         # check_recipe_exist(conn, "Chicken_Florentine")
         # check_recipe_exist(conn,"adsfasfs")
         conn.close()

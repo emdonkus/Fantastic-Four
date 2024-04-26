@@ -100,3 +100,99 @@ Additional Comments:<br>
     --Postgres database and flask<br>
     --Webpage Design started, discussed functionality for pages<br>
     --Continued to work on templates for frontend<br>
+    
+-----------------------------
+Week Start: 202400311 <br>
+Week End: 20240317<br>
+Semester Week : #9<br>
+Image:<br>
+<figure width=100%>
+    <img src="weeklysnapshots/Snap20240311.png" alt="Deliverable Item"ALIGN="center" />
+</figure>
+
+Additional Comments:<br>
+    --Added image extraction and better parsing<br>
+    --Webpage Design continued, discussed functionality for pages<br>
+    --PAGE_TESTING.md added<br>
+    --Continued to work on templates for frontend<br>
+    --Scheduled meeting to discuss Database script<br>
+    
+-----------------------------
+Week Start: 202400318 <br>
+Week End: 20240324<br>
+Semester Week : #10<br>
+Image:<br>
+<figure width=100%>
+    <img src="weeklysnapshots/Snap20240318.png" alt="Deliverable Item"ALIGN="center" />
+</figure>
+
+Additional Comments:<br>
+    --Webpage Design finished<br>
+    --Continued to work on templates for frontend<br>
+    --Meeting to discuss Database script<br>
+    --Database Testing started<br>
+    
+-----------------------------
+Week Start: 202400325 <br>
+Week End: 20240331<br>
+Semester Week : #11<br>
+Image:<br>
+<figure width=100%>
+    <img src="weeklysnapshots/Snap20240325.png" alt="Deliverable Item"ALIGN="center" />
+</figure>
+
+Additional Comments:<br>
+    --Continued to work on templates for frontend<br>
+    --Meeting to discuss Database script<br>
+    --Database Testing started<br>
+    --Use Cases for Database started<br>
+    
+-----------------------------
+Week Start: 20240401 <br>
+Week End: 20240407<br>
+Semester Week : #12<br>
+
+Additional Comments:<br>
+    --Continued development<br>
+    
+-----------------------------
+Week Start: 20240408 <br>
+Week End: 20240414<br>
+Semester Week : #13<br>
+Image:<br>
+<figure width=100%>
+    <img src="weeklysnapshots/Snap20240408.png" alt="Deliverable Item"ALIGN="center" />
+</figure>
+
+Additional Comments:<br>
+    --Continued to work on templates for frontend<br>
+    --Meeting to discuss Database script<br>
+    --Database Testing started<br>
+    --Use Cases for Database started<br>
+    
+-----------------------------
+Week Start: 20240415 <br>
+Week End: 20240421<br>
+Semester Week : #14<br>
+Image:<br>
+<figure width=100%>
+    <img src="weeklysnapshots/Snap20240415.png" alt="Deliverable Item"ALIGN="center" />
+</figure>
+
+Additional Comments:<br>
+    --Added Database stuff<br>
+    --Worked on web pages<br>
+    --Recipe.css nearly done, adding flourishes<br>
+    
+-----------------------------
+Week Start: 20240422 <br>
+Week End: 20240428<br>
+Semester Week : #15<br>
+Image:<br>
+<figure width=100%>
+    <img src="weeklysnapshots/Snap20240415.png" alt="Deliverable Item"ALIGN="center" />
+</figure>
+
+Additional Comments:<br>
+    --Presentation<br>
+    --Hooking up backend and frontend<br>

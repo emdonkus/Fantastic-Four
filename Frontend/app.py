@@ -7,6 +7,7 @@ import os
 from Frontend import prefix
 from Frontend import adding_data
 import psycopg2
+import subprocess
 
 from flask import Flask, url_for
 
@@ -50,6 +51,12 @@ prefix.use_PrefixMiddleware(app)
 ################
 @app.route('/', methods=['POST', 'GET'])
 def home():
+
+    if request.method == 'POST':
+        #Call genRecipes.sh<URL form form>
+
+        return
+
     #lst = ''' 
     #    <h1>Home Index</h1>
     #    <ul>
@@ -101,7 +108,6 @@ def search():
 
 @app.route('/favorites', methods=['POST', 'GET'])
 def favorites():
-
     recipe_id = 'Perfect_Pot_Roast'
     
     # if request.method == 'POST':
@@ -128,7 +134,7 @@ def favorites():
         try:
             cursor = conn.cursor()
             select_query = "SELECT title FROM recipe WHERE favorite = %s;"
-            cursor.execute(select_query, (False,))
+            cursor.execute(select_query, (True,))
             favorite_recipes = [row[0] for row in cursor.fetchall()]
             cursor.close()
 
@@ -239,11 +245,21 @@ def recipes(recipe_title):
             cursor.close()
             conn.close()
 
+            # Concatenate ingredients into a single string
+            ingredients_str = '\n'.join([ingredient[0] for ingredient in ingredients])
+
+            # Concatenate instructions into a single string
+            instructions_str = '\n'.join([instruction[0] for instruction in instructions])
+
+            image_path = url_for('static', filename=f'recipe/{title}/image.jpeg')
+
         except psycopg2.Error as e:
             return print("Error fetching recipe:", e)
 
+
+            # Rendering the template with the data
     return render_template('recipe.html', 
-                            # image_path=image_path, 
+                            image_path=image_path, 
                             title=title, 
                             ingredients=ingredients, 
                             instructions=instructions)

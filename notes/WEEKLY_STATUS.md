@@ -183,3 +183,16 @@ Additional Comments:<br>
     --Added Database stuff<br>
     --Worked on web pages<br>
     --Recipe.css nearly done, adding flourishes<br>
+    
+-----------------------------
+Week Start: 20240422 <br>
+Week End: 20240428<br>
+Semester Week : #15<br>
+Image:<br>
+<figure width=100%>
+    <img src="weeklysnapshots/Snap20240415.png" alt="Deliverable Item"ALIGN="center" />
+</figure>
+
+Additional Comments:<br>
+    --Presentation<br>
+    --Hooking up backend and frontend<br>

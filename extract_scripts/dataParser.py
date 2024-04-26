@@ -28,7 +28,7 @@ from html.parser import HTMLParser #Basis for python, used to parse through HTML
 import sys #used to read in command line inputs, ie when called from bash script
 import os
 import argparse
-import adding_data.py
+from Frontend import adding_data
 ##-----------------------
 ## HTML Parser reads in  an html file and parses between data and tags
 #-----------------------
@@ -229,6 +229,7 @@ def writetextfile(new_txt_file):
     #----------------
     # Write parsed instructions to txt file with number
     #----------------
+    count = 1
     with open(new_txt_file, "w") as outputFile:
         dprint("Writing to new file " + new_txt_file )
         for step in parser.dataList:
@@ -237,21 +238,26 @@ def writetextfile(new_txt_file):
             count+=1
 #end writetextfile
 
+#--------------
+# Writes text file to database
+#---------------
 def addToDatabase(recipe_name, new_txt_file, instruction_flag):
     #Conect to database
-    conn = connect_to_db()
+    print(new_txt_file)
+    print('Instruction flag type')
+    print(instruction_flag)
+    print(recipe_name)
+    conn = adding_data.connect_to_db()
     
     #Adding recipe to database, check if already there first
-    if ( !check_recipe_exists(recipe_name) ):
-        insert_recipe(conn, recipe_name)
-    else:
-        exit(4)
+    if  not adding_data.check_recipe_exist(conn, recipe_name):
+        adding_data.insert_recipe(conn, recipe_name)
     
     #if we are adding the instructions or ingredients, else exit out
     if (instruction_flag == 1):
-        insert_instructions(conn, new_txt_file, recipe_name)
-    else if (instruction_flag == 2):
-        insert_ingredients(conn, new_txt_file, recipe_name)
+        adding_data.insert_instructions(conn, new_txt_file, recipe_name)
+    elif (instruction_flag == 2):
+        adding_data.insert_ingredients(conn, new_txt_file, recipe_name)
     else:
         dprint(instruction_flag + " Not Valid")
         exit(3)
@@ -271,7 +277,7 @@ if __name__ == "__main__":
     dprint(full_file_name)
     
     if (sys.argv[2]):
-        instruction_flag = sys.argv[2]
+        instruction_flag = int(sys.argv[2])
     else:
         instruction_flag = -1
         
@@ -296,11 +302,6 @@ if __name__ == "__main__":
     parser.feed(html_instructions) 
 
     #-------------
-    # Take dataList and write to file
-    #-------------
-    count = 1
-
-    #-------------
     #create new text filename
     #-------------
     new_txt_file = full_file_name.replace(".html", ".txt")
@@ -312,9 +313,16 @@ if __name__ == "__main__":
     writetextfile(new_txt_file)
     
     #Extract recipe name from file path
+
     recipe_name = full_file_name.replace("_ingredients.html", "")
-    recipe_name = recipe_name.split('/',1)[-1]
+    recipe_name = recipe_name.replace("_instructions.html", "")
+    recipe_name = recipe_name.split('/')[-1]
     
+    add_instructions_db = recipe_name + '.txt'
+    add_ingredients_db = recipe_name + '.txt'
+
+
+
     dprint(recipe_name)
     
 
