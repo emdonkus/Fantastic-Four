@@ -65,6 +65,13 @@ To initialize the database, follow these steps:
     ```
     This clears the database of test data and initializes new blank tables.
 
+4. **Adding Recipes to Database:**
+    From the Fantastic-Four directory, run:
+    ```bash
+    ./genRecipes.sh
+    ```
+    This will run the extraction script that extracts recipes found at the URL's contained in the genRecipes.sh file and adds them to the cookbook (database).
+
 ## Starting Flask Server
 
 To start the Flask server, run the following command in your terminal:

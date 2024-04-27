@@ -13,6 +13,7 @@ information to the database. The usage statements are:
 
 
 import psycopg2
+import random
 
 # Function to create a database connection
 def connect_to_db():
@@ -25,10 +26,11 @@ def connect_to_db():
 
 # Function to read Recipe name from the extraction text file and insert into the database
 def insert_recipe(connection, recipe_name):
+    fav = random.choice([True, False])
     try:
         cursor = connection.cursor()
         insert_query = "INSERT INTO recipe (title, favorite) VALUES (%s, %s);"
-        cursor.execute(insert_query, (recipe_name, False))
+        cursor.execute(insert_query, (recipe_name, fav))
         connection.commit()
         cursor.close()
     except psycopg2.Error as e:
@@ -104,7 +106,7 @@ def main():
         # check_recipe_exist(conn, "Chicken_Florentine")
         # check_recipe_exist(conn,"adsfasfs")
         conn.close()
-        print("Database conn closed.")
+        #print("Database conn closed.")
 
 if __name__ == "__main__":
     main()
