@@ -16,7 +16,7 @@ app = Flask(__name__)
 
 # Insert the wrapper for handling PROXY when using csel.io virtual machine
 # Calling this routine will have no effect if running on local machine
-prefix.use_PrefixMiddleware(app)   
+#prefix.use_PrefixMiddleware(app)   
 
 # test route to show prefix settings
 # @app.route('/prefix_url')  
@@ -134,7 +134,7 @@ def favorites():
         try:
             cursor = conn.cursor()
             select_query = "SELECT title FROM recipe WHERE favorite = %s;"
-            cursor.execute(select_query, (False,))
+            cursor.execute(select_query, (True,))
             favorite_recipes = [row[0] for row in cursor.fetchall()]
             cursor.close()
 
@@ -144,7 +144,7 @@ def favorites():
 
         # Getting file paths for different components of the recipe
         image_path = url_for('static', filename=f'recipe/{recipe_id}/image.jpeg')
-        title_path = f'static/recipe/{recipe_id}/title.txt'
+        title_path = f'Frontend/static/recipe/{recipe_id}/title.txt'
 
         # Print the file paths for debugging
         print("Image Path:", image_path)
