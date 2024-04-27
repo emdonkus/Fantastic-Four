@@ -16,7 +16,7 @@ app = Flask(__name__)
 
 # Insert the wrapper for handling PROXY when using csel.io virtual machine
 # Calling this routine will have no effect if running on local machine
-#prefix.use_PrefixMiddleware(app)   
+prefix.use_PrefixMiddleware(app)   
 
 # test route to show prefix settings
 # @app.route('/prefix_url')  
@@ -36,7 +36,8 @@ app = Flask(__name__)
 
 
 #. venv/bin/activate
-#flask --app app.py run
+# export FLASK_DEBUG=true
+# flask --app app.py run
 
 # Insert the wrapper for handling PROXY when using csel.io virtual machine
 # Calling this routine will have no effect if running on local machine
@@ -107,7 +108,6 @@ def search():
 
 @app.route('/favorites', methods=['POST', 'GET'])
 def favorites():
-
     recipe_id = 'Perfect_Pot_Roast'
     
     # if request.method == 'POST':
@@ -134,7 +134,7 @@ def favorites():
         try:
             cursor = conn.cursor()
             select_query = "SELECT title FROM recipe WHERE favorite = %s;"
-            cursor.execute(select_query, (True,))
+            cursor.execute(select_query, (False,))
             favorite_recipes = [row[0] for row in cursor.fetchall()]
             cursor.close()
 
@@ -158,7 +158,7 @@ def favorites():
         #return favorite_recipes
         return render_template('favorites.html', 
                                 image_path=image_path, 
-                            titles=favorite_recipes)
+                            recipes=favorite_recipes)
     
 
 @app.route('/cart')
@@ -174,7 +174,11 @@ def cart():
 
 @app.route('/recipes',methods = ['GET'])
 def get_recipes():
-     if request.method == 'GET':
+    # dummy image
+    recipe_id = 'Perfect_Pot_Roast'
+    image_path = url_for('static', filename=f'recipe/{recipe_id}/image.jpeg')
+    
+    if request.method == 'GET':
         conn = adding_data.connect_to_db()
 
         try:
@@ -188,7 +192,7 @@ def get_recipes():
             print("Error fetching recipes:", e)
             return []
 
-        return recipes
+    return render_template('allrecipes.html', recipes=recipes, image=image_path)
 
 
 
@@ -257,41 +261,42 @@ def recipes(recipe_title):
     return render_template('recipe.html', 
                             image_path=image_path, 
                             title=title, 
-                            ingredients=ingredients_str, 
-                            instructions=instructions_str)
-
-@app.route('/recipe')
-def recipe():
-
-    recipe_id = 'Perfect_Pot_Roast'
-    # Getting file paths for different components of the recipe
-    image_path = url_for('static', filename=f'recipe/{recipe_id}/image.jpeg')
-    title_path = f'static/recipe/{recipe_id}/title.txt'
-    ingredients_path = f'static/recipe/{recipe_id}/ingredients.txt'
-    instructions_path = f'static/recipe/{recipe_id}/instructions.txt'
-    
-    # Print the file paths for debugging
-    print("Image Path:", image_path)
-    print("Title Path:", title_path)
-    print("Ingredients Path:", ingredients_path)
-    print("Instructions Path:", instructions_path)
-    
-    # Reading content from the files
-    with open(title_path, 'r') as f:
-        title = f.read().strip()
-
-    with open(ingredients_path, 'r') as f:
-        ingredients = f.read().strip()
-
-    with open(instructions_path, 'r') as f:
-        instructions = f.read().strip()
-        
-        # Rendering the template with the data
-    return render_template('recipe.html', 
-                            image_path=image_path, 
-                            title=title, 
                             ingredients=ingredients, 
                             instructions=instructions)
+
+#testing route for Perfect Pot Roast Recipe Page
+# @app.route('/recipe')
+# def recipe():
+
+#     recipe_id = 'Perfect_Pot_Roast'
+#     # Getting file paths for different components of the recipe
+#     image_path = url_for('static', filename=f'recipe/{recipe_id}/image.jpeg')
+#     title_path = f'static/recipe/{recipe_id}/title.txt'
+#     ingredients_path = f'static/recipe/{recipe_id}/ingredients.txt'
+#     instructions_path = f'static/recipe/{recipe_id}/instructions.txt'
+    
+#     # Print the file paths for debugging
+#     print("Image Path:", image_path)
+#     print("Title Path:", title_path)
+#     print("Ingredients Path:", ingredients_path)
+#     print("Instructions Path:", instructions_path)
+    
+#     # Reading content from the files
+#     with open(title_path, 'r') as f:
+#         title = f.read().strip()
+
+#     with open(ingredients_path, 'r') as f:
+#         ingredients = f.read().strip()
+
+#     with open(instructions_path, 'r') as f:
+#         instructions = f.read().strip()
+        
+#         # Rendering the template with the data
+#     return render_template('recipe.html', 
+#                             image_path=image_path, 
+#                             title=title, 
+#                             ingredients=ingredients, 
+#                             instructions=instructions)
 
 ##New Recipe URL
 from flask import jsonify
@@ -314,10 +319,33 @@ def fetch_recipe():
     except subprocess.CalledProcessError:
         return jsonify(success=False, message="Error during scraping")
     
-# @app.route('/get_recipe')
-# def get_recipe():
-    
 
+@app.route('/process_url', methods=['GET', 'POST'])
+def process_url():
+    # Retrieve URL from JSON data sent in the request body
+    if(request.method == 'POST'):
+        recipe_id = request.form.get('recipe_id', default=False)  # This should match the key in the POST data
+    # answer = get_post(recipe_id)
+    # Do something with recipe_id
+    return "Success", 200
+#     data = request.get_json()
+#     user_url = data.get('url')
+
+#     # Process the URL (e.g., fetch data from the URL)
+#     # Here, you can add your logic to process the URL and return any data
+#     # For now, just return a simple response
+#     return jsonify({'message': 'URL received', 'url': user_url})
+    
+# @app.post('/post_recipe')
+# def post_recipe():
+#     if(request.method == 'POST'):
+#         print("post")
+#         name = request.form['username']
+#         print("URL: ", name)
+#         return "Success", 200
+#     else:
+#         return "NOPE NOPE NOPE"
+    
 ###############################################################################
 # main driver function
 if __name__ == '__main__':

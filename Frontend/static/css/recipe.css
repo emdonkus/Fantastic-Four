@@ -141,3 +141,40 @@ body {
 #instruct  {
     background-color: white;
 }
+
+
+#allrecs {
+    display: flex;  /* Use Flexbox layout */
+    flex-wrap: wrap;  /* Allow elements to wrap if they don't fit in a row */
+    justify-content: space-between;  /* Evenly distribute space between cards */
+    padding: 1em;  /* Padding around the container */
+}
+
+#allrecs a {
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+}
+
+#reccard {
+    flex-basis: 45%;  /* Each card takes approximately 30% of the container's width */
+    margin: 10px;  /* Margin between cards */
+    background-color: darkred;  /* Light gray background */
+    border-radius: 5px;  /* Rounded corners */
+    padding: 20px;  /* Padding inside each card */
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);  /* Light shadow for depth */
+    text-align: center;  /* Center text alignment */
+}
+
+.recipe-info {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center items horizontally */
+}
+
+.recipe-image {
+    width: 100%; 
+    max-width: 100%; /* Ensure the image does not exceed its container's width */
+    border-radius: 5px; /* Rounded corners */
+    margin-top: 10px; /* Margin between recipe name and image */
+}
