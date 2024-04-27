@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipe</title>
+    <title>All Recipes</title>
     <link rel="stylesheet" href="static/css/recipe.css">
     
     <!-- fonts: -->
@@ -65,19 +65,19 @@
                 <i class="fa-solid fa-magnifying-glass"></i>
             </button> -->
 <!--         </div> -->
-        
     
     <!-- display recipe names from database -->
     <div id="allrecs">
         {% for recipe in recipes %}
         <div id='reccard'>
             <div class="recipe-info">
-            <a href="{{ url_for('recipes', recipe_title=recipe) }}">{{ recipe.replace("_", " ") }}</a> 
-            <img id="recipe_image" src="{{ image }}" alt="Recipe Image">
-                    </div>
+                <a href="{{ url_for('recipes', recipe_title=recipe) }}">{{ recipe.replace("_", " ") }}</a> 
+                <img id="recipe_image" src="{{ image }}" alt="Recipe Image">
+            </div>
         </div>
         {% endfor %}
     </div>
+
 
 </body>
 </html>

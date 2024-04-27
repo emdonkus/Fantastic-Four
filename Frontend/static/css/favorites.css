@@ -68,3 +68,15 @@ body {
     padding: 0;
 }
 
+h1 {
+    font-size: 24px;
+    background-color: darkred;
+    color: white;
+    text-align: center;
+}
+
+#faves {
+    background-color: #f2dea7
+}
+
+

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipe</title>
+    <title>Favorites</title>
     <link rel="stylesheet" href="static/css/favorites.css">
     
     <!-- fonts: -->
@@ -43,13 +43,15 @@
             </button> -->
 <!--         </div> --> 
  
-    <div id="instruct">
-        <h2 id="instructions_header">Instructions</h2>
-        <ol id="instructions_list">
-            {% for title in titles %}
-                <li>{{ title }}</li>
-            {% endfor %}
-        </ol>
+    <h1> Favorites </h1>
+    
+    <div id="faves">
+        {% for title in titles %}
+        <div id="favecard">
+            {{ title }}
+            <a href="{{ url_for('recipes', recipe_title=recipe) }}">{{ recipe.replace("_", " ") }}</a>
+        </div>
+        {% endfor %}
     </div>
 
 </body>
