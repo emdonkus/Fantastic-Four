@@ -30,7 +30,36 @@
 #------------
 URLs=(
     'https://www.skinnytaste.com/shrimp-stir-fry/'
-
+    'https://moonandspoonandyum.com/slow-cooker-roasted-potatoes/?utm_source=msn&utm_medium=page&utm_campaign=msn#recipe'
+    'https://www.skinnytaste.com/chicken-florentine/'
+    'https://damndelicious.net/2022/10/14/perfect-pot-roast/'
+    'https://www.budgetbytes.com/cranberry-apple-baked-oatmeal/'
+    'https://www.budgetbytes.com/creamy-garlic-chicken/'
+    'https://www.skinnytaste.com/5-ingredient-almond-cake-with-fresh/'
+    'https://www.skinnytaste.com/veggie-kabobs/'
+    'https://www.skinnytaste.com/macaroni-salad-with-tomatoes/'
+    'https://www.skinnytaste.com/baby-red-potato-salad/'
+    'https://www.skinnytaste.com/lentil-curry/'
+    'https://www.skinnytaste.com/roasted-mushrooms/'
+    'https://www.skinnytaste.com/hearts-of-palm-salad-with-avocado/'
+    'https://www.budgetbytes.com/basic-chili/'
+    'https://www.budgetbytes.com/goulash/'
+    'https://www.budgetbytes.com/caesar-salad/'
+    'https://www.budgetbytes.com/flan/'
+    'https://www.recipetineats.com/mexican-ground-beef-casserole-with-rice/'
+    'https://www.recipetineats.com/quick-broccoli-pasta/'
+    'https://damndelicious.net/2023/04/28/crispy-baked-chicken-tacos/'
+    'https://damndelicious.net/2022/05/27/roasted-cauliflower/'
+    'https://moonandspoonandyum.com/chickpea-kale-salad/'
+    'https://moonandspoonandyum.com/rujak/'
+    'https://moonandspoonandyum.com/cherry-tomato-confit/'
+    'https://moonandspoonandyum.com/gluten-free-bannock-bread/'
+    'https://natashaskitchen.com/pan-seared-steak/'
+    'https://natashaskitchen.com/egg-salad-recipe/'
+    'https://natashaskitchen.com/zucchini-muffins-recipe/'
+    'https://www.orchidsandsweettea.com/pan-seared-steak-recipe/'
+    'https://www.budgetbytes.com/navy-bean-soup/'
+    'https://natashaskitchen.com/zuppa-toscana-recipe-video/'
 
 
 
@@ -64,7 +93,7 @@ URLs=(
     # 'https://natashaskitchen.com/zucchini-muffins-recipe/'
     # 'https://www.orchidsandsweettea.com/pan-seared-steak-recipe/'
     # 'https://www.budgetbytes.com/navy-bean-soup/'
-#     'https://natashaskitchen.com/zuppa-toscana-recipe-video/'
+    # 'https://natashaskitchen.com/zuppa-toscana-recipe-video/'
 #------------
 # Size of array
 #------------
