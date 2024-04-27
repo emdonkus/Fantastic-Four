@@ -134,7 +134,7 @@ def favorites():
         try:
             cursor = conn.cursor()
             select_query = "SELECT title FROM recipe WHERE favorite = %s;"
-            cursor.execute(select_query, (True,))
+            cursor.execute(select_query, (False,))
             favorite_recipes = [row[0] for row in cursor.fetchall()]
             cursor.close()
 
@@ -158,7 +158,7 @@ def favorites():
         #return favorite_recipes
         return render_template('favorites.html', 
                                 image_path=image_path, 
-                            titles=favorite_recipes)
+                            recipes=favorite_recipes)
     
 
 @app.route('/cart')
@@ -320,18 +320,32 @@ def fetch_recipe():
         return jsonify(success=False, message="Error during scraping")
     
 
-@app.route('/process_url', methods=['POST'])
+@app.route('/process_url', methods=['GET', 'POST'])
 def process_url():
     # Retrieve URL from JSON data sent in the request body
-    data = request.get_json()
-    user_url = data.get('url')
+    if(request.method == 'POST'):
+        recipe_id = request.form.get('recipe_id', default=False)  # This should match the key in the POST data
+    # answer = get_post(recipe_id)
+    # Do something with recipe_id
+    return "Success", 200
+#     data = request.get_json()
+#     user_url = data.get('url')
 
-    # Process the URL (e.g., fetch data from the URL)
-    # Here, you can add your logic to process the URL and return any data
-    # For now, just return a simple response
-    return jsonify({'message': 'URL received', 'url': user_url})
+#     # Process the URL (e.g., fetch data from the URL)
+#     # Here, you can add your logic to process the URL and return any data
+#     # For now, just return a simple response
+#     return jsonify({'message': 'URL received', 'url': user_url})
     
-
+# @app.post('/post_recipe')
+# def post_recipe():
+#     if(request.method == 'POST'):
+#         print("post")
+#         name = request.form['username']
+#         print("URL: ", name)
+#         return "Success", 200
+#     else:
+#         return "NOPE NOPE NOPE"
+    
 ###############################################################################
 # main driver function
 if __name__ == '__main__':
