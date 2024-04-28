@@ -143,14 +143,14 @@ def favorites():
             return []
 
         # Getting file paths for different components of the recipe
-        image_path1 = url_for('static', filename=f'recipe/{recipe_id}/image.jpeg')
-        image_path = url_for('static', filename=f'recipe/Chicken_Florentine_image.jpg')
+        # image_path1 = url_for('static', filename=f'recipe/{recipe_id}/image.jpeg')
+        # image_path = url_for('static', filename=f'recipe/Chicken_Florentine_image.jpg')
+        image_path = url_for('static', filename=f'recipe/images')
         # title_path = f'Frontend/static/recipe/{recipe_id}/title.txt'
 
         # Print the file paths for debugging
-        print("Image Path:", image_path)
+        # print("Image Path:", image_path)
         # print("Title Path:", title_path)
-        print(favorite_recipes)
 
         # Reading content from the files
         # with open(title_path, 'r') as f:
