@@ -73,7 +73,7 @@
         <div id='reccard'>
             <div class="recipe-info">
                 <a href="{{ url_for('recipes', recipe_title=recipe) }}">{{ recipe.replace("_", " ") }}</a> 
-                <img id="recipe_image" src="{{ image }}" alt="Recipe Image">
+                <img id="recipe_image" src="{{ image_path }}/{{ recipe }}_image.jpg" alt="Recipe Image">
             </div>
         </div>
         {% endfor %}

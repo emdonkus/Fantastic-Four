@@ -143,18 +143,18 @@ def favorites():
             return []
 
         # Getting file paths for different components of the recipe
-        image_path = url_for('static', filename=f'recipe/{recipe_id}/image.jpeg')
-        # image_path = url_for("Recipes", filename='skinnytaste/Almond_Cake/Almond_Cake_image.jpg')
-        title_path = f'Frontend/static/recipe/{recipe_id}/title.txt'
+        image_path1 = url_for('static', filename=f'recipe/{recipe_id}/image.jpeg')
+        image_path = url_for('static', filename=f'recipe/Chicken_Florentine_image.jpg')
+        # title_path = f'Frontend/static/recipe/{recipe_id}/title.txt'
 
         # Print the file paths for debugging
         print("Image Path:", image_path)
-        print("Title Path:", title_path)
+        # print("Title Path:", title_path)
         print(favorite_recipes)
 
         # Reading content from the files
-        with open(title_path, 'r') as f:
-            title = f.read().strip()
+        # with open(title_path, 'r') as f:
+            # title = f.read().strip()
 
         # Rendering the template with the data
         #return favorite_recipes
@@ -178,7 +178,7 @@ def cart():
 def get_recipes():
     # dummy image
     recipe_id = 'Perfect_Pot_Roast'
-    image_path = url_for('static', filename=f'recipe/{recipe_id}/image.jpeg')
+    # image_path = url_for('static', filename=f'recipe/{recipe_id}/image.jpeg')
     
     if request.method == 'GET':
         conn = adding_data.connect_to_db()
@@ -193,8 +193,11 @@ def get_recipes():
         except psycopg2.Error as e:
             print("Error fetching recipes:", e)
             return []
+        
+    image_path = url_for('static', filename=f'recipe/images')
 
-    return render_template('allrecipes.html', recipes=recipes, image=image_path)
+
+    return render_template('allrecipes.html', recipes=recipes, image_path=image_path)
 
 
 
