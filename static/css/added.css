@@ -1,4 +1,5 @@
-/* Created Hallee Ray 4/16/2024 */
+/* edited Matthew Scott, Hallee Ray 4/22/2024 */
+
 
 
 /* basic format for site name and navigation */
@@ -67,62 +68,9 @@ body {
     padding: 0;
 }
 
-h2 {
-    background-color: darkred;
-    color: white;
-    padding: 1em;
-}
-
-#about,
-#addRecipe {
-    padding: 2em;
+h1 {
+    font-size: 36px;
     background-color: #f2dea7;
-    font-size: 20px;
-}
-
-#about div{
-    border-color: darkred;
-}
-
-#plan ul {
-    list-style-type: none;
-}
-
-#addRecipe{
-    align-items: center;
-    text-align: center;
-}
-#fetchbar {
-    padding: 5px;
-    display: block;
-/*     align-items: center;
-    text-align: center; */
-}
-#fetchbar input[type="text"] {
-    height: 30px; 
-    padding: 5px; 
-    border: none; 
-    border-radius: 5px; 
-}
-#fetchbar button.fetch_button {
-    width: 120px; 
-    height: 40px; 
-    background-color: darkred;
-    color: white; 
-    border: none; 
-    border-radius: 5px; 
-    cursor: pointer;
-}
-#fetchbar button.fetch_button:hover {
-    background-color: darkgray; /* Change background color on hover */
-}
-
-#fetchbar a {
-    border: double;
-    background-color: darkred;
     color: white;
-}
-
-/* function as flex box to display favorites cards*/
-#favorites {
+    text-align: center;
 }

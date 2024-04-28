@@ -16,7 +16,7 @@ app = Flask(__name__)
 
 # Insert the wrapper for handling PROXY when using csel.io virtual machine
 # Calling this routine will have no effect if running on local machine
-#prefix.use_PrefixMiddleware(app)   
+prefix.use_PrefixMiddleware(app)   
 
 # test route to show prefix settings
 # @app.route('/prefix_url')  
@@ -143,8 +143,8 @@ def favorites():
             return []
 
         # Getting file paths for different components of the recipe
-        #image_path = url_for('static', filename=f'recipe/{recipe_id}/image.jpeg')
-        image_path = 'Recipes/skinnytaste/Almond_Cake/Almond_Cake_image.jpg'
+        image_path = url_for('static', filename=f'recipe/{recipe_id}/image.jpeg')
+        # image_path = url_for("Recipes", filename='skinnytaste/Almond_Cake/Almond_Cake_image.jpg')
         title_path = f'Frontend/static/recipe/{recipe_id}/title.txt'
 
         # Print the file paths for debugging
@@ -320,6 +320,10 @@ def fetch_recipe():
         return jsonify(success=True)
     except subprocess.CalledProcessError:
         return jsonify(success=False, message="Error during scraping")
+    
+@app.route('/added')
+def added():
+    return render_template('added.html')
     
 
 @app.route('/process_url', methods=['GET', 'POST'])
