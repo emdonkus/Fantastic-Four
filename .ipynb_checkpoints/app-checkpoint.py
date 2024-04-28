@@ -167,8 +167,8 @@ def favorites():
 def cart():
     ## Get request for shopping cart table
     ## title and ingredients
-    thisdict = {'Perfect Pot Roast': ['1. 4 pounds boneless chuck roast, excess fat trimmedKosher salt and freshly ground black pepper, to taste','2. 2 tablespoons canola oil', '3. 1 medium sweet onion, cut into 1-inch wedges','4. 2 tablespoons tomato paste','5. 4 cloves garlic, minced','6. 1 cup dry red wine*','7. 1 cup beef stock'],
-           '2Perfect Pot Roast2': ['1. 4 pounds boneless chuck roast, excess fat trimmedKosher salt and freshly ground black pepper, to taste','2. 2 tablespoons canola oil', '3. 1 medium sweet onion, cut into 1-inch wedges','4. 2 tablespoons tomato paste','5. 4 cloves garlic, minced','6. 1 cup dry red wine*','7. 1 cup beef stock']}
+    thisdict = {'Perfect Pot Roast': ['1. 4 pounds boneless chuck roast, excess fat trimmedKosher salt and freshly ground black pepper, to taste','2. 2 tablespoons canola oil', '3. 1 medium sweet onion, cut into 1-inch wedges','4. 2 tablespoons tomato paste','5. 4 cloves garlic, minced','6. 1 cup dry red wine*','7. 1 cup beef stock', '8. 3 large carrots, cut into 3-inch pieces', '9. 8 ounces cremini mushrooms','10. 4 sprigs fresh thyme', '11. 1 sprig fresh rosemary','12. 1 ½ pounds small Yukon gold potatoes','13. 2 tablespoons chopped fresh parsley leaves'],
+           'Shrimp Stir Fry': ['1. 2 tablespoons water', '2. 1 tablespoon cornstarch', '3. 1/4 cup low-sodium soy sauce (or gluten-free tamari)', '4. 2 tablespoons rice vinegar', '5. 1 tablespoon brown sugar', '6. 1 tablespoon minced ginger or garlic (or both)', '7. 2 teaspoons sriracha (optional)', '8. 1 tablespoon sesame oil or vegetable oil', '9. 1 1/4 pounds peeled large shrimp (patted dry)', '10. 8 ounces asparagus cut into 1-inch pieces (or snow peas)', '11. 1 large red bell pepper (cut in 1-inch pieces)', '12. 2 cups cooked rice', '13. 1 teaspoon toasted sesame seeds for serving']}
     filename = 'static/cart.html'
     # return send_file(filename)
     return render_template('cart.html', recipes=thisdict)
@@ -256,7 +256,7 @@ def recipes(recipe_title):
             # Concatenate instructions into a single string
             instructions_str = '\n'.join([instruction[0] for instruction in instructions])
 
-            image_path = url_for('static', filename=f'recipe/{title}/image.jpeg')
+            image_path = url_for('static', filename=f'recipe/images')
 
         except psycopg2.Error as e:
             return print("Error fetching recipe:", e)
@@ -323,10 +323,6 @@ def fetch_recipe():
         return jsonify(success=True)
     except subprocess.CalledProcessError:
         return jsonify(success=False, message="Error during scraping")
-    
-@app.route('/added')
-def added():
-    return render_template('added.html')
     
 
 @app.route('/process_url', methods=['GET', 'POST'])

@@ -73,6 +73,7 @@ h1 {
     background-color: darkred;
     color: white;
     text-align: center;
+    padding: 1em;
 }
 
 /* #faves {
@@ -80,11 +81,12 @@ h1 {
 } */
 
 #recipe_image {
-    max-width: 50%; /* Adjust width of image */
-    max-height: 50%;
-    height: auto;
-    margin: 20px;
-    align-self: center;
+    width: 100%; 
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 5px; /* Rounded corners */
+    margin-top: 10px;
 }
 
 #allrecs {
@@ -114,4 +116,18 @@ h1 {
     display: flex;
     flex-direction: column; /* Stack elements vertically */
     align-items: center; /* Center items horizontally */
+}
+
+.square-container {
+  width: 300px; /* Example width */
+  height: 300px; /* Same as width to create a square */
+  overflow: hidden; /* Ensures any overflow is clipped */
+  position: relative; /* Allows for absolute positioning within */
+}
+
+.square-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Maintains the square while cropping */
+  object-position: center; /* Centers the image content */
 }

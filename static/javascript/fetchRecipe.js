@@ -1,5 +1,27 @@
 document.addEventListener('DOMContentLoaded', function() {
     
+    // Get references to the button and the result div
+    const fetchButton = document.getElementById('fetch_button');
+    const resultDiv = document.getElementById('result');
+
+    // Add an event listener for the 'click' event on the button
+    fetchButton.addEventListener('click', function(event) {
+      // Prevent the default form submission behavior if the button is inside a form
+      event.preventDefault();
+
+      // Update the result div to show a new message
+      resultDiv.innerText = 'Recipe Added!';
+    });
+    
+    
+    
+    
+    
+    // var fetch_button = document.getElementById('fetch_button');
+    // fetch_button.addEventListener("click", function(){
+    //     betch_button.innerText = 'Recipe added!';
+    // });
+    
     //check if the input is a url
 //     function isValidUrl(url) {
 //         // Regular expression to match a URL
@@ -50,6 +72,6 @@ document.addEventListener('DOMContentLoaded', function() {
 //         }
 //     });
 
-// });
+});
 
 
