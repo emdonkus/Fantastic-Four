@@ -59,7 +59,6 @@ URLs=(
     'https://natashaskitchen.com/zucchini-muffins-recipe/'
     'https://www.orchidsandsweettea.com/pan-seared-steak-recipe/'
     'https://www.budgetbytes.com/navy-bean-soup/'
-    'https://natashaskitchen.com/zuppa-toscana-recipe-video/'
 
 
 

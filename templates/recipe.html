@@ -71,12 +71,15 @@
             <h2 id="ingredients_header">Ingredients</h2>
             <ul id="ingredients_list">
                 {% for ingredient in ingredients %}
-                <li>{{ ingredient }}</li>
+                <li>{{ ingredient[0].strip("(' '") }}</li>
                 {% endfor %}
             </ul>
         </div>
     
-        <img id="recipe_image" src="{{ image_path }}" alt="Recipe Image">
+        <div class="img-container"> 
+            <img id="recipe_image" src="{{ image_path }}/{{ title }}_image.jpg" alt="Recipe Image">
+        </div>
+        
         
     </div>
     
@@ -84,7 +87,7 @@
         <h2 id="instructions_header">Instructions</h2>
         <ol id="instructions_list">
             {% for instruction in instructions %}
-                <li>{{ instruction }}</li>
+                <li>{{ instruction[0].strip("(' '") }}</li>
             {% endfor %}
         </ol>
     </div>
