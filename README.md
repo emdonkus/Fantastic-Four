@@ -76,11 +76,13 @@ To initialize the database, follow these steps:
 
 To start the Flask server, run the following command in your terminal:
 ```bash
-flask --app Frontend/app.py run
+flask --app app.py run
 ```
 This command runs the Flask server on the default port 5000.
 
 ## Application Functionality
+
+Add in language for running on juptyer hub vs not
 
 ### Routes
 
