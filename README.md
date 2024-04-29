@@ -74,6 +74,14 @@ To initialize the database, follow these steps:
 
 ## Starting Flask Server
 
+If running this application in JupyterHub, line 19 in the app.py file:
+
+```python
+prefix.use_PrefixMiddleware(app)  
+```
+ needs to uncommented in order to run correctly on the Jupyter server.
+
+
 To start the Flask server, run the following command in your terminal:
 ```bash
 flask --app app.py run
@@ -82,7 +90,10 @@ This command runs the Flask server on the default port 5000.
 
 ## Application Functionality
 
-Add in language for running on juptyer hub vs not
+The perfered method to access this application is through the Render web hosting URL:
+
+https://fantastic-four.onrender.com/
+
 
 ### Routes
 

@@ -106,7 +106,7 @@ def search():
                            title=title,)
 
 
-@app.route('/favorites', methods=['POST', 'GET'])
+@app.route('/favorites', methods=['POST', 'GET','PATCH'])
 def favorites():
     recipe_id = 'Perfect_Pot_Roast'
     
@@ -202,10 +202,10 @@ def get_recipes():
 
 
 ####Dynamic
-@app.route('/recipes/<recipe_title>', methods=['POST', 'GET'])
+@app.route('/recipes/<recipe_title>', methods=['POST', 'GET','PATCH'])
 def recipes(recipe_title):
         
-    if request.method == 'POST':
+    if request.method == 'PATCH':
         # Extract recipe ID from the POST request
         recipe_id = request.form['recipe_id']
 
