@@ -196,3 +196,12 @@ Image:<br>
 Additional Comments:<br>
     --Presentation<br>
     --Hooking up backend and frontend<br>
+    
+-----------------------------
+Week Start: 20240429 <br>
+Week End: 20240505<br>
+Semester Week : #16<br>
+
+Additional Comments:<br>
+    --Presentation<br>
+    --Final Report<br>
