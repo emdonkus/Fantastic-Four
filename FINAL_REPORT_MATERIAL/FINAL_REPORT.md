@@ -10,7 +10,7 @@
     <ul>
         <li> Matthew Scott </li>
         <li> Lex Bukowski </li>
-        <li> Halle Ray </li>
+        <li> Hallee Ray </li>
         <li> Evan Donkus </li>
     </ul>
 </p>
@@ -21,7 +21,7 @@
     <ul>
         <li><a href="https://trello.com/b/yO1r4fG0/class3308">Project tracker </a></li>
         <li><a href="https://github.com/emdonkus/Fantastic-Four">Github</a></li>
-        <li><a herf="INSERT PUBLIC SITE HERE">Cut'n'Pasta Webstie</a></li>
+        <li><a href="https://fantastic-four.onrender.com">Cut'n'Pasta Website</a></li>
     </ul>
 </p>
 <h2>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recipe Fetcher</title>
+    <link rel="stylesheet" href="static/css/home.css">
+    <script src="{{ url_for('static', filename='javascript/fetchRecipe.js') }}"></script>
+</head>
+<body>
+    <h1>Recipe Fetcher</h1>
+    <p>Want to add a new recipe to the site?  Enter a URL to fetch a recipe:</p>
+    <div id="fetchbar">
+        <form action="/post_recipe" method="POST">
+            <input type="text" id="recipeUrl" placeholder="Enter URL here" name="username">
+            <button type="submit" id="fetch_button"> Fetch Recipe</button>
+            <div id="result"></div> <!-- To display results or messages -->
+        </form>
+    </div>
+</body>
+</html>
