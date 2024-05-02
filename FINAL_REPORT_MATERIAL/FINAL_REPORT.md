@@ -30,20 +30,34 @@
     <p>
         <ul>
             <li>Accepts links from a subset of recipe blogs, using wordpress module</li>
-            <li>Retireves ingredients and instructions</li>
+            <li>Retireves recipe name, ingredients and instructions</li>
             <li>Adds data from text files to database</li>
+            <li>Database populates /recipes route with all of the recipes in the database </li>
+            <li>Databse populates /recipes/"recipe_name" dynamic route with recipe name, ingredients, and instructions</li>
+            <li> /favorites route populates with recipes marked as favorites in database </li>
         </ul>
     </p>
 <h2>
-    Incomplete Tasks
+    In-Work Tasks
 </h2>
+    <p>
+        <ul>
+            <li>Front end favorites button does not toggle favorite boolean on the backend (disocnnect between frontend patch request and backend patch handling) </li>
+            <li>Get recipe button does not call script to web scrape the url and add the information to the database </li>
+            <li>Unit tests for front end data population from the database</li>
+            <li>Unit tests for patch and post requests from frontend user input</li>
+        </ul>
+    </p>
+
 <h2>
     Future Work
 </h2>
 <p>
     <ul>
+        <li>Shopping card additions and functionality to combine repeated ingredients</li>
         <li>Accept links for websites that don't use Wordpress Recipe Module</li>
         <li>Provide better unit testing for DataParser class</li>
+        <li>Provide better unit testing for front end page population</li>
         <li>Organize code</li>
     </ul>
 </p>
@@ -55,6 +69,7 @@
         <li>Certain parts of recipe extraction do not properly break up ingredients and instructions. This resutls from deployed html having oddball syntax</li>
         <li> DataParser's parsing syntax needs to be improved to handle more conditions</li>
         <li> As more recipes are added, more files are added to recipes before being added to the database. Reduce or remov ethe need for additioanl files to be created</li>
+        <li>Missing unit testing</li>
     </ul>
 </p>
 <h2>
@@ -63,6 +78,25 @@
 <video src="INSERT SOURCE HERE" width="320" height="240" controls>
     YOUR BROWSER DOES NOT SUPPORT A VIDEO
 </video>
+
+<h2>
+Reflection
+</h>
+    <h3>
+        Functionality
+    </h3>
+        <p>
+            Overall, the application is a button connectivity away from being the product we were hoping to build. The fetch recipe button does not connect to the python and bash scripts that fetch, parse, and add the data to the databse. The bash script can be called from the terminal with a URL as an argument and has the desired functionality. The recipes, favorites, and recipes/"recipe_name" dynamic route all work well with the intended functionality and live data from the database. The shopping cart feature is built well on the front end, but is not built on the backend due to the recurring trouble we had linking user input on the front end to backend flask method calls.
+        </p>
+    <h3>
+        Testing
+    </h3>
+        <p>
+            Unit testing was a shortcoming of our project. Unit tests were built for initial database connection function and the functions for adding data to each table. Unit testing the shell web scrapping script proved to be challenging due to the fact that it was written in bash, not python. Unit tests should also have been written for the flask route functions that were populating information from the database, however more time was spent troubleshooting the http method calls, and the results could visually be seen to be correct, so testing those functions was pushed to the backburner while trying to build more funcitonality. That mindset seems to be the downfall of many coding projects at every level and should be avoided.
+        </p>
+    <h3>
+        Anything else?
+    </h3>
 
 
 Make sure that your repository has the following files committed to remote repository:
