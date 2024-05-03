@@ -75,9 +75,9 @@
 <h2>
     Website Demonstration
 </h2>
-<video src="INSERT SOURCE HERE" width="320" height="240" controls>
-    YOUR BROWSER DOES NOT SUPPORT A VIDEO
-</video>
+<a href="https://drive.google.com/file/d/15ICaVa3tmzHCdUTTqjd2n2iVksS-n84A">
+    Google Drive Link. Video was too large for github.
+</a>
 
 <h2>
 Reflection
@@ -95,9 +95,17 @@ Reflection
             Unit testing was a shortcoming of our project. Unit tests were built for initial database connection function and the functions for adding data to each table. Unit testing the shell web scrapping script proved to be challenging due to the fact that it was written in bash, not python. Unit tests should also have been written for the flask route functions that were populating information from the database, however more time was spent troubleshooting the http method calls, and the results could visually be seen to be correct, so testing those functions was pushed to the backburner while trying to build more funcitonality. That mindset seems to be the downfall of many coding projects at every level and should be avoided.
         </p>
     <h3>
-        Anything else?
+        Configuraiton Management
     </h3>
-
+    <p>
+        As we were working, our source code became messy. Sometimes we would edit the same piece of code at the same time. Often this resulted in merge conflicts that we ahd to resolve through reading each others code. When the code were editing was well documented and the git commits were clear, this was an easy solution. When it was poorly commented or unclear, merging became a pain. A few times, we ahd to have a meeting to make sure we could resolve the issue while getting the right changes in the code.  
+    </p>
+    <h3>
+        Task Tracking
+    </h3>
+    <p>
+    We used trello for task tracking. It took a lot of upfront to set it up for tasking and lacked good features for relating it to versions of code or any code changes. This tool, as all task managmenet/project tracking tools, takes a concentrated effort from users to maintian and update. For our small project, tasking was sorted out effectively at our meetings and we were able to make sure everyone was involved. For larger projects, a task tracking tool like this is necessary but I think that more often than not large orgs also have dedicated people to managing tools and encouraging (enforcing) use. This tool did lack a lot of good features for story pointing, designating relationship between tasks such as blocking tasks. 
+    </p>
 
 Make sure that your repository has the following files committed to remote repository:
 
