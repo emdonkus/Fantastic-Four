@@ -89,23 +89,41 @@ Reflection
             Overall, the application is a button connectivity away from being the product we were hoping to build. The fetch recipe button does not connect to the python and bash scripts that fetch, parse, and add the data to the databse. The bash script can be called from the terminal with a URL as an argument and has the desired functionality. The recipes, favorites, and recipes/"recipe_name" dynamic route all work well with the intended functionality and live data from the database. The shopping cart feature is built well on the front end, but is not built on the backend due to the recurring trouble we had linking user input on the front end to backend flask method calls.
         </p>
     <h3>
+        Integration
+    </h3>
+        <p>
+            The main struggles near the end of this project had to do with getting our front end functionality to integrate with the back end functionality. The pieces were built separatly and the team did not agree on the "handoff" point between the front end and the back end before building the features. This led to confusion on how they would connect and the expectation of each persons work.
+        </p>    
+    <h3>
         Testing
     </h3>
         <p>
             Unit testing was a shortcoming of our project. Unit tests were built for initial database connection function and the functions for adding data to each table. Unit testing the shell web scrapping script proved to be challenging due to the fact that it was written in bash, not python. Unit tests should also have been written for the flask route functions that were populating information from the database, however more time was spent troubleshooting the http method calls, and the results could visually be seen to be correct, so testing those functions was pushed to the backburner while trying to build more funcitonality. That mindset seems to be the downfall of many coding projects at every level and should be avoided.
         </p>
     <h3>
+        Documentation
+    </h3>
+        <p>
+            No documentation programs or automation was used in this project. A README was written which does fully explain to a new user how to initiate and run the flask application, however this was built at the end of the project. There are many documentaiton tools that would have helped create the documentaiton features were built instead of waiting until the end of the project.
+        </p>
+    <h3>
         Configuraiton Management
     </h3>
-    <p>
-        As we were working, our source code became messy. Sometimes we would edit the same piece of code at the same time. Often this resulted in merge conflicts that we ahd to resolve through reading each others code. When the code were editing was well documented and the git commits were clear, this was an easy solution. When it was poorly commented or unclear, merging became a pain. A few times, we ahd to have a meeting to make sure we could resolve the issue while getting the right changes in the code.  
-    </p>
+        <p>
+            As we were working, our source code became messy. Sometimes we would edit the same piece of code at the same time. Often this resulted in merge conflicts that we ahd to resolve through reading each others code. When the code we were editing was well documented and the git commits were clear, this was an easy solution. When it was poorly commented or unclear, merging became a pain. A few times, we ahd to have a meeting to make sure we could resolve the issue while getting the right changes in the code. This issue was more prevalent due to the lack of feature branches we created, and especially as project deadlines approached, more pushing to main was occuring. The editing and pushing to the main branch is not a good coding practice, and sorting through the merge issues, in the long run, probably took more time than if branches were created and merged properly.
+        </p>
+    <h3>
+        Code Editors
+    </h3>
+        <p>
+            We used VSCode and JupyterHub as code editors to complete this project. Using multiple IDE's proved to be tricky, as spinning up the built flask server required different functions on JupyterHub than it did while using VSCode. JupyterHub was very useful for giving the team a standard linux platform to code off of, but it is very basic when compared to code visualization and customization compared to VSCode.
+        </p>
     <h3>
         Task Tracking
     </h3>
-    <p>
-    We used trello for task tracking. It took a lot of upfront to set it up for tasking and lacked good features for relating it to versions of code or any code changes. This tool, as all task managmenet/project tracking tools, takes a concentrated effort from users to maintian and update. For our small project, tasking was sorted out effectively at our meetings and we were able to make sure everyone was involved. For larger projects, a task tracking tool like this is necessary but I think that more often than not large orgs also have dedicated people to managing tools and encouraging (enforcing) use. This tool did lack a lot of good features for story pointing, designating relationship between tasks such as blocking tasks. 
-    </p>
+        <p>
+            We used trello for task tracking. It took a lot of upfront to set it up for tasking and lacked good features for relating it to versions of code or any code changes. This tool, as all task managmenet/project tracking tools, takes a concentrated effort from users to maintian and update. For our small project, tasking was sorted out effectively at our meetings and we were able to make sure everyone was involved. For larger projects, a task tracking tool like this is necessary but I think that more often than not large orgs also have dedicated people to managing tools and encouraging (enforcing) use. This tool did lack a lot of good features for story pointing, designating relationship between tasks such as blocking tasks. 
+        </p>
 
 Make sure that your repository has the following files committed to remote repository:
 
