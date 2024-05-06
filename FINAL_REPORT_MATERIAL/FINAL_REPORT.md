@@ -46,6 +46,7 @@
             <li>Fetch recipe button does not call script to web scrape the url and add the information to the database </li>
             <li>Unit tests for front end data population from the database</li>
             <li>Unit tests for patch and post requests from frontend user input</li>
+            <li>Images are stored locally in static folder of repo, patch to save them to database</li>
         </ul>
     </p>
 
