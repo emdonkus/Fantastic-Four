@@ -1,4 +1,4 @@
-# import prefix
+# This is the main Flask router for the Cut n Pasta Application.
 
 from flask import Flask, url_for
 from flask import send_file
@@ -15,25 +15,8 @@ from flask import Flask, url_for
 app = Flask(__name__)
 
 # Insert the wrapper for handling PROXY when using csel.io virtual machine
-# Calling this routine will have no effect if running on local machine
-prefix.use_PrefixMiddleware(app)   
-
-# test route to show prefix settings
-# @app.route('/prefix_url')  
-# def prefix_url():
-#     return 'The URL for this page is {}'.format(url_for('prefix_url'))
-
-# @app.route('/prefix_image')  
-# def prefix_image():
-#     image_path = url_for('static',filename='recipe/Perfect_Pot_Roast/image.jpeg')
-#     title_path = url_for('static',filename='recipe/Perfect_Pot_Roast/title.txt')
-#     # image_path = url_for('static', filename="image.jpeg")
-#     print("image_path2: ", image_path)
-#     print("title_path2: ", title_path)
-#     page = f'<img src="{image_path}" alt="Recipe Image">'
-#     title = f'<h1>Recipe: { title_path }</h1>'
-#     return title #page
-
+# Calling this routine will have no effect if running on local machine:
+# prefix.use_PrefixMiddleware(app)   
 
 #. venv/bin/activate
 # export FLASK_DEBUG=true
@@ -57,16 +40,6 @@ def home():
 
         return
 
-    #lst = ''' 
-    #    <h1>Home Index</h1>
-    #    <ul>
-    #        <li>{}</li>
-    #        <li>{}</li>
-    #        <li>{}</li>
-    #        <li>{}</li>
-    #    </ul>
-    #    '''.format(url_for('home'),url_for('search'),url_for('favorites'),url_for('about'),url_for('recipe'))
-    #return lst
     # Rendering the template with the data
     return render_template('home.html')
 
@@ -80,13 +53,6 @@ def hello():
 
 @app.route('/about')
 def about():
-    # lst = ''' 
-    #     <ul>
-    #         <li>Team 4</li>
-    #         <li>CUid: masc6977</li>
-    #         <li>Github: gr8tscott</li>
-    #     </ul>
-    #     '''
     lst = 'The about page'
     return lst
 
@@ -106,7 +72,7 @@ def search():
                            title=title,)
 
 
-@app.route('/favorites', methods=['POST', 'GET'])
+@app.route('/favorites', methods=['POST', 'GET','PATCH'])
 def favorites():
     recipe_id = 'Perfect_Pot_Roast'
     
@@ -142,20 +108,8 @@ def favorites():
             print("Error fetching favorite recipes:", e)
             return []
 
-        # Getting file paths for different components of the recipe
-        # image_path1 = url_for('static', filename=f'recipe/{recipe_id}/image.jpeg')
-        # image_path = url_for('static', filename=f'recipe/Chicken_Florentine_image.jpg')
         image_path = url_for('static', filename=f'recipe/images')
-        # title_path = f'Frontend/static/recipe/{recipe_id}/title.txt'
-
-        # Print the file paths for debugging
-        # print("Image Path:", image_path)
-        # print("Title Path:", title_path)
-
-        # Reading content from the files
-        # with open(title_path, 'r') as f:
-            # title = f.read().strip()
-
+        
         # Rendering the template with the data
         #return favorite_recipes
         return render_template('favorites.html', 
@@ -176,10 +130,7 @@ def cart():
 
 @app.route('/recipes',methods = ['GET'])
 def get_recipes():
-    # dummy image
-    recipe_id = 'Perfect_Pot_Roast'
-    # image_path = url_for('static', filename=f'recipe/{recipe_id}/image.jpeg')
-    
+ 
     if request.method == 'GET':
         conn = adding_data.connect_to_db()
 
@@ -202,10 +153,10 @@ def get_recipes():
 
 
 ####Dynamic
-@app.route('/recipes/<recipe_title>', methods=['POST', 'GET'])
+@app.route('/recipes/<recipe_title>', methods=['POST', 'GET','PATCH'])
 def recipes(recipe_title):
         
-    if request.method == 'POST':
+    if request.method == 'PATCH':
         # Extract recipe ID from the POST request
         recipe_id = request.form['recipe_id']
 
@@ -310,7 +261,7 @@ import subprocess
 # run the scripts to extract the recipe name, image, ingredients, and instructions from the RUL
 @app.route('/fetch-recipe')
 def fetch_recipe():
-    # return render_template('fetchRecipe.html')
+   
     data = request.json
     url = data.get('url')
 

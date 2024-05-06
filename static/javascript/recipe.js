@@ -1,5 +1,6 @@
-/* edited 4/12/2024 Hallee Ray 
-edited 4/16/2024 Hallee Ray*/
+// edited 4/12/2024 Hallee Ray 
+// edited 4/16/2024 Hallee Ray
+// JavaScript file to support recipe.html, home.html 
 
 document.addEventListener('DOMContentLoaded', function() {
     var faveButton = document.getElementById('fave');

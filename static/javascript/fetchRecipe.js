@@ -1,3 +1,5 @@
+// JS File to support fetching recipe data with script, current functionality is to change the button display of the html.
+
 document.addEventListener('DOMContentLoaded', function() {
     
     // Get references to the button and the result div
