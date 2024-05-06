@@ -101,6 +101,12 @@ Reflection
             Unit testing was a shortcoming of our project. Unit tests were built for initial database connection function and the functions for adding data to each table. Unit testing the shell web scrapping script proved to be challenging due to the fact that it was written in bash, not python. Unit tests should also have been written for the flask route functions that were populating information from the database, however more time was spent troubleshooting the http method calls, and the results could visually be seen to be correct, so testing those functions was pushed to the backburner while trying to build more funcitonality. That mindset seems to be the downfall of many coding projects at every level and should be avoided.
         </p>
     <h3>
+        Backend Tools
+    </h3>
+        <p>
+            The backend tools used were PostgreSQL, the python module psycopg2, and Render Cloud Hosting. Postgres is a very industry standard relational database tool and worked well for our project. The only downside was while using the psycopg2 module, SQL statements are written in strings, which can be hard to debug and are much harder to visualize in VSCode. There is likely a better way to write large database operations in python, however for our project needs, these tools were sufficient.
+        </p>
+    <h3>
         Documentation
     </h3>
         <p>
