@@ -116,7 +116,7 @@ Reflection
             No documentation programs or automation was used in this project. A README was written which does fully explain to a new user how to initiate and run the flask application, however this was built at the end of the project. There are many documentaiton tools that would have helped create the documentaiton features were built instead of waiting until the end of the project.
         </p>
     <h3>
-        Configuraiton Management
+        Configuration Management
     </h3>
         <p>
             As we were working, our source code became messy. Sometimes we would edit the same piece of code at the same time. Often this resulted in merge conflicts that we had to resolve through reading each others code. When the code we were editing was well documented and the git commits were clear, this was an easy solution. When it was poorly commented or unclear, merging became a pain. A few times, we had to have a meeting to make sure we could resolve the issue while getting the right changes in the code. This issue was more prevalent due to the lack of feature branches we created, and especially as project deadlines approached, more pushing to main was occuring. The editing and pushing to the main branch is not a good coding practice, and sorting through the merge issues, in the long run, probably took more time than if branches were created and merged properly.
