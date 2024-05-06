@@ -113,13 +113,13 @@ Reflection
         Documentation
     </h3>
         <p>
-            No documentation programs or automation was used in this project. A README was written which does fully explain to a new user how to initiate and run the flask application, however this was built at the end of the project. There are many documentaiton tools that would have helped create the documentaiton features were built instead of waiting until the end of the project.
+            No documentation programs or automation was used in this project. A README was written which does fully explain to a new user how to initiate and run the flask application, however this was built at the end of the project. There are many documentation tools that would have helped create the documentation features were built instead of waiting until the end of the project.
         </p>
     <h3>
-        Configuraiton Management
+        Configuration Management
     </h3>
         <p>
-            As we were working, our source code became messy. Sometimes we would edit the same piece of code at the same time. Often this resulted in merge conflicts that we had to resolve through reading each others code. When the code we were editing was well documented and the git commits were clear, this was an easy solution. When it was poorly commented or unclear, merging became a pain. A few times, we had to have a meeting to make sure we could resolve the issue while getting the right changes in the code. This issue was more prevalent due to the lack of feature branches we created, and especially as project deadlines approached, more pushing to main was occuring. The editing and pushing to the main branch is not a good coding practice, and sorting through the merge issues, in the long run, probably took more time than if branches were created and merged properly.
+            As we were working, our source code became messy. Sometimes we would edit the same piece of code at the same time. Often this resulted in merge conflicts that we had to resolve through reading each other's code. When the code we were editing was well documented and the git commits were clear, this was an easy solution. When it was poorly commented or unclear, merging became a pain. A few times, we had to have a meeting to make sure we could resolve the issue while getting the right changes in the code. This issue was more prevalent due to the lack of feature branches we created, and especially as project deadlines approached, more pushing to main was occurring. Editing and pushing to the main branch is not a good coding practice, and sorting through the merge issues, in the long run, probably took more time than if branches were created and merged properly.
         </p>
     <h3>
         Code Editors
@@ -131,15 +131,13 @@ Reflection
         Task Tracking
     </h3>
         <p>
-            We used trello for task tracking. It took a lot of upfront to set it up for tasking and lacked good features for relating it to versions of code or any code changes. This tool, as all task managmenet/project tracking tools, takes a concentrated effort from users to maintian and update. For our small project, tasking was sorted out effectively at our meetings and we were able to make sure everyone was involved. For larger projects, a task tracking tool like this is necessary but I think that more often than not large orgs also have dedicated people to managing tools and encouraging (enforcing) use. This tool did lack a lot of good features for story pointing, designating relationship between tasks such as blocking tasks. 
+            We used trello for task tracking. It took a lot of upfront to set it up for tasking and lacked good features for relating it to versions of code or any code changes. This tool, as all task managment/project tracking tools, takes a concentrated effort from users to maintain and update. For our small project, tasking was sorted out effectively at our meetings and we were able to make sure everyone was involved. For larger projects, a task tracking tool like this is necessary but I think that more often than not large orgs also have dedicated people to managing tools and encouraging (enforcing) use. This tool did lack a lot of good features for story pointing, designating relationship between tasks such as blocking tasks. 
+        </p>
+    <h3>
+        Frontend Frameworks
+    </h3>
+        <p>
+            We used HTML and CSS for front end webpage development. While these are standard tools, they took some learning, particularly CSS with its many libraries like flextools, which while very useful, they take lots of trial and error to figure out. There was a lot of iteration of HTML and CSS integration to get the CSS tools operating on the correct HTML elements. CSS cascading features provided some challenges when updating new and old elements.
         </p>
 
-Make sure that your repository has the following files committed to remote repository:
 
-    FINAL_REPORT.md
-    Project presentation files from Presentation Milestone
-    Video of demo
-    Source code
-    Test cases
-    Source documentation, and auto-doc files
-    Link to Public Deployment Site (Heroku or similar)
