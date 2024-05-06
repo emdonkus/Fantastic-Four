@@ -42,8 +42,8 @@
 </h2>
     <p>
         <ul>
-            <li>Front end favorites button does not toggle favorite boolean on the backend (disocnnect between frontend patch request and backend patch handling) </li>
-            <li>Get recipe button does not call script to web scrape the url and add the information to the database </li>
+            <li>Front end favorites button does not toggle favorite boolean on the backend (disconnect between frontend patch request and backend patch handling) </li>
+            <li>Fetch recipe button does not call script to web scrape the url and add the information to the database </li>
             <li>Unit tests for front end data population from the database</li>
             <li>Unit tests for patch and post requests from frontend user input</li>
         </ul>
@@ -54,10 +54,12 @@
 </h2>
 <p>
     <ul>
-        <li>Shopping card additions and functionality to combine repeated ingredients</li>
+        <li>Shopping cart additions and functionality to combine repeated ingredients</li>
         <li>Accept links for websites that don't use Wordpress Recipe Module</li>
         <li>Provide better unit testing for DataParser class</li>
         <li>Provide better unit testing for front end page population</li>
+        <li>Implement keyword search of the database</li>
+        <li>Simplify navigation to a nav.html to reduce duplicates between html files</li>
         <li>Organize code</li>
     </ul>
 </p>
@@ -92,7 +94,7 @@ Reflection
         Integration
     </h3>
         <p>
-            The main struggles near the end of this project had to do with getting our front end functionality to integrate with the back end functionality. The pieces were built separatly and the team did not agree on the "handoff" point between the front end and the back end before building the features. This led to confusion on how they would connect and the expectation of each persons work.
+            The main struggles near the end of this project had to do with getting our front end functionality to integrate with the back end functionality. The pieces were built separately and the team did not agree on the "handoff" point between the front end and the back end before building the features. This led to confusion on how they would connect and the expectation of each persons work.
         </p>    
     <h3>
         Testing
@@ -116,7 +118,7 @@ Reflection
         Configuraiton Management
     </h3>
         <p>
-            As we were working, our source code became messy. Sometimes we would edit the same piece of code at the same time. Often this resulted in merge conflicts that we ahd to resolve through reading each others code. When the code we were editing was well documented and the git commits were clear, this was an easy solution. When it was poorly commented or unclear, merging became a pain. A few times, we ahd to have a meeting to make sure we could resolve the issue while getting the right changes in the code. This issue was more prevalent due to the lack of feature branches we created, and especially as project deadlines approached, more pushing to main was occuring. The editing and pushing to the main branch is not a good coding practice, and sorting through the merge issues, in the long run, probably took more time than if branches were created and merged properly.
+            As we were working, our source code became messy. Sometimes we would edit the same piece of code at the same time. Often this resulted in merge conflicts that we had to resolve through reading each others code. When the code we were editing was well documented and the git commits were clear, this was an easy solution. When it was poorly commented or unclear, merging became a pain. A few times, we had to have a meeting to make sure we could resolve the issue while getting the right changes in the code. This issue was more prevalent due to the lack of feature branches we created, and especially as project deadlines approached, more pushing to main was occuring. The editing and pushing to the main branch is not a good coding practice, and sorting through the merge issues, in the long run, probably took more time than if branches were created and merged properly.
         </p>
     <h3>
         Code Editors
